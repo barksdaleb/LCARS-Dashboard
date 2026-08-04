@@ -1,0 +1,38 @@
+{
+  "aps": {
+    "status": "OFF PEAK",
+    "today": "Saturday • August 1"
+  },
+  "energy": {
+    "yesterday": 195.86,
+    "today": 241.87,
+    "currentDemand": 7.11,
+    "dayPeakDemand": 17.63,
+    "dayPeakTime": "8:00 PM",
+    "dataDate": "08/02/2026",
+    "lastReading": "11:00 PM ",
+    "onPeakDemand": 0,
+    "onPeakTime": ""
+  },
+  "systems": {
+    "frontHVAC": {
+      "runtime": "8h 42m",
+      "status": "Running"
+    },
+    "hallHVAC": {
+      "runtime": "5h 31m",
+      "status": "Idle"
+    },
+    "pool": {
+      "temperature": 87
+    },
+    "weather": {
+      "temperature": 110,
+      "city": "Phoenix"
+    }
+  },
+  "ai": {
+    "headline": "Cool Down appears to be reducing on-peak demand.",
+    "recommendation": "Continue collecting weekday data before changing HVAC schedules."
+  }
+}
