@@ -15,7 +15,11 @@ export default function DemandMeter({
   if (percent > 85) color = "bg-red-500";
 
   return (
-    <div className="mt-6">
+    <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-6">
+
+      <div className="text-sm uppercase tracking-[0.4em] text-cyan-400">
+  CURRENT DEMAND
+  </div>
 
       <div className="mb-2 flex justify-between text-sm text-orange-300">
         <span>0 kW</span>

@@ -1,228 +1,103 @@
 "use client";
+import CaptainsLog from "@/components/CaptainsLog";
+import APSStatus from "@/components/APSStatus";
+import DemandMeter from "@/components/DemandMeter";
+import { getAPSStatus } from "../lib/aps";
+import { useState, useEffect } from "react";
 
-import Link from "next/link";
-import energy from "../../data/energy.json";
-import DemandMeter from "../../components/DemandMeter";
-
-function Card({
-  title,
-  value,
-  subtitle,
-}: {
-  title: string;
-  value: string;
-  subtitle?: string;
-}) {
-  return (
-    <div className="rounded-xl border border-orange-500 bg-black/40 p-6 shadow-lg">
-      <div className="text-xs uppercase tracking-[0.35em] text-orange-400">
-        {title}
-      </div>
-
-      <div className="mt-4 text-5xl font-bold text-orange-200">
-        {value}
-      </div>
-
-      {subtitle && (
-        <div className="mt-3 text-orange-300/70">
-          {subtitle}
-        </div>
-      )}
-    </div>
-  );
-}
 
 export default function BHEMPage() {
+  const [now, setNow] = useState(new Date());
+
+useEffect(() => {
+  const timer = setInterval(() => {
+    setNow(new Date());
+  }, 1000);
+
+
+  return () => clearInterval(timer);
+}, []);
+
+const aps = getAPSStatus(now);
+const currentDemand = 7.8;
   return (
-    <main className="min-h-screen bg-black text-orange-200 p-8">
-      <div className="mx-auto max-w-7xl">
+    <main className="min-h-screen bg-black p-8">
 
-        {/* Header */}
-        <div className="flex items-center justify-between border-b border-orange-500 pb-6">
+<div className="mb-8">
+  <a
+    href="/"
+    className="text-cyan-400 hover:text-cyan-300 text-sm"
+  >
+    ← Back to Dashboard
+  </a>
 
-          <div>
-            <h1 className="text-6xl font-bold tracking-[0.45em]">
-              BHEM
-            </h1>
+  <h1 className="mt-4 text-4xl font-bold text-orange-200">
+    BARKSDALE HOME ENERGY MANAGER
+  </h1>
 
-            <div className="mt-3 text-xl text-orange-400">
-              Barksdale Home Energy Model
-            </div>
-          </div>
-
-          <div className="text-right">
-            <div className="text-4xl font-bold text-cyan-300">
-              OFF PEAK
-            </div>
-
-            <div className="text-orange-400">
-              APS Status
-            </div>
-
-            <div className="mt-3 text-xl">
-  {new Date().toLocaleDateString("en-US", {
-    weekday: "long",
-    month: "long",
-    day: "numeric",
-  })}
+  <p className="mt-2 text-cyan-300">
+    Monitor APS demand, billing windows, and electrical usage.
+  </p>
 </div>
-          </div>
 
-        </div>
+  <div className="space-y-8">
+    <APSStatus />
 
-        {/* Back Button */}
-        <div className="mt-8">
-          <Link
-            href="/"
-            className="inline-block rounded-lg border border-orange-500 px-5 py-3 transition hover:bg-orange-500 hover:text-black"
-          >
-            ← LCARS Home
-          </Link>
-        </div>
+    <DemandMeter
+       value={currentDemand}
+      max={15}
+    />
 
-        {/* Home Energy */}
-        <div className="mt-10">
+    <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-4">
 
-          <h2 className="mb-4 text-2xl text-cyan-400">
-            Home Energy
-          </h2>
+ <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-5">
+  <div className="text-sm uppercase tracking-[0.3em] text-cyan-400">
+    Current
+  </div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+  <div className="mt-2 text-3xl font-bold text-orange-200">
+    {currentDemand.toFixed(2)} kW
+  </div>
+</div>
 
-            <Card
-              title="Yesterday"
-              value={energy.energy.yesterday.toString()}
-              subtitle="kWh"
-            />
+  <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-5">
+  <div className="text-sm uppercase tracking-[0.3em] text-cyan-400">
+    Peak Today
+  </div>
 
-            <Card
-              title="Today"
-              value={energy.energy.today.toString()}
-              subtitle="kWh So Far"
-            />
+  <div className="mt-2 text-3xl font-bold text-orange-200">
+    8.33 kW
+  </div>
+</div>
 
-            <Card
-              title="Current Demand"
-              value={energy.energy.currentDemand.toString()}
-              subtitle="kW"
-            />
+  <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-5">
+  <div className="text-sm uppercase tracking-[0.3em] text-cyan-400">
+    Remaining
+  </div>
 
-            <Card
-              title="Peak Demand"
-              value={energy.energy.peakDemand.toString()}
-              subtitle="Today's Peak"
-            />
+  <div className="mt-2 text-3xl font-bold text-green-400">
+    7.20 kW
+  </div>
+</div>
 
-          </div>
+  <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-5">
+  <div className="text-sm uppercase tracking-[0.3em] text-cyan-400">
+    APS Window
+  </div>
 
-        </div>
+  <div className={`mt-2 text-3xl font-bold ${aps.color}`}>
+    {aps.status}
+  </div>
+</div>
 
-        {/* Home Systems */}
-        <div className="mt-12">
+</div>
 
-          <h2 className="mb-4 text-2xl text-cyan-400">
-            Home Systems
-          </h2>
-
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-
-            <Card
-              title="Front HVAC"
-              value={energy.systems.frontHVAC.runtime}
-              subtitle="Running"
-            />
-
-            <Card
-              title="Hall HVAC"
-              value={energy.systems.hallHVAC.runtime}
-              subtitle="Idle"
-            />
-
-            <Card
-              title="Pool"
-              value={`${energy.systems.pool.temperature}°`}
-              subtitle="Water Temp"
-            />
-
-            <Card
-              title="Outside"
-              value={`${energy.systems.weather.temperature}°`}
-              subtitle="Phoenix"
-            />
-
-          </div>
-
-        </div>
-
-        {/* Energy Systems */}
-        <div className="mt-12">
-
-          <h2 className="mb-4 text-2xl text-cyan-400">
-            Energy Systems
-          </h2>
-
-          <div className="grid gap-6 md:grid-cols-3">
-
-            <Card
-              title="Tesla"
-              value="81%"
-              subtitle="Ready • Charges 8 PM"
-            />
-
-            <Card
-              title="Jackery"
-              value="100%"
-              subtitle="42W Load"
-            />
-
-            <Card
-              title="Estimated Savings"
-              value="$512"
-              subtitle="Projected Annual Savings"
-            />
-
-          </div>
-
-        </div>
-
-        {/* AI Advisor */}
-        <div className="mt-12 rounded-xl border-2 border-cyan-500 bg-black/40 p-8">
-
-          <div className="text-3xl font-bold text-cyan-300">
-            AI Home Advisor
-          </div>
-
-          <div className="mt-6 text-3xl text-orange-200">
-            {energy.ai.headline}
-          </div>
-
-          <div className="mt-4 text-xl text-orange-300">
-            {energy.ai.recommendation}
-          </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-2">
-
-            <div className="rounded-lg border border-green-500 p-4">
-              ✅ Tesla scheduled for Off-Peak charging
-            </div>
-
-            <div className="rounded-lg border border-green-500 p-4">
-              ✅ Pool pump optimized
-            </div>
-
-            <div className="rounded-lg border border-yellow-500 p-4">
-              ⚠ Continue monitoring HVAC runtime
-            </div>
-
-            <div className="rounded-lg border border-cyan-500 p-4">
-              💰 Projected savings: $500+/year
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </main>
+    <CaptainsLog
+  currentDemand={currentDemand}
+  peakToday={8.33}
+  apsStatus={aps.status}
+/>
+  </div>
+</main>
   );
 }

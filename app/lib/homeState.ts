@@ -32,7 +32,7 @@ export function getHomeState(): HomeState {
 
     todayUsage: energy.energy.today,
 
-    peakDemand: energy.energy.peakDemand,
+    dayPeakDemand: energy.energy.dayPeakDemand,
 
     outsideTemp: energy.systems.weather.temperature,
 

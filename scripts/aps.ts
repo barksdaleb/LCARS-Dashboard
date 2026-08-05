@@ -97,7 +97,7 @@ export async function updateAPS() {
 
   const peakRow =
     todayRows.find(
-      row => Number(row["Demand (kW)"]) === daypeakDemand
+      row => Number(row["Demand (kW)"]) === dayPeakDemand
     );
 
   const peakTime =
@@ -148,7 +148,7 @@ export async function updateAPS() {
     Number(currentDemand.toFixed(2));
 
   energy.energy.dayPeakDemand =
-    Number(peakDemand.toFixed(2));
+    Number(dayPeakDemand.toFixed(2));
 
   energy.energy.dayPeakTime =
     peakTime;
@@ -170,7 +170,7 @@ export async function updateAPS() {
   console.log("Today's Usage:      ", todayUsage.toFixed(2), "kWh");
   console.log("Yesterday's Usage:  ", yesterdayUsage.toFixed(2), "kWh");
   console.log("Current Demand:     ", currentDemand.toFixed(2), "kW");
-  console.log("Peak Demand:        ", peakDemand.toFixed(2), "kW");
+  console.log("Peak Demand:        ", dayPeakDemand.toFixed(2), "kW");
   console.log("Peak Time:          ", peakTime);
   console.log("");
 

@@ -6,13 +6,13 @@
   "energy": {
     "yesterday": 195.86,
     "today": 241.87,
-    "currentDemand": 7.11,
-    "dayPeakDemand": 17.63,
-    "dayPeakTime": "8:00 PM",
+    "currentDemand": 0,
+    "dayPeakDemand": 8.33,
+    "dayPeakTime": "9:00 PM ",
     "dataDate": "08/02/2026",
     "lastReading": "11:00 PM ",
     "onPeakDemand": 0,
-    "onPeakTime": ""
+    "onPeakTime": "5:00 PM "
   },
   "systems": {
     "frontHVAC": {
@@ -27,12 +27,49 @@
       "temperature": 87
     },
     "weather": {
-      "temperature": 110,
+      "temperature": 88,
       "city": "Phoenix"
     }
   },
-  "ai": {
-    "headline": "Cool Down appears to be reducing on-peak demand.",
-    "recommendation": "Continue collecting weekday data before changing HVAC schedules."
-  }
+ "ai": {
+  "title": "COMPUTER ANALYSIS COMPLETE",
+  "confidence": 91,
+  "headline": "Yesterday's highest electrical demand occurred after APS billing hours.",
+  "summary": "Large electrical loads were successfully shifted outside APS demand pricing.",
+  "recommendation": "Continue the current operating strategy.",
+
+  "observations": [
+    {
+      "status": "success",
+      "text": "Tesla charging remained outside APS billing hours."
+    },
+    {
+      "status": "success",
+      "text": "Pool pump operated during off-peak pricing."
+    },
+    {
+      "status": "warning",
+      "text": "Ecobee runtime analysis is still coming online."
+    }
+  ],
+
+  "sources": [
+    {
+      "name": "APS Smart Meter",
+      "status": "online"
+    },
+    {
+      "name": "Tesla",
+      "status": "partial"
+    },
+    {
+      "name": "Ecobee",
+      "status": "starting"
+    },
+    {
+      "name": "Weather",
+      "status": "online"
+    }
+  ]
+ }
 }

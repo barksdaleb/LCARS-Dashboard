@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { getAPSStatus } from "@/app/lib/apsBilling";
+import { getAPSStatus } from "../app/lib/aps";
 
 export default function SystemStatusBar() {
   const [mounted, setMounted] = useState(false);

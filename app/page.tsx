@@ -15,16 +15,33 @@ import UpdateButton from "../components/UpdateButton";
 
 export default function HomePage() {
   const [now, setNow] = useState(new Date());
+  const [outsideTemp, setOutsideTemp] = useState<number | null>(null);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setNow(new Date());
-    }, 1000);
+  async function loadWeather() {
+    try {
+      const res = await fetch("/api/weather");
+      const data = await res.json();
+      setOutsideTemp(data.outsideTemp);
+    } catch (err) {
+      console.error("Weather fetch failed:", err);
+    }
+  }
 
-    return () => clearInterval(timer);
-  }, []);
+  loadWeather();
 
-  // NEW: Use our APS logic library
+  const clockTimer = setInterval(() => {
+    setNow(new Date());
+  }, 1000);
+
+  const weatherTimer = setInterval(loadWeather, 300000); // 5 minutes
+
+  return () => {
+    clearInterval(clockTimer);
+    clearInterval(weatherTimer);
+  };
+}, []);
+
   const aps = getAPSStatus(now);
 
   const day = now.toLocaleDateString("en-US", {
@@ -37,7 +54,6 @@ export default function HomePage() {
     year: "numeric",
   });
 
-  const time = now.toLocaleTimeString("en-US");
 
   return (
     <main className="min-h-screen bg-black text-orange-200 p-10">
@@ -78,7 +94,7 @@ export default function HomePage() {
           <ConsolePanel
              title="🌡 Climate"
             status="🟢 ONLINE"
-             value={`${energy.systems.weather.temperature}°`}
+            value={`${outsideTemp ?? "--"}°`}
              secondary="Outside Temperature"
              footer="Ecobee Integration Next"
              accent="cyan"
