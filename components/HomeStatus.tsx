@@ -1,11 +1,22 @@
 import energy from "../data/energy.json";
 import DemandMeter from "./DemandMeter";
 import { getAIRecommendation } from "@/app/lib/ai";
+import { useEffect, useState } from "react";
 
 export default function HomeStatus() {
 
   const demand = energy.energy.currentDemand;
-  const outside = energy.systems.weather.temperature;
+  const [outside, setOutside] = useState(
+  energy.systems.weather.temperature
+);
+
+useEffect(() => {
+  fetch("/api/weather")
+    .then((r) => r.json())
+    .then((data) => setOutside(Math.round(data.outsideTemp)))
+    .catch(() => {});
+}, []);
+
   const ai = getAIRecommendation();
 
   let houseStatus = "🟢 NORMAL";
@@ -61,9 +72,9 @@ export default function HomeStatus() {
             Pool
           </div>
 
-          <div className="text-5xl font-bold text-cyan-300">
-            87°
-          </div>
+       <div className="text-5xl font-bold text-cyan-300">
+  {energy.systems.pool.temperature}°
+</div>
 
         </div>
 
