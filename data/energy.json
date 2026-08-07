@@ -6,13 +6,13 @@
   "energy": {
     "yesterday": 195.86,
     "today": 241.87,
-    "currentDemand": 0,
-    "dayPeakDemand": 8.33,
+    "currentDemand": 6.11,
+    "dayPeakDemand": 6.07,
     "dayPeakTime": "9:00 PM ",
     "dataDate": "08/02/2026",
     "lastReading": "11:00 PM ",
     "onPeakDemand": 0,
-    "onPeakTime": "5:00 PM "
+    "onPeakTime": "6:00 PM "
   },
   "systems": {
     "frontHVAC": {
@@ -27,49 +27,47 @@
       "temperature": 91
     },
     "weather": {
-      "temperature": 88,
+      "temperature": 89,
       "city": "Phoenix"
     }
   },
- "ai": {
-  "title": "COMPUTER ANALYSIS COMPLETE",
-  "confidence": 91,
-  "headline": "Yesterday's highest electrical demand occurred after APS billing hours.",
-  "summary": "Large electrical loads were successfully shifted outside APS demand pricing.",
-  "recommendation": "Continue the current operating strategy.",
-
-  "observations": [
-    {
-      "status": "success",
-      "text": "Tesla charging remained outside APS billing hours."
-    },
-    {
-      "status": "success",
-      "text": "Pool pump operated during off-peak pricing."
-    },
-    {
-      "status": "warning",
-      "text": "Ecobee runtime analysis is still coming online."
-    }
-  ],
-
-  "sources": [
-    {
-      "name": "APS Smart Meter",
-      "status": "online"
-    },
-    {
-      "name": "Tesla",
-      "status": "partial"
-    },
-    {
-      "name": "Ecobee",
-      "status": "starting"
-    },
-    {
-      "name": "Weather",
-      "status": "online"
-    }
-  ]
- }
+  "ai": {
+    "title": "COMPUTER ANALYSIS COMPLETE",
+    "confidence": 91,
+    "headline": "Yesterday's highest electrical demand occurred after APS billing hours.",
+    "summary": "Large electrical loads were successfully shifted outside APS demand pricing.",
+    "recommendation": "Continue the current operating strategy.",
+    "observations": [
+      {
+        "status": "success",
+        "text": "Tesla charging remained outside APS billing hours."
+      },
+      {
+        "status": "success",
+        "text": "Pool pump operated during off-peak pricing."
+      },
+      {
+        "status": "warning",
+        "text": "Ecobee runtime analysis is still coming online."
+      }
+    ],
+    "sources": [
+      {
+        "name": "APS Smart Meter",
+        "status": "online"
+      },
+      {
+        "name": "Tesla",
+        "status": "partial"
+      },
+      {
+        "name": "Ecobee",
+        "status": "starting"
+      },
+      {
+        "name": "Weather",
+        "status": "online"
+      }
+    ]
+  }
 }
