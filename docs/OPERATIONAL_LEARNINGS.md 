@@ -1,0 +1,23 @@
+Operational Learning 001 — Microwave + Refrigerator Load Conflict
+Date: 2026-08-08
+Summary
+The Jackery was relocated to its permanent location in the dining room.
+Configuration:
+•	Jackery Explorer 1000 Plus 
+•	25 ft contractor-grade extension cord 
+•	Refrigerator connected 
+•	Microwave connected 
+•	10 ft extension cord installed but unused 
+Observation
+During normal kitchen use, Tina attempted to use the microwave.
+When the microwave started, the Jackery shut off both the microwave and the refrigerator.
+This behavior has now been observed on two separate occasions.
+Analysis
+The issue is unlikely to be caused by the new extension cords because:
+•	The new cords are higher quality and appropriately sized. 
+•	The same behavior occurred before the new cords were installed. 
+The more likely explanation is:
+•	The refrigerator compressor was already running. 
+•	The microwave startup current combined with the refrigerator compressor exceeded the Jackery's available output or surge capability. 
+Operational Recommendation
+The refrigerator and microwave should not be powered simultaneously from the Jackery.
