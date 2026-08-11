@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 export default function BHEMPage() {
   const [now, setNow] = useState(new Date());
 
+  const [pool, setPool] = useState<any>(null);
+
 useEffect(() => {
   const timer = setInterval(() => {
     setNow(new Date());
@@ -17,6 +19,22 @@ useEffect(() => {
 
   return () => clearInterval(timer);
 }, []);
+
+
+useEffect(() => {
+  async function loadPool() {
+    try {
+      const response = await fetch("/api/waterguru");
+      const data = await response.json();
+      setPool(data);
+    } catch (err) {
+      console.error("Failed to load pool data:", err);
+    }
+  }
+
+  loadPool();
+}, []);
+
 
 const aps = getAPSStatus(now);
 const currentDemand = 7.8;

@@ -16,6 +16,7 @@ import UpdateButton from "../components/UpdateButton";
 export default function HomePage() {
   const [now, setNow] = useState(new Date());
   const [outsideTemp, setOutsideTemp] = useState<number | null>(null);
+  const [pool, setPool] = useState<any>(null);
 
   useEffect(() => {
   async function loadWeather() {
@@ -28,7 +29,7 @@ export default function HomePage() {
     }
   }
 
-  loadWeather();
+ loadWeather();
 
   const clockTimer = setInterval(() => {
     setNow(new Date());
@@ -41,6 +42,22 @@ export default function HomePage() {
     clearInterval(weatherTimer);
   };
 }, []);
+
+
+useEffect(() => {
+  async function loadPool() {
+    try {
+      const response = await fetch("/api/waterguru");
+      const data = await response.json();
+      setPool(data);
+    } catch (err) {
+      console.error("Pool fetch failed:", err);
+    }
+  }
+
+  loadPool();
+}, []);
+
 
   const aps = getAPSStatus(now);
 
@@ -100,12 +117,22 @@ export default function HomePage() {
              accent="cyan"
             />
 
-          <ConsolePanel
-             title="🏊 Pool"
-            status="OFFLINE"
-            secondary="Coming Soon"
-            accent="orange"
-            />
+<ConsolePanel
+  title="🏊 Pool"
+  status={pool?.status ?? "LOADING"}
+  secondary={
+    pool
+      ? `${pool.temperature}°F • FC ${pool.chlorine} • pH ${pool.ph}`
+      : "Loading..."
+  }
+  accent={
+    pool?.status === "RED"
+      ? "red"
+      : pool?.status === "YELLOW"
+      ? "orange"
+      : "green"
+  }
+/>
 
         <ConsolePanel
          title="🚗 Vehicles"

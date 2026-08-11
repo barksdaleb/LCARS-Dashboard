@@ -6,13 +6,13 @@
   "energy": {
     "yesterday": 195.86,
     "today": 241.87,
-    "currentDemand": 6.11,
-    "dayPeakDemand": 6.07,
-    "dayPeakTime": "9:00 PM ",
+    "currentDemand": 5.57,
+    "dayPeakDemand": 10.7,
+    "dayPeakTime": "1:00 PM ",
     "dataDate": "08/02/2026",
     "lastReading": "11:00 PM ",
     "onPeakDemand": 0,
-    "onPeakTime": "6:00 PM "
+    "onPeakTime": "4:00 PM "
   },
   "systems": {
     "frontHVAC": {
@@ -27,7 +27,7 @@
       "temperature": 91
     },
     "weather": {
-      "temperature": 89,
+      "temperature": 102,
       "city": "Phoenix"
     }
   },
