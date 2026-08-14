@@ -8,125 +8,165 @@ console.log("🚀 NEW Ecobee IMPORTER RUNNING");
 
 const IMPORT_DIR = path.join(process.cwd(), "data/import/ecobee");
 
+const ARCHIVE_DIR = path.join(IMPORT_DIR, "archive");
+
+if (!fs.existsSync(ARCHIVE_DIR)) {
+  fs.mkdirSync(ARCHIVE_DIR, { recursive: true });
+}
+
 const files = fs
   .readdirSync(IMPORT_DIR)
-  .filter((file) => file.endsWith(".csv"));
+  .filter((file) => file.toLowerCase().endsWith(".csv"));
 
 if (files.length === 0) {
   console.log("No Ecobee CSV files found.");
   process.exit(0);
 }
 
-const file = files[0];
+console.log(`Found ${files.length} Ecobee CSV file(s).`);
+console.log("");
 
-const csv = fs.readFileSync(path.join(IMPORT_DIR, file), "utf8");
+const allRecords: EcobeeRecord[] = [];
 
-const lines = csv.split(/\r?\n/);
-
-// ------------------------------------------------------
-// Locate Ecobee Header
-// ------------------------------------------------------
-
-const headerIndex = lines.findIndex((line) =>
-  line.startsWith("Date,Time,System Setting")
-);
-
-if (headerIndex === -1) {
-  console.error("Could not locate Ecobee data header.");
-  process.exit(1);
-}
+let totalRows = 0;
+let totalSkipped = 0;
 
 // ------------------------------------------------------
-// Thermostat Metadata
+// Process every Ecobee CSV
 // ------------------------------------------------------
 
-const thermostatLine = lines.find((line) =>
-  line.startsWith("#,Thermostat,name")
-);
+for (const file of files) {
+  console.log(`Processing: ${file}`);
 
-const thermostat = thermostatLine?.split(",")[3] ?? "Unknown";
+  const csv = fs.readFileSync(path.join(IMPORT_DIR, file), "utf8");
+  const lines = csv.split(/\r?\n/);
 
-console.log(`Thermostat: ${thermostat}`);
+  // ------------------------------------------------------
+  // Locate Ecobee Header
+  // ------------------------------------------------------
 
-// ------------------------------------------------------
-// Data Rows
-// ------------------------------------------------------
+  const headerIndex = lines.findIndex((line) =>
+    line.startsWith("Date,Time,System Setting")
+  );
 
-const rows = lines
-  .slice(headerIndex + 1)
-  .filter((line) => /^\d{4}-\d{2}-\d{2},/.test(line));
-
-console.log(`Rows found: ${rows.length}`);
-
-const records: EcobeeRecord[] = [];
-
-let skipped = 0;
-
-// ------------------------------------------------------
-// Normalize
-// ------------------------------------------------------
-
-for (const row of rows) {
-  const values = row.split(",");
-
-  if (values.length < 15) {
-    skipped++;
+  if (headerIndex === -1) {
+    console.log("  ⚠ Could not locate Ecobee data header. Skipping file.");
+    console.log("");
     continue;
   }
 
-  const indoorTemp = Number(values[8]);
-  const outdoorTemp = Number(values[10]);
-  const humidity = Number(values[9]);
-  const setpoint = Number(values[6]);
+  // ------------------------------------------------------
+  // Thermostat Metadata
+  // ------------------------------------------------------
 
-  // Reject incomplete Ecobee rows
-  if (
-    Number.isNaN(indoorTemp) ||
-    Number.isNaN(outdoorTemp) ||
-    Number.isNaN(humidity) ||
-    Number.isNaN(setpoint)
-  ) {
-    skipped++;
-    continue;
+  const thermostatLine = lines.find((line) =>
+    line.startsWith("#,Thermostat,name")
+  );
+
+  const thermostat = thermostatLine?.split(",")[3] ?? "Unknown";
+
+  console.log(`  Thermostat: ${thermostat}`);
+
+  // ------------------------------------------------------
+  // Data Rows
+  // ------------------------------------------------------
+
+  const rows = lines
+    .slice(headerIndex + 1)
+    .filter((line) => /^\d{4}-\d{2}-\d{2},/.test(line));
+
+  console.log(`  Rows found: ${rows.length}`);
+
+  totalRows += rows.length;
+
+  let imported = 0;
+  let skipped = 0;
+
+  // ------------------------------------------------------
+  // Normalize
+  // ------------------------------------------------------
+
+  for (const row of rows) {
+    const values = row.split(",");
+
+    if (values.length < 15) {
+      skipped++;
+      continue;
+    }
+
+    const indoorTemp = Number(values[8]);
+    const outdoorTemp = Number(values[10]);
+    const humidity = Number(values[9]);
+    const setpoint = Number(values[6]);
+
+    // Reject incomplete Ecobee rows
+    if (
+      Number.isNaN(indoorTemp) ||
+      Number.isNaN(outdoorTemp) ||
+      Number.isNaN(humidity) ||
+      Number.isNaN(setpoint)
+    ) {
+      skipped++;
+      continue;
+    }
+
+    // Reject placeholder rows at the end of the export
+    if (
+      indoorTemp === 0 &&
+      humidity === 0 &&
+      setpoint === 0
+    ) {
+      skipped++;
+      continue;
+    }
+
+    allRecords.push({
+      timestamp: new Date(`${values[0]}T${values[1]}`),
+
+      thermostat,
+
+      indoorTemp,
+      outdoorTemp,
+      humidity,
+      setpoint,
+
+      coolRuntimeSeconds: Number(values[12]),
+      fanRuntimeSeconds: Number(values[14]),
+
+      hvacMode: values[3],
+      program: values[5],
+      event: values[4] || null,
+    });
+
+    imported++;
   }
 
-  // Reject placeholder rows at the end of the export
-  if (
-    indoorTemp === 0 &&
-    humidity === 0 &&
-    setpoint === 0
-  ) {
-    skipped++;
-    continue;
+  totalSkipped += skipped;
+
+  console.log(`  Imported: ${imported}`);
+
+  if (skipped > 0) {
+    console.log(`  Skipped: ${skipped} invalid rows`);
   }
 
-  records.push({
-    timestamp: new Date(`${values[0]}T${values[1]}`),
-
-    thermostat,
-
-    indoorTemp,
-    outdoorTemp,
-    humidity,
-    setpoint,
-
-    coolRuntimeSeconds: Number(values[12]),
-    fanRuntimeSeconds: Number(values[14]),
-
-    hvacMode: values[3],
-    program: values[5],
-    event: values[4] || null,
-  });
+  console.log("");
 }
 
 // ------------------------------------------------------
 // Results
 // ------------------------------------------------------
 
-console.log(`Imported ${records.length} records`);
+console.log("Import Summary");
+console.log("----------------");
+console.log(`Files       : ${files.length}`);
+console.log(`Rows found  : ${totalRows}`);
+console.log(`Imported    : ${allRecords.length}`);
+console.log(`Skipped     : ${totalSkipped}`);
 
-if (skipped > 0) {
-  console.log(`Skipped ${skipped} invalid rows`);
+if (allRecords.length === 0) {
+  console.log("");
+  console.log("No valid Ecobee records found.");
+  process.exit(0);
 }
 
 // ------------------------------------------------------
@@ -135,10 +175,9 @@ if (skipped > 0) {
 
 const writer = new HistoryWriter();
 
-const result = writer.write(records);
+const result = writer.write(allRecords);
 
 console.log("");
-
 console.log("History Writer");
 console.log("----------------");
 console.log(`Thermostats : ${result.thermostats}`);
@@ -149,3 +188,42 @@ console.log("");
 for (const file of result.filesWritten) {
   console.log(`✓ ${file}`);
 }
+
+
+// ------------------------------------------------------
+// Archive Successfully Processed Files
+// ------------------------------------------------------
+
+console.log("");
+console.log("Archive");
+console.log("----------------");
+
+for (const file of files) {
+  const source = path.join(IMPORT_DIR, file);
+
+  if (!fs.existsSync(source)) {
+    continue;
+  }
+
+  let destination = path.join(ARCHIVE_DIR, file);
+
+  // Prevent overwriting an existing archived export
+  if (fs.existsSync(destination)) {
+    const parsed = path.parse(file);
+    const timestamp = new Date()
+      .toISOString()
+      .replace(/[:.]/g, "-");
+
+    destination = path.join(
+      ARCHIVE_DIR,
+      `${parsed.name}-${timestamp}${parsed.ext}`
+    );
+  }
+
+  fs.renameSync(source, destination);
+
+  console.log(`✓ ${path.basename(destination)}`);
+}
+
+
+
