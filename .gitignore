@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local research / reference repositories
 /research/
+
+# BHEM operational history data
+/data/history/**/*.csv
