@@ -14,9 +14,13 @@ import UpdateButton from "../components/UpdateButton";
 
 
 export default function HomePage() {
-  const [now, setNow] = useState(new Date());
-  const [outsideTemp, setOutsideTemp] = useState<number | null>(null);
-  const [pool, setPool] = useState<any>(null);
+const [now, setNow] = useState(new Date());
+
+const [outsideTemp, setOutsideTemp] = useState<number | null>(null);
+
+const [pool, setPool] = useState<any>(null);
+
+const [hvac, setHvac] = useState<any>(null);
 
   useEffect(() => {
   async function loadWeather() {
@@ -56,6 +60,20 @@ useEffect(() => {
   }
 
   loadPool();
+}, []);
+
+useEffect(() => {
+  async function loadHVAC() {
+    try {
+      const response = await fetch("/api/ecobee/runtime");
+      const data = await response.json();
+      setHvac(data);
+    } catch (err) {
+      console.error("HVAC fetch failed:", err);
+    }
+  }
+
+  loadHVAC();
 }, []);
 
 
@@ -108,23 +126,47 @@ useEffect(() => {
 
 
 
-          <ConsolePanel
-             title="🌡 Climate"
-            status="🟢 ONLINE"
-            value={`${outsideTemp ?? "--"}°`}
-             secondary="Outside Temperature"
-             footer="Ecobee Integration Next"
-             accent="cyan"
-            />
+ <ConsolePanel
+  title="❄ HVAC Analytics"
+  status="🟢 ONLINE"
+  value={
+    hvac
+      ? `${hvac.hall.runtimeHours.toFixed(1)} hrs`
+      : "--"
+  }
+  secondary={
+    hvac
+      ? `Front ${hvac.front.runtimeHours.toFixed(1)} hrs`
+      : "Loading..."
+  }
+  footer={
+    hvac
+      ? `Peak ${hvac.hall.peakHours.toFixed(1)} hrs`
+      : ""
+  }
+  accent="cyan"
+/>
 
 <ConsolePanel
   title="🏊 Pool"
   status={pool?.status ?? "LOADING"}
+
+  value={
+    pool
+      ? `${pool.temperature}°F`
+      : "--"
+  }
+
   secondary={
     pool
-      ? `${pool.temperature}°F • FC ${pool.chlorine} • pH ${pool.ph}`
+      ? `FC ${pool.chlorine} • pH ${pool.ph}`
       : "Loading..."
   }
+
+  footer={
+    pool?.recommendation ?? ""
+  }
+
   accent={
     pool?.status === "RED"
       ? "red"

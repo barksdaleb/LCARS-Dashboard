@@ -4,18 +4,33 @@ import { getAIRecommendation } from "@/app/lib/ai";
 import { useEffect, useState } from "react";
 
 export default function HomeStatus() {
-
   const demand = energy.energy.currentDemand;
-  const [outside, setOutside] = useState(
-  energy.systems.weather.temperature
-);
 
-useEffect(() => {
-  fetch("/api/weather")
-    .then((r) => r.json())
-    .then((data) => setOutside(Math.round(data.outsideTemp)))
-    .catch(() => {});
-}, []);
+  const [outside, setOutside] = useState(
+    energy.systems.weather.temperature
+  );
+
+  const [poolTemp, setPoolTemp] = useState(
+    energy.systems.pool.temperature
+  );
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        // Weather
+        const weather = await fetch("/api/weather").then((r) => r.json());
+        setOutside(Math.round(weather.outsideTemp));
+
+        // Pool
+        const pool = await fetch("/api/waterguru").then((r) => r.json());
+        setPoolTemp(Math.round(pool.temperature));
+      } catch (err) {
+        console.error("Failed to load live status:", err);
+      }
+    }
+
+    loadData();
+  }, []);
 
   const ai = getAIRecommendation();
 
@@ -28,7 +43,6 @@ useEffect(() => {
   }
 
   return (
-
     <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-8">
 
       <div className="text-3xl font-bold text-cyan-300">
@@ -40,7 +54,6 @@ useEffect(() => {
       </div>
 
       <div className="mt-8">
-
         <div className="text-orange-400 uppercase tracking-[0.3em]">
           Current Demand
         </div>
@@ -49,13 +62,11 @@ useEffect(() => {
           value={demand}
           max={10}
         />
-
       </div>
 
       <div className="mt-10 grid grid-cols-2 gap-8">
 
         <div>
-
           <div className="text-sm uppercase text-orange-500">
             Outside
           </div>
@@ -63,22 +74,20 @@ useEffect(() => {
           <div className="text-5xl font-bold text-cyan-300">
             {outside}°
           </div>
-
         </div>
 
         <div>
-
           <div className="text-sm uppercase text-orange-500">
             Pool
           </div>
 
-       <div className="text-5xl font-bold text-cyan-300">
-  {energy.systems.pool.temperature}°
-</div>
-
+          <div className="text-5xl font-bold text-cyan-300">
+            {poolTemp}°
+          </div>
         </div>
 
       </div>
+
       <div className="mt-10 border-t border-cyan-700 pt-6">
 
         <div className="text-sm uppercase tracking-[0.3em] text-orange-500">
@@ -102,8 +111,7 @@ useEffect(() => {
         </div>
 
       </div>
+
     </div>
-
   );
-
 }
