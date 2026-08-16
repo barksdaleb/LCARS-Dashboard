@@ -1,10 +1,11 @@
 import energy from "../data/energy.json";
 import DemandMeter from "./DemandMeter";
-import { getAIRecommendation } from "@/app/lib/ai";
 import { useEffect, useState } from "react";
 
 export default function HomeStatus() {
-  const demand = energy.energy.currentDemand;
+  const latestDemand = energy.energy.currentDemand;
+
+  const [now, setNow] = useState(new Date());
 
   const [outside, setOutside] = useState(
     energy.systems.weather.temperature
@@ -30,16 +31,30 @@ export default function HomeStatus() {
     }
 
     loadData();
+
+    const timer = setInterval(() => {
+      setNow(new Date());
+    }, 60000);
+
+    return () => clearInterval(timer);
   }, []);
 
-  const ai = getAIRecommendation();
+
+  // APS demand window:
+  // Monday-Friday, 4:00 PM through 6:59 PM
+  const day = now.getDay();
+  const hour = now.getHours();
+
+  const isWeekday = day >= 1 && day <= 5;
+  const isOnPeak =
+    isWeekday &&
+    hour >= 16 &&
+    hour < 19;
 
   let houseStatus = "🟢 NORMAL";
 
-  if (demand > 8) {
-    houseStatus = "🔴 HIGH DEMAND";
-  } else if (demand > 6) {
-    houseStatus = "🟡 ELEVATED";
+  if (isOnPeak) {
+    houseStatus = "🟡 APS ON-PEAK";
   }
 
   return (
@@ -49,19 +64,30 @@ export default function HomeStatus() {
         HOME STATUS
       </div>
 
-      <div className="mt-6 text-4xl font-bold text-green-400">
+      <div
+        className={`mt-6 text-4xl font-bold ${
+          isOnPeak
+            ? "text-yellow-300"
+            : "text-green-400"
+        }`}
+      >
         {houseStatus}
       </div>
 
       <div className="mt-8">
         <div className="text-orange-400 uppercase tracking-[0.3em]">
-          Current Demand
+          Latest APS Demand
         </div>
 
         <DemandMeter
-          value={demand}
+          value={latestDemand}
           max={10}
         />
+
+        <div className="mt-2 text-sm text-cyan-300">
+          APS data through {energy.energy.dataDate}{" "}
+          {energy.energy.lastReading}
+        </div>
       </div>
 
       <div className="mt-10 grid grid-cols-2 gap-8">
@@ -96,18 +122,20 @@ export default function HomeStatus() {
 
         <div
           className={`mt-3 text-2xl font-bold ${
-            ai.level === "warning"
-              ? "text-red-400"
-              : ai.level === "info"
+            isOnPeak
               ? "text-yellow-300"
               : "text-green-400"
           }`}
         >
-          {ai.title}
+          {isOnPeak
+            ? "APS ON-PEAK ACTIVE"
+            : "SYSTEM OPTIMAL"}
         </div>
 
         <div className="mt-3 text-orange-200">
-          {ai.message}
+          {isOnPeak
+            ? "Minimize discretionary high-power loads until 7 PM."
+            : "No action required. Home systems are operating normally."}
         </div>
 
       </div>

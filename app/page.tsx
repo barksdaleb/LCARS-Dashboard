@@ -11,7 +11,16 @@ import PowerForecast from "../components/PowerForecast";
 import ComputerMessage from "../components/ComputerMessage";
 import UpdateButton from "../components/UpdateButton";
 
+function formatShortDate(dateString: string): string {
+  const [year, month, day] = dateString.split("-").map(Number);
 
+  return new Date(year, month - 1, day)
+    .toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+    })
+    .toUpperCase();
+}
 
 export default function HomePage() {
 const [now, setNow] = useState(new Date());
@@ -119,31 +128,30 @@ useEffect(() => {
   status="🟢 ONLINE"
   value={`${energy.energy.today.toFixed(2)} kWh`}
   secondary={`Current Demand ${energy.energy.currentDemand.toFixed(2)} kW`}
-  footer={`Today's Peak ${energy.energy.dayPeakDemand.toFixed(2)} kW`}
+  footer={`${formatShortDate(energy.energy.dataDate)} • APS Peak ${energy.energy.dayPeakDemand.toFixed(2)} kW`}
   href="/bhem"
   accent="green"
 />
 
 
-
- <ConsolePanel
+<ConsolePanel
   title="❄ HVAC Analytics"
   status="🟢 ONLINE"
   value={
     hvac
-      ? `${hvac.hall.runtimeHours.toFixed(1)} hrs`
+      ? `Front ${hvac.front.totalHours.toFixed(1)} hrs`
       : "--"
   }
   secondary={
     hvac
-      ? `Front ${hvac.front.runtimeHours.toFixed(1)} hrs`
+      ? `Hall ${hvac.hall.totalHours.toFixed(1)} hrs`
       : "Loading..."
   }
   footer={
-    hvac
-      ? `Peak ${hvac.hall.peakHours.toFixed(1)} hrs`
-      : ""
-  }
+  hvac
+    ? `Pre-Cool F ${hvac.front.precoolHours.toFixed(1)} • H ${hvac.hall.precoolHours.toFixed(1)} | ${formatShortDate(hvac.dataDate)} • ${hvac.front.lastReading}`
+    : ""
+}
   accent="cyan"
 />
 
@@ -176,40 +184,7 @@ useEffect(() => {
   }
 />
 
-        <ConsolePanel
-         title="🚗 Vehicles"
-         status="OFFLINE"
-        secondary="Coming Soon"
-         accent="orange"
-        />
-
-          <ConsolePanel
-            title="📹 Security"
-            status="ONLINE"
-            secondary="Ring Integration"
-            accent="green"
-            />
-
-        <ConsolePanel
-            title="🖨 Maker Lab"
-            status="READY"
-            secondary="3D Printing"
-            accent="cyan"
-            />
-
-        <ConsolePanel
-            title="💰 Finance"
-            status="ONLINE"
-            secondary="Utility Monitoring"
-            accent="green"      
-            />
-
-        <ConsolePanel
-        title="⚙ System Status"
-        status="NORMAL"
-        secondary="All Systems Operational"
-        accent="green"
-        />
+        
 
         </div>
 

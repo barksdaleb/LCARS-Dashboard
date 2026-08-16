@@ -378,7 +378,11 @@ for (const file of files) {
   //
   // Therefore the real header is normally line 2.
 
-  const headerLine = lines[1] ?? "";
+const headerLine =
+  lines.find((line) =>
+    line.includes("Date") ||
+    line.includes("Bill Cycle Start Date")
+  ) ?? "";
 
   // ----------------------------------------------------
   // APS HOURLY

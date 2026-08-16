@@ -67,6 +67,40 @@ for (const file of files) {
 
   console.log(`  Thermostat: ${thermostat}`);
 
+
+    // ------------------------------------------------------
+  // Column Mapping
+  // Front and Hall Ecobee exports can have different
+  // column positions, so locate fields by header name.
+  // ------------------------------------------------------
+
+  const headers = lines[headerIndex].split(",");
+
+  const outdoorTempIndex =
+    headers.indexOf("Outdoor Temp (F)");
+
+  const coolRuntimeIndex =
+    headers.indexOf("Cool Stage 1 (sec)");
+
+  const fanRuntimeIndex =
+    headers.indexOf("Fan (sec)");
+
+  if (
+    outdoorTempIndex === -1 ||
+    coolRuntimeIndex === -1 ||
+    fanRuntimeIndex === -1
+  ) {
+    console.log(
+      "  ⚠ Required Ecobee columns not found. Skipping file."
+    );
+    console.log("");
+    continue;
+  }
+
+  console.log(
+    `  Columns: outdoor=${outdoorTempIndex}, cooling=${coolRuntimeIndex}, fan=${fanRuntimeIndex}`
+  );
+
   // ------------------------------------------------------
   // Data Rows
   // ------------------------------------------------------
@@ -95,7 +129,7 @@ for (const file of files) {
     }
 
     const indoorTemp = Number(values[8]);
-    const outdoorTemp = Number(values[10]);
+    const outdoorTemp = Number(values[outdoorTempIndex]);
     const humidity = Number(values[9]);
     const setpoint = Number(values[6]);
 
@@ -130,8 +164,8 @@ for (const file of files) {
       humidity,
       setpoint,
 
-      coolRuntimeSeconds: Number(values[12]),
-      fanRuntimeSeconds: Number(values[14]),
+coolRuntimeSeconds: Number(values[coolRuntimeIndex]),
+fanRuntimeSeconds: Number(values[fanRuntimeIndex]),
 
       hvacMode: values[3],
       program: values[5],

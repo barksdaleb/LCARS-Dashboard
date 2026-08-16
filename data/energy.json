@@ -4,15 +4,15 @@
     "today": "Saturday • August 1"
   },
   "energy": {
-    "yesterday": 195.86,
-    "today": 241.87,
-    "currentDemand": 5.57,
-    "dayPeakDemand": 10.7,
-    "dayPeakTime": "1:00 PM ",
-    "dataDate": "08/02/2026",
-    "lastReading": "11:00 PM ",
-    "onPeakDemand": 0,
-    "onPeakTime": "4:00 PM "
+    "yesterday": 109.92,
+    "today": 151.23,
+    "currentDemand": 8.18,
+    "dayPeakDemand": 15.68,
+    "dayPeakTime": "9:00 PM",
+    "dataDate": "2026-08-13",
+    "lastReading": "11:00 PM",
+    "onPeakDemand": 6.23,
+    "onPeakTime": "5:00 PM"
   },
   "systems": {
     "frontHVAC": {
@@ -27,7 +27,7 @@
       "temperature": 91
     },
     "weather": {
-      "temperature": 102,
+      "temperature": 97,
       "city": "Phoenix"
     }
   },
@@ -62,7 +62,7 @@
       },
       {
         "name": "Ecobee",
-        "status": "starting"
+        "status": "online"
       },
       {
         "name": "Weather",

@@ -1,148 +1,194 @@
 import fs from "fs";
 import path from "path";
-import os from "os";
 import Papa from "papaparse";
 
-// -----------------------------
-// Find newest APS CSV
-// -----------------------------
-function findLatestAPSFile(): string {
-  const downloads = path.join(os.homedir(), "Downloads");
 
-  const apsFiles = fs
-    .readdirSync(downloads)
-    .filter(
-      file =>
-        file.startsWith("Hourly-usage-year") &&
-        file.endsWith(".csv")
-    )
-    .map(file => ({
-      name: file,
-      time: fs.statSync(path.join(downloads, file)).mtime.getTime()
-    }))
-    .sort((a, b) => b.time - a.time);
+function formatAPSClock(time: string): string {
+  const [hourText, minuteText = "00"] = time.trim().split(":");
 
-  if (!apsFiles.length) {
-    throw new Error("No APS CSV found in Downloads.");
+  const hour24 = Number(hourText);
+
+  if (!Number.isFinite(hour24)) {
+    return time;
   }
 
-  console.log(`Using: ${apsFiles[0].name}`);
+  const period = hour24 >= 12 ? "PM" : "AM";
+  const hour12 = hour24 % 12 || 12;
 
-  return path.join(downloads, apsFiles[0].name);
+  return `${hour12}:${minuteText} ${period}`;
 }
 
+
+type APSHourlyRecord = {
+  timestamp: string;
+  date: string;
+  time: string;
+  usageKWh: number;
+  demandKW: number;
+};
+
 export async function updateAPS() {
+  console.log("Reading APS history...");
 
-  console.log("Connecting to APS...");
+  const historyFile = path.join(
+    process.cwd(),
+    "data/history/aps/hourly.csv"
+  );
 
-  const csvPath = findLatestAPSFile();
+  if (!fs.existsSync(historyFile)) {
+    throw new Error(
+      "APS hourly history not found. Run npm run aps-import first."
+    );
+  }
 
-  // -----------------------------
-  // Read CSV
-  // -----------------------------
-  const csv = fs.readFileSync(csvPath, "utf8");
+  const csv = fs.readFileSync(historyFile, "utf8");
 
-  const parsed = Papa.parse(csv, {
+  const parsed = Papa.parse<APSHourlyRecord>(csv, {
     header: true,
     skipEmptyLines: true,
-    skipFirstNLines: 2
+    dynamicTyping: true,
   });
 
-  const records = parsed.data as any[];
+  const records = parsed.data.filter(
+    (record) =>
+      record.timestamp &&
+      record.date &&
+      record.time &&
+      Number.isFinite(record.usageKWh) &&
+      Number.isFinite(record.demandKW)
+  );
 
   if (!records.length) {
-    throw new Error("APS CSV contains no data.");
+    throw new Error("APS hourly history contains no valid data.");
+  }
+
+  // History is stored oldest -> newest.
+  records.sort((a, b) =>
+    a.timestamp.localeCompare(b.timestamp)
+  );
+
+  // -----------------------------
+  // Determine newest two dates
+  // -----------------------------
+
+  const dates = [...new Set(records.map((r) => r.date))].sort();
+
+  const dataDate = dates[dates.length - 1];
+
+  const previousDate =
+    dates.length > 1
+      ? dates[dates.length - 2]
+      : null;
+
+  const todayRows = records.filter(
+    (r) => r.date === dataDate
+  );
+
+  const yesterdayRows = previousDate
+    ? records.filter((r) => r.date === previousDate)
+    : [];
+
+  if (!todayRows.length) {
+    throw new Error(
+      `No APS hourly records found for ${dataDate}.`
+    );
   }
 
   // -----------------------------
-  // Calculate values
+  // Calculate usage
   // -----------------------------
-  const dataDate = records[0]["Date"];
 
-  const previousDate =
-    records.find(r => r["Date"] !== dataDate)?.["Date"];
+  const todayUsage = todayRows.reduce(
+    (sum, row) => sum + Number(row.usageKWh),
+    0
+  );
 
-  const todayRows =
-    records.filter(r => r["Date"] === dataDate);
+  const yesterdayUsage = yesterdayRows.reduce(
+    (sum, row) => sum + Number(row.usageKWh),
+    0
+  );
 
-  const yesterdayRows =
-    records.filter(r => r["Date"] === previousDate);
+  // Newest hourly reading
+  const latestRow = todayRows[todayRows.length - 1];
 
-  const todayUsage =
-    todayRows.reduce(
-      (sum, row) =>
-        sum + Number(row["Usage (kWh)"]),
-      0
-    );
+  const currentDemand = Number(latestRow.demandKW);
+  const hour24 = Number(latestRow.time.split(":")[0]);
 
-  const yesterdayUsage =
-    yesterdayRows.reduce(
-      (sum, row) =>
-        sum + Number(row["Usage (kWh)"]),
-      0
-    );
-
-  const currentDemand =
-    Number(todayRows[0]["Demand (kW)"]);
-
-  const lastReading =
-    todayRows[0]["Time"];
-
-  const dayPeakDemand =
-    Math.max(
-      ...todayRows.map(row =>
-        Number(row["Demand (kW)"])
-      )
-    );
-
-  const peakRow =
-    todayRows.find(
-      row => Number(row["Demand (kW)"]) === dayPeakDemand
-    );
-
-  const peakTime =
-    peakRow?.["Time"] ?? "";
+const lastReading = new Date(
+  2000,
+  0,
+  1,
+  hour24
+).toLocaleTimeString("en-US", {
+  hour: "numeric",
+  minute: "2-digit",
+});
 
   // -----------------------------
-  // APS On-Peak Demand
+  // Daily Peak
   // -----------------------------
-  const onPeakRows = todayRows.filter(row => {
-    const hour = Number(row["Time"].split(":")[0]);
-    const isPM = row["Time"].includes("PM");
 
-    const hour24 =
-      isPM
-        ? (hour === 12 ? 12 : hour + 12)
-        : (hour === 12 ? 0 : hour);
+  const dayPeakDemand = Math.max(
+    ...todayRows.map((row) => Number(row.demandKW))
+  );
 
-    return hour24 >= 16 && hour24 < 19;
+  const peakRow = todayRows.find(
+    (row) => Number(row.demandKW) === dayPeakDemand
+  );
+
+  const peakTime = peakRow
+  ? formatAPSClock(peakRow.time)
+  : "";
+
+
+  // -----------------------------
+  // APS On-Peak: 4 PM - 7 PM
+  // -----------------------------
+
+  const onPeakRows = todayRows.filter((row) => {
+    const hour = Number(row.time.split(":")[0]);
+
+    return hour >= 16 && hour < 19;
   });
 
   let onPeakDemand = 0;
   let onPeakTime = "";
 
   if (onPeakRows.length) {
-
     onPeakDemand = Math.max(
-      ...onPeakRows.map(row =>
-        Number(row["Demand (kW)"])
-      )
+      ...onPeakRows.map((row) => Number(row.demandKW))
     );
 
     const row = onPeakRows.find(
-      r => Number(r["Demand (kW)"]) === onPeakDemand
+      (r) => Number(r.demandKW) === onPeakDemand
     );
 
-    onPeakTime = row?.["Time"] ?? "";
-
+   onPeakTime = row
+  ? formatAPSClock(row.time)
+  : "";
   }
 
   // -----------------------------
   // Update energy.json
   // -----------------------------
-  const energy = JSON.parse(
-    fs.readFileSync("data/energy.json", "utf8")
+
+  const energyPath = path.join(
+    process.cwd(),
+    "data/energy.json"
   );
+
+  const energy = JSON.parse(
+    fs.readFileSync(energyPath, "utf8")
+  );
+
+  energy.energy.dataDate = dataDate;
+  energy.energy.lastReading = lastReading;
+
+  energy.energy.today =
+    Number(todayUsage.toFixed(2));
+
+  energy.energy.yesterday =
+    Number(yesterdayUsage.toFixed(2));
 
   energy.energy.currentDemand =
     Number(currentDemand.toFixed(2));
@@ -153,26 +199,48 @@ export async function updateAPS() {
   energy.energy.dayPeakTime =
     peakTime;
 
-  energy.energy.dayPeakDemand =
+  energy.energy.onPeakDemand =
     Number(onPeakDemand.toFixed(2));
 
   energy.energy.onPeakTime =
     onPeakTime;
 
   fs.writeFileSync(
-    "data/energy.json",
+    energyPath,
     JSON.stringify(energy, null, 2)
   );
 
   console.log("");
   console.log("APS Data Date:      ", dataDate);
   console.log("Last Reading:       ", lastReading);
-  console.log("Today's Usage:      ", todayUsage.toFixed(2), "kWh");
-  console.log("Yesterday's Usage:  ", yesterdayUsage.toFixed(2), "kWh");
-  console.log("Current Demand:     ", currentDemand.toFixed(2), "kW");
-  console.log("Peak Demand:        ", dayPeakDemand.toFixed(2), "kW");
-  console.log("Peak Time:          ", peakTime);
+  console.log(
+    "Today's Usage:      ",
+    todayUsage.toFixed(2),
+    "kWh"
+  );
+  console.log(
+    "Yesterday's Usage:  ",
+    yesterdayUsage.toFixed(2),
+    "kWh"
+  );
+  console.log(
+    "Current Demand:     ",
+    currentDemand.toFixed(2),
+    "kW"
+  );
+  console.log(
+    "Daily Peak Demand:  ",
+    dayPeakDemand.toFixed(2),
+    "kW"
+  );
+  console.log("Daily Peak Time:    ", peakTime);
+  console.log(
+    "4-7 Peak Demand:    ",
+    onPeakDemand.toFixed(2),
+    "kW"
+  );
+  console.log("4-7 Peak Time:      ", onPeakTime);
   console.log("");
 
-  console.log("APS updated.");
+  console.log("APS updated from history.");
 }
