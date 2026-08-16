@@ -37,8 +37,8 @@ export const OLD_TOU_RATES: APSPlanRates = {
 };
 
 export const NEW_DEMAND_RATES: APSPlanRates = {
-  onPeakRate: 0,
-  offPeakRate: 0,
+  onPeakRate: 0.14227,
+  offPeakRate: 0.05943,
   demandRate: 19.585,
 };
 
@@ -199,5 +199,101 @@ export class SavingsAnalyzer {
       totalEnergyCost,
     };
   }    
-  
+    public calculateNewPlanCost(
+    startDate: string,
+    endDate: string
+  ) {
+    const usage = this.getUsage(
+      startDate,
+      endDate
+    );
+
+    const onPeakCost =
+      usage.onPeakKWh *
+      NEW_DEMAND_RATES.onPeakRate;
+
+    const offPeakCost =
+      usage.offPeakKWh *
+      NEW_DEMAND_RATES.offPeakRate;
+
+    const demandCost =
+      usage.peakDemandKW *
+      NEW_DEMAND_RATES.demandRate;
+
+    const totalEnergyAndDemandCost =
+      onPeakCost +
+      offPeakCost +
+      demandCost;
+
+    return {
+      ...usage,
+
+      onPeakCost,
+      offPeakCost,
+      demandCost,
+
+      totalEnergyAndDemandCost,
+    };
+  }
+  public comparePlans(
+    startDate: string,
+    endDate: string
+  ): SavingsAnalysis {
+    const oldPlan =
+      this.calculateOldPlanCost(
+        startDate,
+        endDate
+      );
+
+    const newPlan =
+      this.calculateNewPlanCost(
+        startDate,
+        endDate
+      );
+
+    const savingsBeforeTax =
+      oldPlan.totalEnergyCost -
+      newPlan.totalEnergyAndDemandCost;
+
+    const savingsPercent =
+      oldPlan.totalEnergyCost > 0
+        ? (savingsBeforeTax /
+            oldPlan.totalEnergyCost) *
+          100
+        : 0;
+
+    return {
+      startDate,
+      endDate,
+
+      days: oldPlan.days,
+
+      onPeakKWh: oldPlan.onPeakKWh,
+      offPeakKWh: oldPlan.offPeakKWh,
+      totalKWh: oldPlan.totalKWh,
+
+      peakDemandKW:
+        oldPlan.peakDemandKW,
+
+      oldPlanEnergyCost:
+        oldPlan.totalEnergyCost,
+
+      newPlanEnergyCost:
+        newPlan.onPeakCost +
+        newPlan.offPeakCost,
+
+      newPlanDemandCost:
+        newPlan.demandCost,
+
+      oldPlanComparableCost:
+        oldPlan.totalEnergyCost,
+
+      newPlanComparableCost:
+        newPlan.totalEnergyAndDemandCost,
+
+      savingsBeforeTax,
+      savingsPercent,
+    };
+  }
+
 }
