@@ -1,15 +1,57 @@
 import energy from "@/data/energy.json";
 
+type HVACStrategyResult = {
+  evidenceQuality: "strong" | "moderate" | "limited";
+  matchedDays: number;
+
+  expectedRuntimeMinutes: number;
+  actualRuntimeMinutes: number;
+
+  runtimeDifferenceMinutes: number;
+  runtimeDifferencePercent: number;
+
+  frontVerdict: "beneficial" | "mixed" | "inconclusive";
+  hallVerdict: "beneficial" | "mixed" | "inconclusive";
+
+  verdict:
+    | "beneficial"
+    | "promising"
+    | "mixed"
+    | "inconclusive";
+};
+
 type CaptainsLogProps = {
   currentDemand: number;
   peakToday: number;
   apsStatus: string;
+  hvacStrategy?: HVACStrategyResult | null;
+  savingsProof?: SavingsProofResult | null;
+};
+
+type SavingsProofResult = {
+  startDate: string;
+  endDate: string;
+  days: number;
+
+  onPeakKWh: number;
+  offPeakKWh: number;
+  totalKWh: number;
+
+  peakDemandKW: number;
+
+  oldPlanComparableCost: number;
+  newPlanComparableCost: number;
+
+  savingsBeforeTax: number;
+  savingsPercent: number;
 };
 
 export default function CaptainsLog({
   currentDemand,
   peakToday,
   apsStatus,
+  hvacStrategy = null,
+  savingsProof = null,
 }: CaptainsLogProps) {
 
   const ai = energy.ai;
@@ -17,6 +59,47 @@ export default function CaptainsLog({
 let headline = ai.headline;
 let summary = ai.summary;
 let recommendation = ai.recommendation;
+
+const observations = ai.observations.filter(
+  (item) =>
+    !item.text
+      .toLowerCase()
+      .includes("ecobee runtime analysis")
+);
+
+if (hvacStrategy) {
+  const runtimeReduction = Math.abs(
+    hvacStrategy.runtimeDifferencePercent
+  );
+
+  observations.push({
+    status: "success",
+    text:
+      `HVAC strategy analysis is ${hvacStrategy.verdict.toUpperCase()}. ` +
+      `4–7 PM cooling runtime is ${runtimeReduction.toFixed(1)}% lower ` +
+      `across ${hvacStrategy.matchedDays} strongly matched weather days.`,
+  });
+
+  if (hvacStrategy.hallVerdict === "mixed") {
+    observations.push({
+      status: "warning",
+      text:
+        "Hall AC runtime improved substantially, but temperature performance indicates the strategy still needs optimization.",
+    });
+  }
+}
+if (
+  savingsProof &&
+  savingsProof.savingsBeforeTax > 0
+) {
+  observations.push({
+    status: "success",
+    text:
+      `APS Savings Proof Engine confirms $${savingsProof.savingsBeforeTax.toFixed(2)} ` +
+      `saved to date — ${savingsProof.savingsPercent.toFixed(1)}% lower plan-dependent ` +
+      `cost using the same ${savingsProof.totalKWh.toFixed(2)} kWh of observed usage.`,
+  });
+}
 
 if (apsStatus === "ON PEAK") {
   headline = "HIGH DEMAND WINDOW ACTIVE";
@@ -75,7 +158,7 @@ if (currentDemand < 3) {
 
   <div className="space-y-3">
 
-    {ai.observations.map((item, index) => (
+    {observations.map((item, index) => (
             <div key={index} className="flex items-start gap-3">
 
               <div

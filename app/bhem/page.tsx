@@ -13,6 +13,7 @@ export default function BHEMPage() {
 
   const [pool, setPool] = useState<any>(null);
   const [hvacStrategy, setHvacStrategy] = useState<any>(null);
+  const [savingsProof, setSavingsProof] = useState<any>(null);
 
 useEffect(() => {
   const timer = setInterval(() => {
@@ -63,6 +64,33 @@ useEffect(() => {
   }
 
   loadHVACStrategy();
+}, []);
+
+useEffect(() => {
+  async function loadSavingsProof() {
+    try {
+      const response = await fetch(
+        "/api/aps/savings"
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "Savings proof request failed"
+        );
+      }
+
+      const data = await response.json();
+
+      setSavingsProof(data);
+    } catch (err) {
+      console.error(
+        "Failed to load savings proof:",
+        err
+      );
+    }
+  }
+
+  loadSavingsProof();
 }, []);
 
 const aps = getAPSStatus(now);
@@ -147,6 +175,7 @@ const currentDemand = 7.8;
   peakToday={8.33}
   apsStatus={aps.status}
   hvacStrategy={hvacStrategy}
+  savingsProof={savingsProof}
 />
   </div>
 </main>
