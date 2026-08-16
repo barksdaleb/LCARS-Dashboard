@@ -4,12 +4,15 @@ import APSStatus from "@/components/APSStatus";
 import DemandMeter from "@/components/DemandMeter";
 import { getAPSStatus } from "../lib/aps";
 import { useState, useEffect } from "react";
+import HVACStrategy from "@/components/HVACStrategy";
+import SavingsProof from "@/components/SavingsProof";
 
 
 export default function BHEMPage() {
   const [now, setNow] = useState(new Date());
 
   const [pool, setPool] = useState<any>(null);
+  const [hvacStrategy, setHvacStrategy] = useState<any>(null);
 
 useEffect(() => {
   const timer = setInterval(() => {
@@ -35,6 +38,32 @@ useEffect(() => {
   loadPool();
 }, []);
 
+useEffect(() => {
+  async function loadHVACStrategy() {
+    try {
+      const response = await fetch(
+        "/api/ecobee/strategy"
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          "HVAC strategy request failed"
+        );
+      }
+
+      const data = await response.json();
+
+      setHvacStrategy(data);
+    } catch (err) {
+      console.error(
+        "Failed to load HVAC strategy:",
+        err
+      );
+    }
+  }
+
+  loadHVACStrategy();
+}, []);
 
 const aps = getAPSStatus(now);
 const currentDemand = 7.8;
@@ -59,12 +88,14 @@ const currentDemand = 7.8;
 </div>
 
   <div className="space-y-8">
-    <APSStatus />
+  <APSStatus />
 
-    <DemandMeter
-       value={currentDemand}
-      max={15}
-    />
+  <SavingsProof />
+
+  <DemandMeter
+    value={currentDemand}
+    max={15}
+  />
 
     <div className="mt-6 grid grid-cols-2 gap-6 md:grid-cols-4">
 
@@ -110,10 +141,12 @@ const currentDemand = 7.8;
 
 </div>
 
-    <CaptainsLog
+    <HVACStrategy />
+   <CaptainsLog
   currentDemand={currentDemand}
   peakToday={8.33}
   apsStatus={aps.status}
+  hvacStrategy={hvacStrategy}
 />
   </div>
 </main>
