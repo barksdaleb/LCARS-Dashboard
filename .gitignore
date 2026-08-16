@@ -48,3 +48,11 @@ next-env.d.ts
 
 # APS import files and raw archive
 /data/import/aps/
+
+# BHEM development backups
+app/lib/energy/StrategyAnalyzer-before-*.ts
+scripts/*-before-*.ts
+
+# Ecobee raw import working data
+data/import/ecobee/archive/
+data/import/ecobee/rebuild/
