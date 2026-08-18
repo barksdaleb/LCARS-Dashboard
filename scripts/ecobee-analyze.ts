@@ -5,8 +5,7 @@ import {
   ThermalAnalysis,
 } from "../app/lib/ecobee/ThermalAnalyzer";
 
-const TARGET_DATE =
-  process.argv[2] ?? "2026-08-14";
+const requestedDate = process.argv[2];
 
 const historyDir = path.join(
   process.cwd(),
@@ -21,12 +20,48 @@ const hallAnalyzer = new ThermalAnalyzer(
   path.join(historyDir, "hall-ac.csv")
 );
 
+const frontDates = new Set(
+  frontAnalyzer.getAvailableDates()
+);
+
+const hallDates = new Set(
+  hallAnalyzer.getAvailableDates()
+);
+
+const todayPhoenix = new Intl.DateTimeFormat(
+  "en-CA",
+  {
+    timeZone: "America/Phoenix",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }
+).format(new Date());
+
+const latestCompleteDate = [...frontDates]
+  .filter(
+    (date) =>
+      hallDates.has(date) &&
+      date < todayPhoenix
+  )
+  .sort()
+  .at(-1);
+
+if (!latestCompleteDate && !requestedDate) {
+  throw new Error(
+    "No completed date exists in both Ecobee histories."
+  );
+}
+
+const TARGET_DATE =
+  requestedDate ?? latestCompleteDate!;
+
 const front =
   frontAnalyzer.analyzeDate(TARGET_DATE);
 
 const hall =
   hallAnalyzer.analyzeDate(TARGET_DATE);
-
+  
 function temp(value: number | null): string {
   return value === null
     ? "--"
@@ -209,13 +244,6 @@ for (const day of weekdayNames) {
 }
 
 // Only use dates that exist in BOTH thermostat histories.
-const frontDates = new Set(
-  frontAnalyzer.getAvailableDates()
-);
-
-const hallDates = new Set(
-  hallAnalyzer.getAvailableDates()
-);
 
 const commonDates = [...frontDates]
   .filter(
