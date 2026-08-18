@@ -29,6 +29,7 @@ type APSHourlyRecord = {
 
 export async function updateAPS() {
   console.log("Reading APS history...");
+  const requestedDate = process.argv[2];
 
   const historyFile = path.join(
     process.cwd(),
@@ -73,13 +74,38 @@ export async function updateAPS() {
 
   const dates = [...new Set(records.map((r) => r.date))].sort();
 
-  const dataDate = dates[dates.length - 1];
+  const dataDate =
+  requestedDate ?? dates[dates.length - 1];
 
-  const previousDate =
-    dates.length > 1
-      ? dates[dates.length - 2]
-      : null;
+if (!dates.includes(dataDate)) {
+  throw new Error(
+    `APS history does not contain ${dataDate}.`
+  );
+}
 
+  // APS demand on-peak applies Monday-Friday only.
+// Use UTC construction so the calendar date cannot
+// shift based on the computer's timezone.
+const [year, month, day] =
+  dataDate.split("-").map(Number);
+
+const weekdayIndex = new Date(
+  Date.UTC(year, month - 1, day)
+).getUTCDay();
+
+const isWeekend =
+  weekdayIndex === 0 ||
+  weekdayIndex === 6;
+
+const isAPSOnPeakDay = !isWeekend;
+
+  const dataDateIndex = dates.indexOf(dataDate);
+
+const previousDate =
+  dataDateIndex > 0
+    ? dates[dataDateIndex - 1]
+    : null;
+    
   const todayRows = records.filter(
     (r) => r.date === dataDate
   );
@@ -145,11 +171,15 @@ const lastReading = new Date(
   // APS On-Peak: 4 PM - 7 PM
   // -----------------------------
 
-  const onPeakRows = todayRows.filter((row) => {
-    const hour = Number(row.time.split(":")[0]);
+  const onPeakRows = isAPSOnPeakDay
+  ? todayRows.filter((row) => {
+      const hour = Number(
+        row.time.split(":")[0]
+      );
 
-    return hour >= 16 && hour < 19;
-  });
+      return hour >= 16 && hour < 19;
+    })
+  : [];
 
   let onPeakDemand = 0;
   let onPeakTime = "";
@@ -234,12 +264,24 @@ const lastReading = new Date(
     "kW"
   );
   console.log("Daily Peak Time:    ", peakTime);
+  if (isAPSOnPeakDay) {
   console.log(
     "4-7 Peak Demand:    ",
     onPeakDemand.toFixed(2),
     "kW"
   );
-  console.log("4-7 Peak Time:      ", onPeakTime);
+  console.log(
+    "4-7 Peak Time:      ",
+    onPeakTime
+  );
+} else {
+  console.log(
+    "APS Demand Window:  OFF-PEAK ALL DAY"
+  );
+  console.log(
+    "Billing Demand Risk: NONE"
+  );
+}
   console.log("");
 
   console.log("APS updated from history.");
