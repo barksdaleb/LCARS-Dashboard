@@ -1,5 +1,7 @@
 import { updateWeather } from "./weather";
 import { updateAPS } from "./aps";
+import { printDataFreshness } from "./data-freshness";
+
 
 async function updateSystem() {
   console.log("================================");
@@ -14,6 +16,10 @@ async function updateSystem() {
 
   console.log("⚡ Updating APS...");
   await updateAPS();
+
+  console.log("");
+
+printDataFreshness();
 
   console.log("");
 
