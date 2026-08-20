@@ -5,6 +5,11 @@ import {
   ThermalAnalysis,
 } from "../app/lib/ecobee/ThermalAnalyzer";
 
+import {
+  getContextForDate,
+  getCountermeasuresForDate,
+} from "./ops-registry";
+
 const requestedDate = process.argv[2];
 
 const historyDir = path.join(
@@ -55,6 +60,38 @@ if (!latestCompleteDate && !requestedDate) {
 
 const TARGET_DATE =
   requestedDate ?? latestCompleteDate!;
+
+function isTodayPhoenix(date: string): boolean {
+  const todayPhoenix = new Intl.DateTimeFormat(
+    "en-CA",
+    {
+      timeZone: "America/Phoenix",
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }
+  ).format(new Date());
+
+  return date === todayPhoenix;
+}
+
+if (requestedDate && isTodayPhoenix(TARGET_DATE)) {
+  console.log("");
+  console.log("========================================");
+  console.log("       ⚠ INCOMPLETE DATA");
+  console.log("========================================");
+  console.log("");
+  console.log(
+    `${TARGET_DATE} is still in progress.`
+  );
+  console.log(
+    "2–4 PM and 4–7 PM results may not be complete."
+  );
+  console.log(
+    "Do not interpret missing future telemetry as zero runtime."
+  );
+  console.log("");
+}
 
 const front =
   frontAnalyzer.analyzeDate(TARGET_DATE);
@@ -625,3 +662,73 @@ for (const setpoint of sortedSetpoints) {
 }
 
 console.log("");
+// ======================================================
+// Home Ops Context
+// ======================================================
+
+const contextEvents =
+  getContextForDate(TARGET_DATE);
+
+if (contextEvents.length > 0) {
+  console.log("");
+  console.log(
+    "========================================"
+  );
+  console.log(
+    "       HOME OPS CONTEXT"
+  );
+  console.log(
+    "========================================"
+  );
+
+  for (const event of contextEvents) {
+    console.log("");
+    console.log(
+      `⚠ ${event.tags.join(", ")}`
+    );
+
+    console.log(event.description);
+
+    console.log("");
+    console.log(
+      `Analysis note: ${event.analysisImpact}`
+    );
+  }
+
+  console.log("");
+}
+// ======================================================
+// Active Home Ops Countermeasures
+// ======================================================
+
+const activeCountermeasures =
+  getCountermeasuresForDate(TARGET_DATE);
+
+if (activeCountermeasures.length > 0) {
+  console.log("");
+  console.log(
+    "========================================"
+  );
+  console.log(
+    "       ACTIVE COUNTERMEASURES"
+  );
+  console.log(
+    "========================================"
+  );
+  console.log("");
+
+  for (const item of activeCountermeasures) {
+    console.log(`✓ ${item.name}`);
+    console.log(
+      `  Active since ${item.startDate}`
+    );
+
+    if (item.before && item.after) {
+      console.log(
+        `  ${item.before} → ${item.after}`
+      );
+    }
+
+    console.log("");
+  }
+}

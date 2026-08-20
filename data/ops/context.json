@@ -1,0 +1,15 @@
+{
+  "events": [
+    {
+      "date": "2026-08-18",
+      "type": "household-away",
+      "window": "4:00 PM-7:00 PM",
+      "tags": [
+        "away-during-peak",
+        "no-cooking"
+      ],
+      "description": "Household away meeting friends for dinner. No cooking expected during the APS demand window.",
+      "analysisImpact": "Peak electrical demand may be lower than a normal occupied/cooking weekday. Do not attribute the full reduction to HVAC or other countermeasures."
+    }
+  ]
+}

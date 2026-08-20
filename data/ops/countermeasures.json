@@ -1,0 +1,74 @@
+{
+  "countermeasures": [
+    {
+      "id": "weekday-house-precool",
+      "name": "Weekday House Pre-Cooling",
+      "category": "hvac",
+      "status": "active",
+      "startDate": "2026-07-29",
+      "systems": ["Front AC", "Hall AC"],
+      "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window.",
+      "goal": "Shift HVAC cooling from the 4–7 PM APS demand window into off-peak hours.",
+      "analysisStatus": "active",
+      "verdict": "promising"
+    },
+    {
+      "id": "garage-peak-temperature",
+      "name": "Garage Mini-Split Peak Strategy",
+      "category": "hvac",
+      "status": "active",
+      "startDate": "2026-08-11",
+      "systems": ["Garage Mini-Split"],
+      "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off.",
+      "goal": "Reduce APS peak demand while maintaining equipment protection.",
+      "analysisStatus": "needs-data",
+      "verdict": null
+    },
+    {
+      "id": "front-sleep-72",
+      "name": "Front AC Sleep Temperature",
+      "category": "hvac",
+      "status": "active",
+      "startDate": "2026-08-12",
+      "systems": ["Front AC"],
+      "before": "71°F",
+      "after": "72°F",
+      "description": "Raised Front AC sleep temperature from 71°F to 72°F.",
+      "goal": "Reduce overnight HVAC consumption while maintaining comfort.",
+      "analysisStatus": "needs-analysis",
+      "verdict": null
+    },
+    {
+      "id": "front-peak-75",
+      "name": "Front AC 75°F Peak Strategy",
+      "category": "hvac",
+      "status": "active",
+      "startDate": "2026-08-17",
+      "baselineCountermeasureId": "weekday-house-precool",
+      "systems": ["Front AC"],
+      "before": "74°F from 4–7 PM",
+      "after": "75°F from 4–7 PM",
+      "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window.",
+      "goal": "Reduce Front AC runtime and electrical demand during the APS demand window.",
+      "analysisStatus": "testing",
+      "verdict": "promising"
+    },
+
+    {
+  "id": "front-peak-stagger",
+  "name": "Front AC Peak Stagger Strategy",
+  "category": "hvac",
+  "status": "active",
+  "startDate": "2026-08-20",
+  "baselineCountermeasureId": "front-peak-75",
+  "systems": ["Front AC", "Hall AC"],
+  "before": "Front AC 75°F from 5–6 PM; Hall AC 75°F",
+  "after": "Front AC 76°F from 5–6 PM; Hall AC remains 75°F",
+  "description": "Temporarily raise the Front AC cooling target from 75°F to 76°F from 5–6 PM on the test day while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation.",
+  "goal": "Reduce simultaneous Front and Hall AC compressor operation and APS demand during the 5–6 PM peak hour without materially degrading comfort or causing excessive recovery demand.",
+  "analysisStatus": "testing",
+  "verdict": null
+}
+  ]
+
+}
