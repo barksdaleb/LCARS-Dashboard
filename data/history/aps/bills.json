@@ -1,0 +1,23 @@
+{
+  "bills": [
+    {
+      "billDate": "August 19, 2026",
+      "billingStart": "July 22, 2026",
+      "billingEnd": "August 19, 2026",
+      "servicePlan": "Time-of-Use 4pm-7pm Weekdays with Demand Charge",
+      "usageKWh": 4502,
+      "onPeakKWh": 370,
+      "offPeakKWh": 4132,
+      "peakDemandKW": 11.6,
+      "demandCharge": 227.19,
+      "peakDemandDate": "July 29th",
+      "peakDemandWindow": "5:00 pm - 6:00 pm",
+      "energyUsageCost": 647.24,
+      "totalEnergyCost": 735.68,
+      "lastYearUsageKWh": 4745,
+      "lastYearTotalCost": 926.13,
+      "averageTemperature": 97,
+      "daysInBillingPeriod": 28
+    }
+  ]
+}

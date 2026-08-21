@@ -1,0 +1,15 @@
+{
+  "adjustments": [
+    {
+      "id": "2026-08-demand-credit",
+      "date": "2026-08-20",
+      "type": "credit",
+      "category": "demand",
+      "amount": 113.60,
+      "status": "posted",
+      "relatedBillingEnd": "August 19, 2026",
+      "description": "APS customer service adjustment related to the first demand-plan bill. Credit was applied after the bill PDF was generated.",
+      "source": "APS account balance"
+    }
+  ]
+}

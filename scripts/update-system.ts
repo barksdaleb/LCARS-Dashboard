@@ -40,8 +40,13 @@ async function updateSystem() {
   );
 
   runCommand(
-    "⚡ Importing APS...",
+    "⚡ Importing APS Usage...",
     "npm run aps-import"
+  );
+
+  runCommand(
+    "🧾 Importing APS Bills...",
+    "npx tsx scripts/aps-bill-import.ts"
   );
 
   // --------------------------------
@@ -61,25 +66,36 @@ async function updateSystem() {
   // --------------------------------
 
   console.log("");
-console.log("🧠 Updating HVAC Intelligence...");
+  console.log("🧠 Updating HVAC Intelligence...");
 
-try {
-  execSync(
-    "npm run ecobee:analyze",
-    {
-      stdio: "ignore",
-      cwd: process.cwd(),
-    }
+  try {
+    execSync(
+      "npm run ecobee:analyze",
+      {
+        stdio: "ignore",
+        cwd: process.cwd(),
+      }
+    );
+
+    console.log(
+      "HVAC analysis updated."
+    );
+  } catch (error) {
+    console.error(
+      "⚠ HVAC analysis failed."
+    );
+
+    throw error;
+  }
+
+  // --------------------------------
+  // Calculate financial results
+  // --------------------------------
+
+  runCommand(
+    "💰 Updating Savings Intelligence...",
+    "npx tsx scripts/savings-analyze.ts"
   );
-
-  console.log("HVAC analysis updated.");
-} catch (error) {
-  console.error(
-    "⚠ HVAC analysis failed."
-  );
-
-  throw error;
-}
 
   // --------------------------------
   // Verify freshness
