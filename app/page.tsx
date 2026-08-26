@@ -10,6 +10,7 @@ import HomeStatus from "../components/HomeStatus";
 import PowerForecast from "../components/PowerForecast";
 import ComputerMessage from "../components/ComputerMessage";
 import UpdateButton from "../components/UpdateButton";
+import UpcomingEvents from "../components/UpcomingEvents";
 
 function formatShortDate(dateString: string): string {
   const [year, month, day] = dateString.split("-").map(Number);
@@ -119,6 +120,8 @@ useEffect(() => {
 
 </div>
 
+<UpcomingEvents />
+
 {/* Applications */}
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
@@ -127,7 +130,7 @@ useEffect(() => {
   title="⚡ BHEM"
   status="🟢 ONLINE"
   value={`${energy.energy.today.toFixed(2)} kWh`}
-  secondary={`Current Demand ${energy.energy.currentDemand.toFixed(2)} kW`}
+  secondary={`Latest APS Demand ${energy.energy.currentDemand.toFixed(2)} kW`}
   footer={`${formatShortDate(energy.energy.dataDate)} • APS Peak ${energy.energy.dayPeakDemand.toFixed(2)} kW`}
   href="/bhem"
   accent="green"

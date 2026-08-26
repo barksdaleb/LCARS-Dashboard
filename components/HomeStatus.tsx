@@ -1,10 +1,8 @@
 import energy from "../data/energy.json";
-import DemandMeter from "./DemandMeter";
+import bills from "../data/history/aps/bills.json";
 import { useEffect, useState } from "react";
 
 export default function HomeStatus() {
-  const latestDemand = energy.energy.currentDemand;
-
   const [now, setNow] = useState(new Date());
 
   const [outside, setOutside] = useState(
@@ -15,18 +13,68 @@ export default function HomeStatus() {
     energy.systems.pool.temperature
   );
 
+  // ------------------------------------------------------
+  // Latest official APS bill
+  // ------------------------------------------------------
+
+  const latestBill =
+    bills.bills.length > 0
+      ? bills.bills[bills.bills.length - 1]
+      : null;
+
+  const lastBillPeak =
+    latestBill?.peakDemandKW ?? null;
+
+  const lastBillPeakDate =
+    latestBill?.peakDemandDate ?? null;
+
+  const lastBillPeakWindow =
+    latestBill?.peakDemandWindow ?? null;
+
+  // ------------------------------------------------------
+  // Current billing-cycle tracking
+  // ------------------------------------------------------
+
+  const currentCycleStart =
+    energy.energy.currentCycleStart;
+
+  const currentCyclePeak =
+    energy.energy.currentCyclePeakDemand;
+
+  const currentCyclePeakDate =
+    energy.energy.currentCyclePeakDate;
+
+  const currentCyclePeakTime =
+    energy.energy.currentCyclePeakTime;
+
+  const hasCurrentCyclePeak =
+    currentCyclePeak > 0;
+
   useEffect(() => {
     async function loadData() {
       try {
         // Weather
-        const weather = await fetch("/api/weather").then((r) => r.json());
-        setOutside(Math.round(weather.outsideTemp));
+        const weather = await fetch("/api/weather").then(
+          (r) => r.json()
+        );
+
+        setOutside(
+          Math.round(weather.outsideTemp)
+        );
 
         // Pool
-        const pool = await fetch("/api/waterguru").then((r) => r.json());
-        setPoolTemp(Math.round(pool.temperature));
+        const pool = await fetch("/api/waterguru").then(
+          (r) => r.json()
+        );
+
+        setPoolTemp(
+          Math.round(pool.temperature)
+        );
       } catch (err) {
-        console.error("Failed to load live status:", err);
+        console.error(
+          "Failed to load live status:",
+          err
+        );
       }
     }
 
@@ -39,23 +87,26 @@ export default function HomeStatus() {
     return () => clearInterval(timer);
   }, []);
 
-
-  // APS demand window:
+  // ------------------------------------------------------
+  // APS demand window
   // Monday-Friday, 4:00 PM through 6:59 PM
+  // ------------------------------------------------------
+
   const day = now.getDay();
   const hour = now.getHours();
 
-  const isWeekday = day >= 1 && day <= 5;
+  const isWeekday =
+    day >= 1 && day <= 5;
+
   const isOnPeak =
     isWeekday &&
     hour >= 16 &&
     hour < 19;
 
-  let houseStatus = "🟢 NORMAL";
-
-  if (isOnPeak) {
-    houseStatus = "🟡 APS ON-PEAK";
-  }
+  const houseStatus =
+    isOnPeak
+      ? "🟡 APS ON-PEAK"
+      : "🟢 NORMAL";
 
   return (
     <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-8">
@@ -74,21 +125,80 @@ export default function HomeStatus() {
         {houseStatus}
       </div>
 
+      {/* Demand intelligence */}
+
       <div className="mt-8">
+
         <div className="text-orange-400 uppercase tracking-[0.3em]">
-          Latest APS Demand
+          APS Demand Intelligence
         </div>
 
-        <DemandMeter
-          value={latestDemand}
-          max={10}
-        />
+        <div className="mt-3 grid gap-4 md:grid-cols-2">
+
+          {/* Last official bill */}
+
+          <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-5">
+
+            <div className="text-center text-sm uppercase tracking-wider text-orange-300">
+              Last Bill Peak
+            </div>
+
+            <div className="mt-3 text-center text-3xl font-semibold text-cyan-300">
+              {lastBillPeak !== null
+                ? `${lastBillPeak.toFixed(2)} kW`
+                : "--"}
+            </div>
+
+            <div className="mt-3 text-center text-sm text-orange-200">
+              Official APS Bill
+            </div>
+
+            <div className="mt-1 text-center text-sm text-cyan-300">
+              {lastBillPeakDate ?? "--"}
+              {lastBillPeakWindow
+                ? ` • ${lastBillPeakWindow}`
+                : ""}
+            </div>
+
+          </div>
+
+          {/* Current cycle */}
+
+          <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-5">
+
+            <div className="text-center text-sm uppercase tracking-wider text-orange-300">
+              Current Cycle Peak
+            </div>
+
+            <div className="mt-3 text-center text-3xl font-semibold text-cyan-300">
+              {hasCurrentCyclePeak
+                ? `${currentCyclePeak.toFixed(2)} kW`
+                : "PENDING"}
+            </div>
+
+            <div className="mt-3 text-center text-sm text-orange-200">
+              Home Ops Tracking
+            </div>
+
+            <div className="mt-1 text-center text-sm text-cyan-300">
+              {hasCurrentCyclePeak
+                ? `${currentCyclePeakDate} • ${currentCyclePeakTime}`
+                : `Cycle started ${currentCycleStart}`}
+            </div>
+
+          </div>
+
+        </div>
 
         <div className="mt-2 text-sm text-cyan-300">
-          APS data through {energy.energy.dataDate}{" "}
+          APS usage data through{" "}
+          {energy.energy.dataDate}{" "}
           {energy.energy.lastReading}
         </div>
+
       </div>
+
+      {/* Temperatures */}
 
       <div className="mt-10 grid grid-cols-2 gap-8">
 
@@ -113,6 +223,8 @@ export default function HomeStatus() {
         </div>
 
       </div>
+
+      {/* Computer analysis */}
 
       <div className="mt-10 border-t border-cyan-700 pt-6">
 

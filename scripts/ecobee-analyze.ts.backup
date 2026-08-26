@@ -1,6 +1,5 @@
 import fs from "fs";
 import path from "path";
-import { getCountermeasureById } from "./ops-registry";
 
 import {
   ThermalAnalyzer,
@@ -77,21 +76,7 @@ function isTodayPhoenix(date: string): boolean {
   return date === todayPhoenix;
 }
 
-const front =
-  frontAnalyzer.analyzeDate(TARGET_DATE);
-
-const hall =
-  hallAnalyzer.analyzeDate(TARGET_DATE);
-
-const peakWindowComplete =
-  front.temp7PM !== null &&
-  hall.temp7PM !== null;
-
-if (
-  requestedDate &&
-  isTodayPhoenix(TARGET_DATE) &&
-  !peakWindowComplete
-) {
+if (requestedDate && isTodayPhoenix(TARGET_DATE)) {
   console.log("");
   console.log("========================================");
   console.log("       ⚠ INCOMPLETE DATA");
@@ -108,6 +93,12 @@ if (
   );
   console.log("");
 }
+
+const front =
+  frontAnalyzer.analyzeDate(TARGET_DATE);
+
+const hall =
+  hallAnalyzer.analyzeDate(TARGET_DATE);
   
 function temp(value: number | null): string {
   return value === null
@@ -136,10 +127,6 @@ function printSystem(
   console.log(
     `Total Cooling        : ${(result.totalRuntimeMinutes / 60).toFixed(2)} hrs`
   );
-
-console.log(
-  `Sleep Runtime        : ${result.sleepRuntimeMinutes.toFixed(1)} min`
-);
 
   console.log(
     `1–2 PM Runtime       : ${result.runtime1to2Minutes.toFixed(1)} min`
@@ -299,40 +286,9 @@ console.log("");
 // BHEM Cool Down strategy began 2026-07-29
 // ======================================================
 
-const weekdayHousePrecoolCountermeasure =
-  getCountermeasureById("weekday-house-precool");
-
-const frontPeak75Countermeasure =
-  getCountermeasureById("front-peak-75");
-
-const frontPeakStaggerCountermeasure =
-  getCountermeasureById("front-peak-stagger");
-
-const frontSleep72Countermeasure =
-  getCountermeasureById("front-sleep-72");
-
-if (
-  !weekdayHousePrecoolCountermeasure ||
-  !frontPeak75Countermeasure ||
-  !frontPeakStaggerCountermeasure ||
-  !frontSleep72Countermeasure
-) {
-  throw new Error(
-    "Required HVAC countermeasure definition not found."
-  );
-}
-
-const STRATEGY_START =
-  weekdayHousePrecoolCountermeasure.startDate;
-
-const PEAK_75_START =
-  frontPeak75Countermeasure.startDate;
-
-const STAGGER_START =
-  frontPeakStaggerCountermeasure.startDate;
-
-const SLEEP_72_START =
-  frontSleep72Countermeasure.startDate;
+const STRATEGY_START = "2026-07-29";
+const PEAK_75_START = "2026-08-17";
+const STAGGER_START = "2026-08-20";
 
 type WeekdayStats = {
   count: number;
@@ -742,60 +698,6 @@ for (const setpoint of sortedSetpoints) {
 }
 
 // ======================================================
-// Front AC Sleep Temperature Performance
-// 71°F baseline vs 72°F countermeasure
-// ======================================================
-
-type SleepStats = {
-  days: number;
-  runtimeMinutes: number;
-  outdoorTempTotal: number;
-  outdoorTempCount: number;
-};
-
-function emptySleepStats(): SleepStats {
-  return {
-    days: 0,
-    runtimeMinutes: 0,
-    outdoorTempTotal: 0,
-    outdoorTempCount: 0,
-  };
-}
-
-const sleep71Stats = emptySleepStats();
-const sleep72Stats = emptySleepStats();
-
-for (const date of [...frontDates].sort()) {
-  // Only analyze dates before the current target date.
-  // This prevents a partially completed target day from
-  // contaminating the historical experiment averages.
-  if (date >= TARGET_DATE) {
-    continue;
-  }
-
-  const result =
-    frontAnalyzer.analyzeDate(date);
-
-  const stats =
-    date < SLEEP_72_START
-      ? sleep71Stats
-      : sleep72Stats;
-
-  stats.days++;
-  stats.runtimeMinutes +=
-    result.sleepRuntimeMinutes;
-
-  if (
-    result.averageOutdoorTemp2to4 !== null
-  ) {
-    stats.outdoorTempTotal +=
-      result.averageOutdoorTemp2to4;
-
-    stats.outdoorTempCount++;
-  }
-}
-
-// ======================================================
 // Front AC Peak Stagger Performance
 // ======================================================
 
@@ -928,13 +830,13 @@ const overlap4to5Minutes =
     hallResult.runtime6to7Minutes;
 
   stats.overlap4to5 +=
-  overlap4to5Minutes;
+  overlap4to5Seconds / 60;
 
 stats.overlap5to6 +=
-  overlap5to6Minutes;
+  overlap5to6Seconds / 60;
 
 stats.overlap6to7 +=
-  overlap6to7Minutes;
+  overlap6to7Seconds / 60;
 
   stats.frontPeak +=
     frontResult.onPeakRuntimeMinutes;
@@ -1363,17 +1265,7 @@ if (fs.existsSync(dailyPerformancePath)) {
 
     const hallResult =
       hallAnalyzer.analyzeDate(date);
-const hasCompleteDemandEvidence =
-  daily.hvacOverlap?.overlap5to6Minutes != null &&
-  daily.aps.hourlyDemand?.demand5to6KW != null &&
-  daily.aps.onPeakDemandKW != null &&
-  frontResult.runtime5to6Minutes != null &&
-  hallResult.runtime5to6Minutes != null &&
-  frontResult.temp7PM != null;
 
-if (!hasCompleteDemandEvidence) {
-  continue;
-}
     const stats =
       date < STAGGER_START
         ? baselineDemandStats
@@ -1628,371 +1520,6 @@ if (!hasCompleteDemandEvidence) {
       staggerAPSPeak
     )}`
   );
-
-  console.log("");
-
-  // ======================================================
-  // Peak Stagger — Home Ops Verdict
-  // ======================================================
-
-  const TARGET_STAGGER_DAYS = 5;
-
-  function numericPercentChange(
-    before: number | null,
-    after: number | null
-  ): number | null {
-    if (
-      before === null ||
-      after === null ||
-      before === 0
-    ) {
-      return null;
-    }
-
-    return ((after - before) / before) * 100;
-  }
-
-  function signedPercent(
-    value: number | null
-  ): string {
-    if (value === null) {
-      return "--";
-    }
-
-    const sign = value > 0 ? "+" : "";
-    return `${sign}${value.toFixed(1)}%`;
-  }
-
-  function signedDegrees(
-    value: number | null
-  ): string {
-    if (value === null) {
-      return "--";
-    }
-
-    const sign = value > 0 ? "+" : "";
-    return `${sign}${value.toFixed(1)}°F`;
-  }
-
-  const verdictOverlapChange =
-    numericPercentChange(
-      baselineOverlap5to6,
-      staggerOverlap5to6
-    );
-
-  const verdictAPS5to6Change =
-    numericPercentChange(
-      baselineAPS5to6,
-      staggerAPS5to6
-    );
-
-  const verdictAPSPeakChange =
-    numericPercentChange(
-      baselineAPSPeak,
-      staggerAPSPeak
-    );
-
-  const verdictComfortChange =
-    baselineDemandFront7PM !== null &&
-    staggerDemandFront7PM !== null
-      ? staggerDemandFront7PM -
-        baselineDemandFront7PM
-      : null;
-
-  const verdictQualifyingDays =
-    staggerDemandStats.days;
-
-  const verdictRemainingDays =
-    Math.max(
-      0,
-      TARGET_STAGGER_DAYS -
-        verdictQualifyingDays
-    );
-
-  const verdictOverlapImproved =
-    verdictOverlapChange !== null &&
-    verdictOverlapChange < 0;
-
-  const verdictDemandImproved =
-    verdictAPS5to6Change !== null &&
-    verdictAPS5to6Change < 0;
-
-  const verdictPeakImproved =
-    verdictAPSPeakChange !== null &&
-    verdictAPSPeakChange < 0;
-
-  const verdictComfortPenalty =
-    verdictComfortChange !== null &&
-    verdictComfortChange > 1.0;
-
-  let verdictStatus =
-    "INSUFFICIENT DATA";
-
-  let verdictRecommendation =
-    "KEEP STRATEGY ACTIVE — COLLECT MORE DATA";
-
-  if (
-    baselineDemandStats.days > 0 &&
-    verdictQualifyingDays > 0
-  ) {
-    if (verdictComfortPenalty) {
-      verdictStatus = "COMFORT PENALTY";
-      verdictRecommendation =
-        "REVIEW STRATEGY BEFORE EXPANDING";
-    } else if (
-      verdictOverlapImproved &&
-      (
-        verdictDemandImproved ||
-        verdictPeakImproved
-      )
-    ) {
-      verdictStatus =
-        verdictQualifyingDays >=
-        TARGET_STAGGER_DAYS
-          ? "BENEFICIAL"
-          : "PROMISING";
-
-      verdictRecommendation =
-        verdictQualifyingDays >=
-        TARGET_STAGGER_DAYS
-          ? "KEEP STRATEGY ACTIVE"
-          : "KEEP STRATEGY ACTIVE — COLLECT MORE DATA";
-    } else if (
-      verdictOverlapImproved &&
-      !verdictDemandImproved &&
-      !verdictPeakImproved
-    ) {
-      verdictStatus =
-        verdictQualifyingDays >=
-        TARGET_STAGGER_DAYS
-          ? "MIXED"
-          : "PROMISING";
-
-      verdictRecommendation =
-        "KEEP STRATEGY ACTIVE — VERIFY APS EFFECT";
-    } else {
-      verdictStatus =
-        verdictQualifyingDays >=
-        TARGET_STAGGER_DAYS
-          ? "MIXED"
-          : "INSUFFICIENT DATA";
-
-      verdictRecommendation =
-        "CONTINUE TESTING BEFORE CHANGING STRATEGY";
-    }
-  }
-
-  console.log(
-    "========================================"
-  );
-  console.log(
-    " PEAK STAGGER — HOME OPS VERDICT"
-  );
-  console.log(
-    "========================================"
-  );
-  console.log("");
-
-  console.log(
-    `Status              : ${verdictStatus}`
-  );
-  console.log(
-    `Qualifying Days     : ${verdictQualifyingDays}`
-  );
-  console.log(
-    `Target Sample       : ${TARGET_STAGGER_DAYS}`
-  );
-  console.log("");
-
-  console.log(
-    `HVAC Overlap        : ${signedPercent(
-      verdictOverlapChange
-    )} ${
-      verdictOverlapImproved ? "✓" : ""
-    }`
-  );
-
-  console.log(
-    `APS 5–6 Demand      : ${signedPercent(
-      verdictAPS5to6Change
-    )} ${
-      verdictDemandImproved ? "✓" : ""
-    }`
-  );
-
-  console.log(
-    `APS 4–7 Peak        : ${signedPercent(
-      verdictAPSPeakChange
-    )} ${
-      verdictPeakImproved ? "✓" : ""
-    }`
-  );
-
-  console.log(
-    `7 PM Comfort        : ${signedDegrees(
-      verdictComfortChange
-    )} ${
-      verdictComfortPenalty ? "⚠" : "✓"
-    }`
-  );
-
-  console.log("");
-  console.log("HOME OPS:");
-
-  if (verdictComfortPenalty) {
-    console.log(
-      "Stagger strategy shows a material"
-    );
-    console.log(
-      "7 PM comfort penalty and needs review."
-    );
-  } else if (verdictOverlapImproved) {
-    console.log(
-      "Stagger strategy is reducing HVAC"
-    );
-    console.log(
-      "coincidence without a material comfort"
-    );
-    console.log("penalty.");
-
-    if (
-      verdictDemandImproved ||
-      verdictPeakImproved
-    ) {
-      console.log(
-        "APS demand evidence is also moving"
-      );
-      console.log(
-        "in the intended direction."
-      );
-    } else {
-      console.log(
-        "APS demand improvement is not yet"
-      );
-      console.log(
-        "confirmed by the current sample."
-      );
-    }
-  } else {
-    console.log(
-      "Current evidence does not yet show"
-    );
-    console.log(
-      "a clear stagger-strategy benefit."
-    );
-  }
-
-  console.log("");
-  console.log("Recommendation:");
-  console.log(verdictRecommendation);
-
-  // ======================================================
-  // Persist Peak Stagger Home Ops Verdict
-  // ======================================================
-
-  const countermeasurePerformancePath =
-    path.join(
-      process.cwd(),
-      "data/ops/countermeasure-performance.json"
-    );
-
-  const countermeasurePerformance = {
-    generatedAt: new Date().toISOString(),
-    countermeasures: {
-      "front-peak-stagger": {
-        id: "front-peak-stagger",
-        name: "Front AC Peak Stagger Strategy",
-        status: verdictStatus,
-        recommendation: verdictRecommendation,
-        qualifyingDays: verdictQualifyingDays,
-        targetSampleDays: TARGET_STAGGER_DAYS,
-        remainingDays: verdictRemainingDays,
-        metrics: {
-          hvacOverlapChangePercent:
-            verdictOverlapChange,
-          aps5to6DemandChangePercent:
-            verdictAPS5to6Change,
-          aps4to7PeakChangePercent:
-            verdictAPSPeakChange,
-          front7PMComfortChangeF:
-            verdictComfortChange,
-        },
-        indicators: {
-          hvacOverlapImproved:
-            verdictOverlapImproved,
-          aps5to6DemandImproved:
-            verdictDemandImproved,
-          aps4to7PeakImproved:
-            verdictPeakImproved,
-          comfortPenalty:
-            verdictComfortPenalty,
-        },
-        baseline: {
-          qualifyingDays:
-            baselineDemandStats.days,
-          overlap5to6Minutes:
-            baselineOverlap5to6,
-          aps5to6DemandKW:
-            baselineAPS5to6,
-          aps4to7PeakKW:
-            baselineAPSPeak,
-          front7PMTempF:
-            baselineDemandFront7PM,
-        },
-        stagger: {
-          qualifyingDays:
-            staggerDemandStats.days,
-          overlap5to6Minutes:
-            staggerOverlap5to6,
-          aps5to6DemandKW:
-            staggerAPS5to6,
-          aps4to7PeakKW:
-            staggerAPSPeak,
-          front7PMTempF:
-            staggerDemandFront7PM,
-        },
-        strategyStartDate:
-          STAGGER_START,
-        evaluatedThrough:
-          TARGET_DATE,
-      },
-    },
-  };
-
-  fs.mkdirSync(
-    path.dirname(countermeasurePerformancePath),
-    {
-      recursive: true,
-    }
-  );
-
-  fs.writeFileSync(
-    countermeasurePerformancePath,
-    JSON.stringify(
-      countermeasurePerformance,
-      null,
-      2
-    )
-  );
-
-  console.log("");
-  console.log(
-    `Verdict snapshot written: ${countermeasurePerformancePath}`
-  );
-
-  if (
-    verdictRemainingDays > 0 &&
-    !verdictComfortPenalty
-  ) {
-    console.log("");
-    console.log(
-      `Collect ${verdictRemainingDays} more qualifying weekday${
-        verdictRemainingDays === 1
-          ? ""
-          : "s"
-      }.`
-    );
-  }
 
   console.log("");
 } else {

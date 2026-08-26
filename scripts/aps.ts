@@ -27,6 +27,11 @@ type APSHourlyRecord = {
   demandKW: number;
 };
 
+type APSBill = {
+  billingEnd: string | null;
+  peakDemandKW: number | null;
+};
+
 export async function updateAPS() {
   console.log("Reading APS history...");
   const requestedDate = process.argv[2];
@@ -234,6 +239,122 @@ const lastReading = new Date(
 
   energy.energy.onPeakTime =
     onPeakTime;
+
+  // -----------------------------
+  // Current billing-cycle demand
+  // -----------------------------
+
+  const billsPath = path.join(
+    process.cwd(),
+    "data/history/aps/bills.json"
+  );
+
+  let currentCycleStart: string | null = null;
+  let currentCyclePeakDemand = 0;
+  let currentCyclePeakDate = "";
+  let currentCyclePeakTime = "";
+
+  if (fs.existsSync(billsPath)) {
+    const billHistory = JSON.parse(
+      fs.readFileSync(billsPath, "utf8")
+    );
+
+    const bills: APSBill[] =
+      Array.isArray(billHistory.bills)
+        ? billHistory.bills
+        : [];
+
+    const latestBill =
+      bills.length > 0
+        ? bills[bills.length - 1]
+        : null;
+
+    if (latestBill?.billingEnd) {
+      const billingEnd =
+  new Date(`${latestBill.billingEnd} 12:00:00`);
+
+currentCycleStart =
+  billingEnd
+    .toISOString()
+    .slice(0, 10);
+
+      const cycleRows =
+        records.filter((row) => {
+          if (
+            row.date < currentCycleStart!
+          ) {
+            return false;
+          }
+
+          // APS demand only applies
+          // Monday-Friday.
+          const [y, m, d] =
+            row.date
+              .split("-")
+              .map(Number);
+
+          const weekday =
+            new Date(
+              Date.UTC(y, m - 1, d)
+            ).getUTCDay();
+
+          if (
+            weekday === 0 ||
+            weekday === 6
+          ) {
+            return false;
+          }
+
+          const hour =
+            Number(
+              row.time.split(":")[0]
+            );
+
+          return (
+            hour >= 16 &&
+            hour < 19
+          );
+        });
+
+      if (cycleRows.length) {
+        const cyclePeakRow =
+          cycleRows.reduce(
+            (highest, row) =>
+              Number(row.demandKW) >
+              Number(highest.demandKW)
+                ? row
+                : highest
+          );
+
+        currentCyclePeakDemand =
+          Number(
+            Number(
+              cyclePeakRow.demandKW
+            ).toFixed(2)
+          );
+
+        currentCyclePeakDate =
+          cyclePeakRow.date;
+
+        currentCyclePeakTime =
+          formatAPSClock(
+            cyclePeakRow.time
+          );
+      }
+    }
+  }
+
+  energy.energy.currentCycleStart =
+    currentCycleStart;
+
+  energy.energy.currentCyclePeakDemand =
+    currentCyclePeakDemand;
+
+  energy.energy.currentCyclePeakDate =
+    currentCyclePeakDate;
+
+  energy.energy.currentCyclePeakTime =
+    currentCyclePeakTime;
 
   fs.writeFileSync(
     energyPath,

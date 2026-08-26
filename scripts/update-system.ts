@@ -57,14 +57,32 @@ async function updateSystem() {
   console.log("🌤️ Updating Weather...");
   await updateWeather();
 
-  console.log("");
-  console.log("⚡ Updating APS Intelligence...");
-  await updateAPS();
+console.log("");
+console.log("⚡ Updating APS Intelligence...");
+await updateAPS();
 
-  // --------------------------------
-  // Analyze Ecobee
-  // --------------------------------
+// --------------------------------
+// Update Home Ops Calendar
+// --------------------------------
 
+runCommand(
+  "📅 Updating Home Ops Calendar...",
+  "npx tsx scripts/calendar.ts"
+);
+
+// --------------------------------
+// Build combined daily performance
+// --------------------------------
+
+runCommand(
+  "📊 Updating Daily Performance...",
+  "npx tsx scripts/daily-performance.ts"
+);
+
+
+// --------------------------------
+// Analyze Ecobee
+// --------------------------------
   console.log("");
   console.log("🧠 Updating HVAC Intelligence...");
 

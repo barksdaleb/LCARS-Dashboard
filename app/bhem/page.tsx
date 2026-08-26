@@ -6,6 +6,7 @@ import { getAPSStatus } from "../lib/aps";
 import { useState, useEffect } from "react";
 import HVACStrategy from "@/components/HVACStrategy";
 import SavingsProof from "@/components/SavingsProof";
+import CountermeasureStatus from "@/components/CountermeasureStatus";
 
 
 export default function BHEMPage() {
@@ -169,8 +170,11 @@ const currentDemand = 7.8;
 
 </div>
 
-    <HVACStrategy />
-   <CaptainsLog
+   <HVACStrategy />
+
+<CountermeasureStatus />
+
+<CaptainsLog
   currentDemand={currentDemand}
   peakToday={8.33}
   apsStatus={aps.status}

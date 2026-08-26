@@ -56,3 +56,6 @@ scripts/*-before-*.ts
 # Ecobee raw import working data
 data/import/ecobee/archive/
 data/import/ecobee/rebuild/
+
+# Private credentials
+/data/private/

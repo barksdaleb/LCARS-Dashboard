@@ -13,13 +13,48 @@ type HVACStrategyResult = {
   frontVerdict: "beneficial" | "mixed" | "inconclusive";
   hallVerdict: "beneficial" | "mixed" | "inconclusive";
 
-  verdict:
-    | "beneficial"
-    | "promising"
-    | "mixed"
-    | "inconclusive";
-};
+verdict:
+  | "beneficial"
+  | "promising"
+  | "mixed"
+  | "inconclusive";
 
+countermeasurePerformance?:
+  | CountermeasurePerformance
+  | null;
+};
+type CountermeasurePerformance = {
+  generatedAt: string;
+  countermeasures: {
+    "front-peak-stagger"?: {
+      id: string;
+      name: string;
+      status: string;
+      recommendation: string;
+
+      qualifyingDays: number;
+      targetSampleDays: number;
+      remainingDays: number;
+
+      metrics: {
+        hvacOverlapChangePercent: number | null;
+        aps5to6DemandChangePercent: number | null;
+        aps4to7PeakChangePercent: number | null;
+        front7PMComfortChangeF: number | null;
+      };
+
+      indicators: {
+        hvacOverlapImproved: boolean;
+        aps5to6DemandImproved: boolean;
+        aps4to7PeakImproved: boolean;
+        comfortPenalty: boolean;
+      };
+
+      strategyStartDate: string;
+      evaluatedThrough: string;
+    };
+  };
+};
 type CaptainsLogProps = {
   currentDemand: number;
   peakToday: number;
@@ -86,7 +121,39 @@ if (hvacStrategy) {
       text:
         "Hall AC runtime improved substantially, but temperature performance indicates the strategy still needs optimization.",
     });
-  }
+ const peakStagger =
+  hvacStrategy.countermeasurePerformance
+    ?.countermeasures["front-peak-stagger"];
+
+if (peakStagger) {
+  const overlapChange =
+    peakStagger.metrics.hvacOverlapChangePercent;
+
+  const apsDemandChange =
+    peakStagger.metrics.aps5to6DemandChangePercent;
+
+  observations.push({
+    status:
+      peakStagger.indicators.comfortPenalty
+        ? "warning"
+        : "success",
+    text:
+      `Peak Stagger is ${peakStagger.status}. ` +
+      `HVAC overlap changed ${
+        overlapChange === null
+          ? "--"
+          : `${overlapChange.toFixed(1)}%`
+      } and APS 5–6 PM demand changed ${
+        apsDemandChange === null
+          ? "--"
+          : `${apsDemandChange.toFixed(1)}%`
+      } across ${peakStagger.qualifyingDays}/${peakStagger.targetSampleDays} qualifying weekdays. ` +
+      `Home Ops recommendation: ${peakStagger.recommendation}.`,
+
+  });
+  recommendation =
+  peakStagger.recommendation;
+} }
 }
 if (
   savingsProof &&

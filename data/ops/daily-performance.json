@@ -1,0 +1,1987 @@
+{
+  "generatedAt": "2026-08-26T03:50:05.013Z",
+  "records": [
+    {
+      "date": "2026-07-11",
+      "aps": {
+        "dailyUsageKWh": 130.07,
+        "dailyPeakDemandKW": 7.71,
+        "dailyPeakTime": "17:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 6.48,
+          "demand5to6KW": 7.71,
+          "demand6to7KW": 7.09
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 20.5,
+        "overlap5to6Minutes": 28.25,
+        "overlap6to7Minutes": 26
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 79.25,
+        "peakRuntimeMinutes": 108.25,
+        "temp4PM": 76,
+        "temp7PM": 75.5,
+        "averageOutdoorTemp2to4": 103.34999999999995,
+        "averageOutdoorTemp4to7": 103.66666666666669
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 71.75,
+        "peakRuntimeMinutes": 94.25,
+        "temp4PM": 76.3,
+        "temp7PM": 75.9
+      }
+    },
+    {
+      "date": "2026-07-12",
+      "aps": {
+        "dailyUsageKWh": 151.52,
+        "dailyPeakDemandKW": 12.05,
+        "dailyPeakTime": "18:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 8.11,
+          "demand5to6KW": 8.46,
+          "demand6to7KW": 12.05
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 29.25,
+        "overlap5to6Minutes": 33.75,
+        "overlap6to7Minutes": 31.5
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 82,
+        "peakRuntimeMinutes": 125.25,
+        "temp4PM": 74.2,
+        "temp7PM": 74.7,
+        "averageOutdoorTemp2to4": 103.84999999999998,
+        "averageOutdoorTemp4to7": 102.16666666666667
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 106.25,
+        "peakRuntimeMinutes": 115.5,
+        "temp4PM": 73.9,
+        "temp7PM": 73.9
+      }
+    },
+    {
+      "date": "2026-07-13",
+      "aps": {
+        "dailyUsageKWh": 137.81,
+        "dailyPeakDemandKW": 9.45,
+        "dailyPeakTime": "17:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 9.45,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 7.88,
+          "demand5to6KW": 9.45,
+          "demand6to7KW": 8.85
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 30,
+        "overlap5to6Minutes": 34.25,
+        "overlap6to7Minutes": 17
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 90.75,
+        "peakRuntimeMinutes": 170.25,
+        "temp4PM": 74.8,
+        "temp7PM": 72.1,
+        "averageOutdoorTemp2to4": 101.77499999999998,
+        "averageOutdoorTemp4to7": 100.70000000000005
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 59.5,
+        "peakRuntimeMinutes": 82,
+        "temp4PM": 75.1,
+        "temp7PM": 74.4
+      }
+    },
+    {
+      "date": "2026-07-14",
+      "aps": {
+        "dailyUsageKWh": 132.66,
+        "dailyPeakDemandKW": 9.69,
+        "dailyPeakTime": "18:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 9.69,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 7.99,
+          "demand5to6KW": 6.98,
+          "demand6to7KW": 9.69
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 30,
+        "overlap5to6Minutes": 19,
+        "overlap6to7Minutes": 38
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 96,
+        "peakRuntimeMinutes": 139.75,
+        "temp4PM": 74.6,
+        "temp7PM": 73.7,
+        "averageOutdoorTemp2to4": 100.37500000000001,
+        "averageOutdoorTemp4to7": 101.06666666666658
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 60,
+        "peakRuntimeMinutes": 87,
+        "temp4PM": 74.1,
+        "temp7PM": 72.8
+      }
+    },
+    {
+      "date": "2026-07-15",
+      "aps": {
+        "dailyUsageKWh": 163.54,
+        "dailyPeakDemandKW": 15.99,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 8.17,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 7.05,
+          "demand5to6KW": 8.17,
+          "demand6to7KW": 5.71
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 29.75,
+        "overlap5to6Minutes": 34.25,
+        "overlap6to7Minutes": 16.75
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 84.25,
+        "peakRuntimeMinutes": 100.75,
+        "temp4PM": 74.2,
+        "temp7PM": 76.4,
+        "averageOutdoorTemp2to4": 102.29999999999995,
+        "averageOutdoorTemp4to7": 100.03333333333333
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 65.5,
+        "peakRuntimeMinutes": 102.75,
+        "temp4PM": 73.4,
+        "temp7PM": 74.7
+      }
+    },
+    {
+      "date": "2026-07-16",
+      "aps": {
+        "dailyUsageKWh": 147.48,
+        "dailyPeakDemandKW": 14.58,
+        "dailyPeakTime": "22:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 8.96,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 7.25,
+          "demand5to6KW": 7.05,
+          "demand6to7KW": 8.96
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 30.25,
+        "overlap5to6Minutes": 28,
+        "overlap6to7Minutes": 23
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 84,
+        "peakRuntimeMinutes": 117,
+        "temp4PM": 74.9,
+        "temp7PM": 73.8,
+        "averageOutdoorTemp2to4": 96.10000000000001,
+        "averageOutdoorTemp4to7": 93.6666666666666
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 66.75,
+        "peakRuntimeMinutes": 91.5,
+        "temp4PM": 74.9,
+        "temp7PM": 73.3
+      }
+    },
+    {
+      "date": "2026-07-17",
+      "aps": {
+        "dailyUsageKWh": 130.36,
+        "dailyPeakDemandKW": 16.29,
+        "dailyPeakTime": "22:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 10.24,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 10.24,
+          "demand5to6KW": 6.88,
+          "demand6to7KW": 5.7
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 52.25,
+        "overlap5to6Minutes": 29.5,
+        "overlap6to7Minutes": 10
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 78,
+        "peakRuntimeMinutes": 123,
+        "temp4PM": 74.4,
+        "temp7PM": 74,
+        "averageOutdoorTemp2to4": 87.54999999999997,
+        "averageOutdoorTemp4to7": 87.46666666666663
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 44.75,
+        "peakRuntimeMinutes": 95,
+        "temp4PM": 75.6,
+        "temp7PM": 73.9
+      }
+    },
+    {
+      "date": "2026-07-18",
+      "aps": {
+        "dailyUsageKWh": 92.14,
+        "dailyPeakDemandKW": 6.79,
+        "dailyPeakTime": "16:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 6.79,
+          "demand5to6KW": 5.29,
+          "demand6to7KW": 4.52
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 13.5,
+        "overlap5to6Minutes": 9.25,
+        "overlap6to7Minutes": 7.75
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 65.75,
+        "peakRuntimeMinutes": 96,
+        "temp4PM": 73.2,
+        "temp7PM": 72.8,
+        "averageOutdoorTemp2to4": 90.97499999999998,
+        "averageOutdoorTemp4to7": 92.06666666666672
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 33.5,
+        "peakRuntimeMinutes": 56,
+        "temp4PM": 74.5,
+        "temp7PM": 73.5
+      }
+    },
+    {
+      "date": "2026-07-19",
+      "aps": {
+        "dailyUsageKWh": 160.81,
+        "dailyPeakDemandKW": 20.82,
+        "dailyPeakTime": "17:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 10.42,
+          "demand5to6KW": 20.82,
+          "demand6to7KW": 14.04
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 38.5,
+        "overlap5to6Minutes": 27.25,
+        "overlap6to7Minutes": 33.25
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 79.75,
+        "peakRuntimeMinutes": 146.75,
+        "temp4PM": 73.7,
+        "temp7PM": 73.9,
+        "averageOutdoorTemp2to4": 97.20000000000005,
+        "averageOutdoorTemp4to7": 97.55000000000007
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 50.25,
+        "peakRuntimeMinutes": 99,
+        "temp4PM": 73,
+        "temp7PM": 73
+      }
+    },
+    {
+      "date": "2026-07-20",
+      "aps": {
+        "dailyUsageKWh": 133.31,
+        "dailyPeakDemandKW": 16.82,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.52,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.52,
+          "demand5to6KW": 5.37,
+          "demand6to7KW": 4.96
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 28.5,
+        "overlap5to6Minutes": 15,
+        "overlap6to7Minutes": 17.75
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 83.5,
+        "peakRuntimeMinutes": 132,
+        "temp4PM": 74.6,
+        "temp7PM": 74.4,
+        "averageOutdoorTemp2to4": 100.02499999999996,
+        "averageOutdoorTemp4to7": 99.55
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 60,
+        "peakRuntimeMinutes": 69.5,
+        "temp4PM": 74.1,
+        "temp7PM": 75.3
+      }
+    },
+    {
+      "date": "2026-07-21",
+      "aps": {
+        "dailyUsageKWh": 154.37,
+        "dailyPeakDemandKW": 15.36,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 7.41,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.43,
+          "demand5to6KW": 7.41,
+          "demand6to7KW": 7
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 28.25,
+        "overlap5to6Minutes": 24,
+        "overlap6to7Minutes": 41.5
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 85.75,
+        "peakRuntimeMinutes": 112.75,
+        "temp4PM": 74.7,
+        "temp7PM": 74.7,
+        "averageOutdoorTemp2to4": 96.17499999999995,
+        "averageOutdoorTemp4to7": 96.01666666666662
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 54,
+        "peakRuntimeMinutes": 108,
+        "temp4PM": 74.1,
+        "temp7PM": 73.8
+      }
+    },
+    {
+      "date": "2026-07-22",
+      "aps": {
+        "dailyUsageKWh": 163.83,
+        "dailyPeakDemandKW": 16.71,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.36,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.77,
+          "demand5to6KW": 6.36,
+          "demand6to7KW": 5.27
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 27.75,
+        "overlap5to6Minutes": 33.5,
+        "overlap6to7Minutes": 27
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 110.75,
+        "peakRuntimeMinutes": 141.5,
+        "temp4PM": 75.1,
+        "temp7PM": 74.1,
+        "averageOutdoorTemp2to4": 100.14999999999999,
+        "averageOutdoorTemp4to7": 100.31666666666668
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 43.25,
+        "peakRuntimeMinutes": 93.5,
+        "temp4PM": 76.5,
+        "temp7PM": 75.6
+      }
+    },
+    {
+      "date": "2026-07-23",
+      "aps": {
+        "dailyUsageKWh": 171.14,
+        "dailyPeakDemandKW": 15.53,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 7.05,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 6.81,
+          "demand5to6KW": 7.05,
+          "demand6to7KW": 6.71
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 30.5,
+        "overlap5to6Minutes": 35.75,
+        "overlap6to7Minutes": 24.75
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 105,
+        "peakRuntimeMinutes": 149.25,
+        "temp4PM": 74.2,
+        "temp7PM": 75.1,
+        "averageOutdoorTemp2to4": 107.74999999999996,
+        "averageOutdoorTemp4to7": 107.71666666666673
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 43.5,
+        "peakRuntimeMinutes": 93.5,
+        "temp4PM": 75.5,
+        "temp7PM": 76
+      }
+    },
+    {
+      "date": "2026-07-24",
+      "aps": {
+        "dailyUsageKWh": 164.33,
+        "dailyPeakDemandKW": 11.11,
+        "dailyPeakTime": "14:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 8.32,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.83,
+          "demand5to6KW": 7.75,
+          "demand6to7KW": 8.32
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 17.75,
+        "overlap5to6Minutes": 32.5,
+        "overlap6to7Minutes": 35.75
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 120,
+        "peakRuntimeMinutes": 159.5,
+        "temp4PM": 75.3,
+        "temp7PM": 74.7,
+        "averageOutdoorTemp2to4": null,
+        "averageOutdoorTemp4to7": null
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 112.75,
+        "peakRuntimeMinutes": 94.25,
+        "temp4PM": 73.2,
+        "temp7PM": 74.7
+      }
+    },
+    {
+      "date": "2026-07-25",
+      "aps": {
+        "dailyUsageKWh": 176.15,
+        "dailyPeakDemandKW": 17.15,
+        "dailyPeakTime": "15:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 8.2,
+          "demand5to6KW": 6.77,
+          "demand6to7KW": 5.42
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 17.75,
+        "overlap5to6Minutes": 21.75,
+        "overlap6to7Minutes": 11.5
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 106.25,
+        "peakRuntimeMinutes": 128,
+        "temp4PM": 74.1,
+        "temp7PM": 73.7,
+        "averageOutdoorTemp2to4": 110.87499999999996,
+        "averageOutdoorTemp4to7": 103.33333333333331
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 45.5,
+        "peakRuntimeMinutes": 62.75,
+        "temp4PM": 74.9,
+        "temp7PM": 75.2
+      }
+    },
+    {
+      "date": "2026-07-26",
+      "aps": {
+        "dailyUsageKWh": 175.69,
+        "dailyPeakDemandKW": 17.3,
+        "dailyPeakTime": "16:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 17.3,
+          "demand5to6KW": 13.11,
+          "demand6to7KW": 9.11
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 41,
+        "overlap5to6Minutes": 39.5,
+        "overlap6to7Minutes": 36.75
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 85,
+        "peakRuntimeMinutes": 131,
+        "temp4PM": 74.6,
+        "temp7PM": 74.3,
+        "averageOutdoorTemp2to4": null,
+        "averageOutdoorTemp4to7": 103.85000000000002
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 54,
+        "peakRuntimeMinutes": 148,
+        "temp4PM": 74.5,
+        "temp7PM": 71.8
+      }
+    },
+    {
+      "date": "2026-07-27",
+      "aps": {
+        "dailyUsageKWh": 178.73,
+        "dailyPeakDemandKW": 14.87,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 7.78,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 7.66,
+          "demand5to6KW": 7.78,
+          "demand6to7KW": 5.85
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 39.75,
+        "overlap5to6Minutes": 41,
+        "overlap6to7Minutes": 22.75
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 113.5,
+        "peakRuntimeMinutes": 156.5,
+        "temp4PM": 74.7,
+        "temp7PM": 74.1,
+        "averageOutdoorTemp2to4": 106.22499999999995,
+        "averageOutdoorTemp4to7": 106.09999999999998
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 59.25,
+        "peakRuntimeMinutes": 114.25,
+        "temp4PM": 77.1,
+        "temp7PM": 75.3
+      }
+    },
+    {
+      "date": "2026-07-28",
+      "aps": {
+        "dailyUsageKWh": 131.33,
+        "dailyPeakDemandKW": 7.38,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.58,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 6.58,
+          "demand5to6KW": 6.05,
+          "demand6to7KW": 6.2
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 36.75,
+        "overlap5to6Minutes": 29.5,
+        "overlap6to7Minutes": 28
+      },
+      "countermeasures": [],
+      "front": {
+        "precoolRuntimeMinutes": 101,
+        "peakRuntimeMinutes": 139.75,
+        "temp4PM": 74.8,
+        "temp7PM": 73.9,
+        "averageOutdoorTemp2to4": 100.925,
+        "averageOutdoorTemp4to7": 101.73333333333335
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 42.75,
+        "peakRuntimeMinutes": 112.75,
+        "temp4PM": 76.7,
+        "temp7PM": 74.4
+      }
+    },
+    {
+      "date": "2026-07-29",
+      "aps": {
+        "dailyUsageKWh": 174.26,
+        "dailyPeakDemandKW": 16.63,
+        "dailyPeakTime": "15:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 11.64,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 11.39,
+          "demand5to6KW": 11.64,
+          "demand6to7KW": 6.84
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 22.25,
+        "overlap5to6Minutes": 31,
+        "overlap6to7Minutes": 28.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 92.5,
+        "peakRuntimeMinutes": 138.75,
+        "temp4PM": 74.5,
+        "temp7PM": 75.1,
+        "averageOutdoorTemp2to4": 104.89999999999996,
+        "averageOutdoorTemp4to7": 104.20000000000005
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 100.25,
+        "peakRuntimeMinutes": 84,
+        "temp4PM": 73.9,
+        "temp7PM": 76.4
+      }
+    },
+    {
+      "date": "2026-07-30",
+      "aps": {
+        "dailyUsageKWh": 176.04,
+        "dailyPeakDemandKW": 17.45,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 8.07,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 6.68,
+          "demand5to6KW": 8.07,
+          "demand6to7KW": 6.61
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 22.75,
+        "overlap5to6Minutes": 42.75,
+        "overlap6to7Minutes": 32.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 108,
+        "peakRuntimeMinutes": 170,
+        "temp4PM": 74.9,
+        "temp7PM": 74.5,
+        "averageOutdoorTemp2to4": 108.19999999999995,
+        "averageOutdoorTemp4to7": 108.08333333333331
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 91,
+        "peakRuntimeMinutes": 97.75,
+        "temp4PM": 74.7,
+        "temp7PM": 75.2
+      }
+    },
+    {
+      "date": "2026-07-31",
+      "aps": {
+        "dailyUsageKWh": 148.43,
+        "dailyPeakDemandKW": 9.05,
+        "dailyPeakTime": "14:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 7.4,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 6.94,
+          "demand5to6KW": 6.4,
+          "demand6to7KW": 7.4
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 31,
+        "overlap5to6Minutes": 35.5,
+        "overlap6to7Minutes": 43.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 120,
+        "peakRuntimeMinutes": 153.5,
+        "temp4PM": 74.1,
+        "temp7PM": 74,
+        "averageOutdoorTemp2to4": 110.75000000000001,
+        "averageOutdoorTemp4to7": 111.57999999999998
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 66.5,
+        "peakRuntimeMinutes": 111,
+        "temp4PM": 76.1,
+        "temp7PM": 74.8
+      }
+    },
+    {
+      "date": "2026-08-01",
+      "aps": {
+        "dailyUsageKWh": 195.86,
+        "dailyPeakDemandKW": 14.38,
+        "dailyPeakTime": "09:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 9.9,
+          "demand5to6KW": 9.6,
+          "demand6to7KW": 10.68
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 34.5,
+        "overlap5to6Minutes": 34.5,
+        "overlap6to7Minutes": 27.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 120,
+        "peakRuntimeMinutes": 180,
+        "temp4PM": 72.4,
+        "temp7PM": 72.1,
+        "averageOutdoorTemp2to4": 109.27499999999996,
+        "averageOutdoorTemp4to7": 109.76666666666671
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 71.5,
+        "peakRuntimeMinutes": 96.25,
+        "temp4PM": 75.3,
+        "temp7PM": 75.6
+      }
+    },
+    {
+      "date": "2026-08-02",
+      "aps": {
+        "dailyUsageKWh": 241.87,
+        "dailyPeakDemandKW": 17.63,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 8.33,
+          "demand5to6KW": 8.4,
+          "demand6to7KW": 10.32
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 29.5,
+        "overlap5to6Minutes": 35.5,
+        "overlap6to7Minutes": 34.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 100.25,
+        "peakRuntimeMinutes": 139,
+        "temp4PM": 74.1,
+        "temp7PM": 73.9,
+        "averageOutdoorTemp2to4": 109.10000000000001,
+        "averageOutdoorTemp4to7": 109.25
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 66.25,
+        "peakRuntimeMinutes": 119.25,
+        "temp4PM": 75,
+        "temp7PM": 75.1
+      }
+    },
+    {
+      "date": "2026-08-03",
+      "aps": {
+        "dailyUsageKWh": 185.25,
+        "dailyPeakDemandKW": 18.99,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 8.33,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 7.81,
+          "demand5to6KW": 8.33,
+          "demand6to7KW": 6.93
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 28.25,
+        "overlap5to6Minutes": 46.75,
+        "overlap6to7Minutes": 29.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 74.75,
+        "peakRuntimeMinutes": 174.75,
+        "temp4PM": 76.1,
+        "temp7PM": 74.4,
+        "averageOutdoorTemp2to4": 107.75000000000004,
+        "averageOutdoorTemp4to7": 108.93333333333334
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 96.25,
+        "peakRuntimeMinutes": 106.75,
+        "temp4PM": 75,
+        "temp7PM": 74.8
+      }
+    },
+    {
+      "date": "2026-08-04",
+      "aps": {
+        "dailyUsageKWh": 161.3,
+        "dailyPeakDemandKW": 17.37,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.58,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.39,
+          "demand5to6KW": 5.58,
+          "demand6to7KW": 5.33
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 14.75,
+        "overlap5to6Minutes": 24,
+        "overlap6to7Minutes": 15.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 81,
+        "peakRuntimeMinutes": 131.75,
+        "temp4PM": 74.2,
+        "temp7PM": 74.5,
+        "averageOutdoorTemp2to4": 102.09999999999998,
+        "averageOutdoorTemp4to7": 103.24999999999996
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 73.25,
+        "peakRuntimeMinutes": 59.75,
+        "temp4PM": 72.6,
+        "temp7PM": 75
+      }
+    },
+    {
+      "date": "2026-08-05",
+      "aps": {
+        "dailyUsageKWh": 123.65,
+        "dailyPeakDemandKW": 7.81,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.07,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.87,
+          "demand5to6KW": 4.84,
+          "demand6to7KW": 6.07
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 13.75,
+        "overlap5to6Minutes": 19.5,
+        "overlap6to7Minutes": 22
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 66.75,
+        "peakRuntimeMinutes": 132.5,
+        "temp4PM": 74.6,
+        "temp7PM": 74.7,
+        "averageOutdoorTemp2to4": 101.05000000000005,
+        "averageOutdoorTemp4to7": 101.1666666666667
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 72.5,
+        "peakRuntimeMinutes": 73.25,
+        "temp4PM": 72.7,
+        "temp7PM": 74
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "aps": {
+        "dailyUsageKWh": 170.79,
+        "dailyPeakDemandKW": 17.2,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 7.81,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.44,
+          "demand5to6KW": 6.78,
+          "demand6to7KW": 7.81
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 17.25,
+        "overlap5to6Minutes": 16.25,
+        "overlap6to7Minutes": 32.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 76.5,
+        "peakRuntimeMinutes": 141.5,
+        "temp4PM": 73.9,
+        "temp7PM": 73.8,
+        "averageOutdoorTemp2to4": 102.72500000000002,
+        "averageOutdoorTemp4to7": 100.99999999999997
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 77.25,
+        "peakRuntimeMinutes": 81.75,
+        "temp4PM": 73,
+        "temp7PM": 73.4
+      }
+    },
+    {
+      "date": "2026-08-07",
+      "aps": {
+        "dailyUsageKWh": 135.63,
+        "dailyPeakDemandKW": 8.76,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.72,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 6.04,
+          "demand5to6KW": 6.72,
+          "demand6to7KW": 5.2
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 30,
+        "overlap5to6Minutes": 35,
+        "overlap6to7Minutes": 30.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 79.75,
+        "peakRuntimeMinutes": 142,
+        "temp4PM": 74.5,
+        "temp7PM": 74.8,
+        "averageOutdoorTemp2to4": 105.84999999999995,
+        "averageOutdoorTemp4to7": 106.20000000000003
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 73,
+        "peakRuntimeMinutes": 96.75,
+        "temp4PM": 73.9,
+        "temp7PM": 76.3
+      }
+    },
+    {
+      "date": "2026-08-08",
+      "aps": {
+        "dailyUsageKWh": 186.59,
+        "dailyPeakDemandKW": 18.62,
+        "dailyPeakTime": "13:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 10.7,
+          "demand5to6KW": 8.8,
+          "demand6to7KW": 8.71
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 52.75,
+        "overlap5to6Minutes": 32,
+        "overlap6to7Minutes": 45.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 92.25,
+        "peakRuntimeMinutes": 151.5,
+        "temp4PM": 74.2,
+        "temp7PM": 73.6,
+        "averageOutdoorTemp2to4": 106.59999999999998,
+        "averageOutdoorTemp4to7": 106.85000000000001
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 106.75,
+        "peakRuntimeMinutes": 140.75,
+        "temp4PM": 72.5,
+        "temp7PM": 72.1
+      }
+    },
+    {
+      "date": "2026-08-09",
+      "aps": {
+        "dailyUsageKWh": 137.54,
+        "dailyPeakDemandKW": 9.1,
+        "dailyPeakTime": "17:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 7.71,
+          "demand5to6KW": 9.1,
+          "demand6to7KW": 7.88
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 25.5,
+        "overlap5to6Minutes": 31.5,
+        "overlap6to7Minutes": 25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 94,
+        "peakRuntimeMinutes": 131,
+        "temp4PM": 74.1,
+        "temp7PM": 75,
+        "averageOutdoorTemp2to4": 106.52500000000002,
+        "averageOutdoorTemp4to7": 106.7166666666667
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 62.75,
+        "peakRuntimeMinutes": 101.75,
+        "temp4PM": 74.6,
+        "temp7PM": 75.4
+      }
+    },
+    {
+      "date": "2026-08-10",
+      "aps": {
+        "dailyUsageKWh": 177.53,
+        "dailyPeakDemandKW": 18.45,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.12,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.54,
+          "demand5to6KW": 4.12,
+          "demand6to7KW": 5.12
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 12.75,
+        "overlap5to6Minutes": 17.25,
+        "overlap6to7Minutes": 17
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 101,
+        "peakRuntimeMinutes": 119.5,
+        "temp4PM": 73.3,
+        "temp7PM": 74,
+        "averageOutdoorTemp2to4": 102.87500000000004,
+        "averageOutdoorTemp4to7": 103.25000000000001
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 66.25,
+        "peakRuntimeMinutes": 53.5,
+        "temp4PM": 73.6,
+        "temp7PM": 75.3
+      }
+    },
+    {
+      "date": "2026-08-11",
+      "aps": {
+        "dailyUsageKWh": 133.64,
+        "dailyPeakDemandKW": 16.07,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.88,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.14,
+          "demand5to6KW": 4.82,
+          "demand6to7KW": 5.88
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 25,
+        "overlap5to6Minutes": 23.5,
+        "overlap6to7Minutes": 28.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 78.25,
+        "peakRuntimeMinutes": 123.75,
+        "temp4PM": 75,
+        "temp7PM": 73.5,
+        "averageOutdoorTemp2to4": 98.69999999999995,
+        "averageOutdoorTemp4to7": 98.74999999999996
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 67.75,
+        "peakRuntimeMinutes": 78.5,
+        "temp4PM": 75.7,
+        "temp7PM": 73.5
+      }
+    },
+    {
+      "date": "2026-08-12",
+      "aps": {
+        "dailyUsageKWh": 109.92,
+        "dailyPeakDemandKW": 7.21,
+        "dailyPeakTime": "15:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.88,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.72,
+          "demand5to6KW": 6.88,
+          "demand6to7KW": 5.18
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 17.5,
+        "overlap5to6Minutes": 23,
+        "overlap6to7Minutes": 20.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 73,
+        "peakRuntimeMinutes": 131.25,
+        "temp4PM": 74,
+        "temp7PM": 73.2,
+        "averageOutdoorTemp2to4": 95.35000000000001,
+        "averageOutdoorTemp4to7": 90.68333333333331
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 81.25,
+        "peakRuntimeMinutes": 67.25,
+        "temp4PM": 73,
+        "temp7PM": 74.6
+      }
+    },
+    {
+      "date": "2026-08-13",
+      "aps": {
+        "dailyUsageKWh": 151.23,
+        "dailyPeakDemandKW": 15.68,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.23,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.24,
+          "demand5to6KW": 6.23,
+          "demand6to7KW": 4.74
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 18.5,
+        "overlap5to6Minutes": 19.75,
+        "overlap6to7Minutes": 20.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 72.75,
+        "peakRuntimeMinutes": 114.25,
+        "temp4PM": 74.4,
+        "temp7PM": 74.4,
+        "averageOutdoorTemp2to4": 93.97499999999995,
+        "averageOutdoorTemp4to7": 94.36666666666666
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 64.5,
+        "peakRuntimeMinutes": 67.5,
+        "temp4PM": 73.8,
+        "temp7PM": 73.8
+      }
+    },
+    {
+      "date": "2026-08-14",
+      "aps": {
+        "dailyUsageKWh": 113.38,
+        "dailyPeakDemandKW": 10.21,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 4.84,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.84,
+          "demand5to6KW": 4.7,
+          "demand6to7KW": 4.72
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 15.25,
+        "overlap5to6Minutes": 9,
+        "overlap6to7Minutes": 20.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 71.75,
+        "peakRuntimeMinutes": 111,
+        "temp4PM": 74.2,
+        "temp7PM": 74,
+        "averageOutdoorTemp2to4": 94.575,
+        "averageOutdoorTemp4to7": 94.49999999999994
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 78,
+        "peakRuntimeMinutes": 53.5,
+        "temp4PM": 73.7,
+        "temp7PM": 73.7
+      }
+    },
+    {
+      "date": "2026-08-15",
+      "aps": {
+        "dailyUsageKWh": 150.73,
+        "dailyPeakDemandKW": 15.84,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 6.32,
+          "demand5to6KW": 5.63,
+          "demand6to7KW": 5.46
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 17.5,
+        "overlap5to6Minutes": 8.75,
+        "overlap6to7Minutes": 1.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 74,
+        "peakRuntimeMinutes": 115.75,
+        "temp4PM": 74.2,
+        "temp7PM": 73.9,
+        "averageOutdoorTemp2to4": 101.20000000000005,
+        "averageOutdoorTemp4to7": 100.70000000000007
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 55.25,
+        "peakRuntimeMinutes": 32.25,
+        "temp4PM": 75.3,
+        "temp7PM": 77
+      }
+    },
+    {
+      "date": "2026-08-16",
+      "aps": {
+        "dailyUsageKWh": 138.85,
+        "dailyPeakDemandKW": 16.49,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 6.5,
+          "demand5to6KW": 9.56,
+          "demand6to7KW": 7.75
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 23.25,
+        "overlap5to6Minutes": 45.25,
+        "overlap6to7Minutes": 33.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 79.5,
+        "peakRuntimeMinutes": 127.5,
+        "temp4PM": 75.3,
+        "temp7PM": 74.9,
+        "averageOutdoorTemp2to4": 105.99999999999996,
+        "averageOutdoorTemp4to7": 105.50000000000003
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 61,
+        "peakRuntimeMinutes": 105.75,
+        "temp4PM": 75.3,
+        "temp7PM": 75
+      }
+    },
+    {
+      "date": "2026-08-17",
+      "aps": {
+        "dailyUsageKWh": 167.91,
+        "dailyPeakDemandKW": 16.99,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.39,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.18,
+          "demand5to6KW": 5.36,
+          "demand6to7KW": 5.39
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 29.75,
+        "overlap5to6Minutes": 29.5,
+        "overlap6to7Minutes": 31
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 99.75,
+        "peakRuntimeMinutes": 106,
+        "temp4PM": 74.1,
+        "temp7PM": 74.8,
+        "averageOutdoorTemp2to4": 108.95,
+        "averageOutdoorTemp4to7": 108.51666666666672
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 90,
+        "peakRuntimeMinutes": 104,
+        "temp4PM": 73.8,
+        "temp7PM": 75
+      }
+    },
+    {
+      "date": "2026-08-18",
+      "aps": {
+        "dailyUsageKWh": 156.69,
+        "dailyPeakDemandKW": 18.01,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.35,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.46,
+          "demand5to6KW": 5.23,
+          "demand6to7KW": 5.35
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 15.5,
+        "overlap5to6Minutes": 20,
+        "overlap6to7Minutes": 17.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 59,
+        "peakRuntimeMinutes": 76.25,
+        "temp4PM": 74.7,
+        "temp7PM": 75.3,
+        "averageOutdoorTemp2to4": 108.8,
+        "averageOutdoorTemp4to7": 108.86666666666663
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 97.75,
+        "peakRuntimeMinutes": 108,
+        "temp4PM": 74.3,
+        "temp7PM": 75.2
+      }
+    },
+    {
+      "date": "2026-08-19",
+      "aps": {
+        "dailyUsageKWh": 154.92,
+        "dailyPeakDemandKW": 17.44,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.82,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.25,
+          "demand5to6KW": 6.82,
+          "demand6to7KW": 4.5
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 19,
+        "overlap5to6Minutes": 43.5,
+        "overlap6to7Minutes": 25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 65.5,
+        "peakRuntimeMinutes": 125,
+        "temp4PM": 74.9,
+        "temp7PM": 76.3,
+        "averageOutdoorTemp2to4": 105.42499999999997,
+        "averageOutdoorTemp4to7": 105.68000000000002
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 86.5,
+        "peakRuntimeMinutes": 96,
+        "temp4PM": 73.9,
+        "temp7PM": 76.3
+      }
+    },
+    {
+      "date": "2026-08-20",
+      "aps": {
+        "dailyUsageKWh": 120.45,
+        "dailyPeakDemandKW": 13.04,
+        "dailyPeakTime": "00:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.65,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.92,
+          "demand5to6KW": 5.37,
+          "demand6to7KW": 5.65
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 14.25,
+        "overlap5to6Minutes": 25.25,
+        "overlap6to7Minutes": 24.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 74.5,
+        "peakRuntimeMinutes": 116.25,
+        "temp4PM": 74.2,
+        "temp7PM": 75,
+        "averageOutdoorTemp2to4": 104.07499999999999,
+        "averageOutdoorTemp4to7": 103.91999999999993
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 77.75,
+        "peakRuntimeMinutes": 87,
+        "temp4PM": 74.2,
+        "temp7PM": 75.6
+      }
+    },
+    {
+      "date": "2026-08-21",
+      "aps": {
+        "dailyUsageKWh": 133.68,
+        "dailyPeakDemandKW": 17.61,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.33,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.4,
+          "demand5to6KW": 6.33,
+          "demand6to7KW": 5.81
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 16,
+        "overlap5to6Minutes": 15.5,
+        "overlap6to7Minutes": 15.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 103.75,
+        "peakRuntimeMinutes": 87,
+        "temp4PM": 74.3,
+        "temp7PM": 75.1,
+        "averageOutdoorTemp2to4": 107.83333333333336,
+        "averageOutdoorTemp4to7": 107.16000000000005
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 98.25,
+        "peakRuntimeMinutes": 109.25,
+        "temp4PM": 74.8,
+        "temp7PM": 74.4
+      }
+    },
+    {
+      "date": "2026-08-22",
+      "aps": {
+        "dailyUsageKWh": 160.52,
+        "dailyPeakDemandKW": 16.93,
+        "dailyPeakTime": "14:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 12.03,
+          "demand5to6KW": 6.73,
+          "demand6to7KW": 6.56
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 19,
+        "overlap5to6Minutes": 27,
+        "overlap6to7Minutes": 28.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 92.75,
+        "peakRuntimeMinutes": 92,
+        "temp4PM": 74.8,
+        "temp7PM": 75,
+        "averageOutdoorTemp2to4": 110.39999999999999,
+        "averageOutdoorTemp4to7": 108.28000000000006
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 72,
+        "peakRuntimeMinutes": 90.75,
+        "temp4PM": 74.4,
+        "temp7PM": 74.9
+      }
+    },
+    {
+      "date": "2026-08-23",
+      "aps": {
+        "dailyUsageKWh": 169.28,
+        "dailyPeakDemandKW": 18.27,
+        "dailyPeakTime": "18:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 8.8,
+          "demand5to6KW": 10.33,
+          "demand6to7KW": 18.27
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 25,
+        "overlap5to6Minutes": 20,
+        "overlap6to7Minutes": 30.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 62.5,
+        "peakRuntimeMinutes": 100.5,
+        "temp4PM": 75,
+        "temp7PM": 74.3,
+        "averageOutdoorTemp2to4": 107.27499999999999,
+        "averageOutdoorTemp4to7": 104.30000000000001
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 83.25,
+        "peakRuntimeMinutes": 119.5,
+        "temp4PM": 75.6,
+        "temp7PM": 73.7
+      }
+    },
+    {
+      "date": "2026-08-24",
+      "aps": {
+        "dailyUsageKWh": 136.01,
+        "dailyPeakDemandKW": 15.97,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.36,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.41,
+          "demand5to6KW": 5.32,
+          "demand6to7KW": 5.36
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 18.75,
+        "overlap5to6Minutes": 17.5,
+        "overlap6to7Minutes": 25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 100.5,
+        "peakRuntimeMinutes": 97.25,
+        "temp4PM": 73.9,
+        "temp7PM": 75.2,
+        "averageOutdoorTemp2to4": 103.17500000000003,
+        "averageOutdoorTemp4to7": 103.42000000000003
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 74.75,
+        "peakRuntimeMinutes": 92.75,
+        "temp4PM": 73.5,
+        "temp7PM": 75.3
+      }
+    }
+  ]
+}

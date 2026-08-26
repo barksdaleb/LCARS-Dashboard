@@ -83,6 +83,20 @@ function apsStatus(
     : "STALE";
 }
 
+function calendarStatus(
+  latest: Date | null
+): FreshnessStatus {
+  if (!latest) {
+    return "MISSING";
+  }
+
+  // Calendar is refreshed whenever the
+  // Home Ops system update runs.
+  return ageHours(latest) <= 48
+    ? "CURRENT"
+    : "STALE";
+}
+
 function phoenixTime(
   date: Date | null
 ): string {
@@ -130,6 +144,38 @@ export function getDataFreshness():
       )
     );
 
+  let calendarLatest: Date | null = null;
+
+  const calendarPath = path.join(
+    ROOT,
+    "data/ops/calendar.json"
+  );
+
+  if (fs.existsSync(calendarPath)) {
+    try {
+      const calendarData = JSON.parse(
+        fs.readFileSync(
+          calendarPath,
+          "utf8"
+        )
+      );
+
+      if (calendarData.generatedAt) {
+        const parsed = new Date(
+          calendarData.generatedAt
+        );
+
+        if (
+          !Number.isNaN(parsed.getTime())
+        ) {
+          calendarLatest = parsed;
+        }
+      }
+    } catch {
+      calendarLatest = null;
+    }
+  }
+
   return [
     {
       source: "Weather",
@@ -146,10 +192,17 @@ export function getDataFreshness():
       latest: frontLatest,
       status: ecobeeStatus(frontLatest),
     },
-    {
+        {
       source: "Hall AC",
       latest: hallLatest,
       status: ecobeeStatus(hallLatest),
+    },
+    {
+      source: "Calendar",
+      latest: calendarLatest,
+      status: calendarStatus(
+        calendarLatest
+      ),
     },
   ];
 }

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import fs from "fs";
 import path from "path";
 
 import { StrategyAnalyzer } from "../../../lib/energy/StrategyAnalyzer";
@@ -23,7 +24,25 @@ export async function GET() {
         hallFile
       );
 
-    return NextResponse.json(result);
+const countermeasurePerformancePath = path.join(
+  process.cwd(),
+  "data/ops/countermeasure-performance.json"
+);
+
+const countermeasurePerformance =
+  fs.existsSync(countermeasurePerformancePath)
+    ? JSON.parse(
+        fs.readFileSync(
+          countermeasurePerformancePath,
+          "utf8"
+        )
+      )
+    : null;
+
+return NextResponse.json({
+  ...result,
+  countermeasurePerformance,
+});
   } catch (error) {
     console.error(
       "HVAC strategy analysis failed:",
