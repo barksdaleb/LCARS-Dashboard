@@ -3,6 +3,7 @@ import fs from "fs";
 export type APSPlanRates = {
   onPeakRate: number;
   offPeakRate: number;
+  superOffPeakRate?: number;
   demandRate: number;
 };
 
@@ -14,6 +15,7 @@ export type SavingsAnalysis = {
 
   onPeakKWh: number;
   offPeakKWh: number;
+  superOffPeakKWh: number;
   totalKWh: number;
 
   peakDemandKW: number;
@@ -46,6 +48,7 @@ type APSDailyRecord = {
   date: string;
   onPeakKWh: number;
   offPeakKWh: number;
+  superOffPeakKWh: number;
   totalKWh: number;
   demandKW: number | null;
   currentPeakDemandKW: number | null;
@@ -53,8 +56,18 @@ type APSDailyRecord = {
 
 export class SavingsAnalyzer {
   constructor(
-    private filename: string
+    private filename: string,
+    private oldPlanRates: APSPlanRates = OLD_TOU_RATES,
+    private newPlanRates: APSPlanRates = NEW_DEMAND_RATES,
   ) {}
+
+  private superOffPeakCost(kWh: number, rates: APSPlanRates): number {
+    if (kWh === 0) return 0;
+    if (rates.superOffPeakRate === undefined || !Number.isFinite(rates.superOffPeakRate) || rates.superOffPeakRate < 0) {
+      throw new Error("A super-off-peak rate is required to price super-off-peak usage.");
+    }
+    return kWh * rates.superOffPeakRate;
+  }
 
   private loadRecords(): APSDailyRecord[] {
     const csv = fs.readFileSync(
@@ -115,6 +128,10 @@ export class SavingsAnalyzer {
             values[index("offPeakKWh")]
           ),
 
+          superOffPeakKWh: numberOrZero(
+            values[index("superOffPeakKWh")]
+          ),
+
           totalKWh: numberOrZero(
             values[index("totalKWh")]
           ),
@@ -146,12 +163,14 @@ export class SavingsAnalyzer {
 
     let onPeakKWh = 0;
     let offPeakKWh = 0;
+    let superOffPeakKWh = 0;
     let totalKWh = 0;
     let peakDemandKW = 0;
 
     for (const record of records) {
       onPeakKWh += record.onPeakKWh;
       offPeakKWh += record.offPeakKWh;
+      superOffPeakKWh += record.superOffPeakKWh;
       totalKWh += record.totalKWh;
 
       peakDemandKW = Math.max(
@@ -167,6 +186,7 @@ export class SavingsAnalyzer {
       days: records.length,
       onPeakKWh,
       offPeakKWh,
+      superOffPeakKWh,
       totalKWh,
       peakDemandKW,
     };
@@ -182,20 +202,22 @@ export class SavingsAnalyzer {
 
     const onPeakCost =
       usage.onPeakKWh *
-      OLD_TOU_RATES.onPeakRate;
+      this.oldPlanRates.onPeakRate;
 
     const offPeakCost =
       usage.offPeakKWh *
-      OLD_TOU_RATES.offPeakRate;
+      this.oldPlanRates.offPeakRate;
 
+    const superOffPeakCost = this.superOffPeakCost(usage.superOffPeakKWh, this.oldPlanRates);
     const totalEnergyCost =
-      onPeakCost + offPeakCost;
+      onPeakCost + offPeakCost + superOffPeakCost;
 
     return {
       ...usage,
 
       onPeakCost,
       offPeakCost,
+      superOffPeakCost,
       totalEnergyCost,
     };
   }    
@@ -210,19 +232,22 @@ export class SavingsAnalyzer {
 
     const onPeakCost =
       usage.onPeakKWh *
-      NEW_DEMAND_RATES.onPeakRate;
+      this.newPlanRates.onPeakRate;
 
     const offPeakCost =
       usage.offPeakKWh *
-      NEW_DEMAND_RATES.offPeakRate;
+      this.newPlanRates.offPeakRate;
+
+    const superOffPeakCost = this.superOffPeakCost(usage.superOffPeakKWh, this.newPlanRates);
 
     const demandCost =
       usage.peakDemandKW *
-      NEW_DEMAND_RATES.demandRate;
+      this.newPlanRates.demandRate;
 
     const totalEnergyAndDemandCost =
       onPeakCost +
       offPeakCost +
+      superOffPeakCost +
       demandCost;
 
     return {
@@ -230,6 +255,7 @@ export class SavingsAnalyzer {
 
       onPeakCost,
       offPeakCost,
+      superOffPeakCost,
       demandCost,
 
       totalEnergyAndDemandCost,
@@ -270,6 +296,7 @@ export class SavingsAnalyzer {
 
       onPeakKWh: oldPlan.onPeakKWh,
       offPeakKWh: oldPlan.offPeakKWh,
+      superOffPeakKWh: oldPlan.superOffPeakKWh,
       totalKWh: oldPlan.totalKWh,
 
       peakDemandKW:
@@ -280,7 +307,8 @@ export class SavingsAnalyzer {
 
       newPlanEnergyCost:
         newPlan.onPeakCost +
-        newPlan.offPeakCost,
+        newPlan.offPeakCost +
+        newPlan.superOffPeakCost,
 
       newPlanDemandCost:
         newPlan.demandCost,

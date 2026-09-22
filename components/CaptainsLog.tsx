@@ -70,6 +70,7 @@ type SavingsProofResult = {
 
   onPeakKWh: number;
   offPeakKWh: number;
+  superOffPeakKWh?: number;
   totalKWh: number;
 
   peakDemandKW: number;

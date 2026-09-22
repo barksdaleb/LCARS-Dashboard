@@ -2,51 +2,7 @@ import fs from "fs";
 import path from "path";
 import { PDFParse } from "pdf-parse";
 
-// ======================================================
-// APS Bill Types
-// ======================================================
-
-type APSBill = {
-  billDate: string | null;
-  billingStart: string | null;
-  billingEnd: string | null;
-  servicePlan: string | null;
-
-  usageKWh: number | null;
-  onPeakKWh: number | null;
-  offPeakKWh: number | null;
-
-  peakDemandKW: number | null;
-  demandCharge: number | null;
-
-  peakDemandDate: string | null;
-  peakDemandWindow: string | null;
-
-  energyUsageCost: number | null;
-  totalEnergyCost: number | null;
-
-  lastYearUsageKWh: number | null;
-  lastYearTotalCost: number | null;
-
-  averageTemperature: number | null;
-  daysInBillingPeriod: number | null;
-};
-
-type APSBillHistory = {
-  bills: APSBill[];
-};
-
-// ======================================================
-// Helpers
-// ======================================================
-
-function money(value: string): number {
-  return Number(value.replace(/[$,]/g, ""));
-}
-
-function number(value: string): number {
-  return Number(value.replace(/,/g, ""));
-}
+import { parseAPSBill, normalizeBill, reconcileBill, type APSBillHistory } from "./lib/aps-bill";
 
 // ======================================================
 // Main
@@ -95,19 +51,22 @@ async function main() {
     );
   }
 
+  history.bills = history.bills.map(normalizeBill);
+
   // ------------------------------------------------------
   // Find APS bill PDFs
   // ------------------------------------------------------
 
+  const reprocessArchive = process.argv.includes("--reprocess-archive");
+  const sourceDir = reprocessArchive ? archiveDir : importDir;
   const files = fs
-    .readdirSync(importDir)
+    .readdirSync(sourceDir)
     .filter((file) =>
       file.toLowerCase().endsWith(".pdf")
-    );
+    ).sort();
 
   if (!files.length) {
     console.log("No APS bill PDF files found.");
-    return;
   }
 
   console.log("");
@@ -120,9 +79,10 @@ async function main() {
   // Process each PDF
   // ------------------------------------------------------
 
+  const processed = new Map<string, string>();
   for (const file of files) {
     const filename = path.join(
-      importDir,
+      sourceDir,
       file
     );
 
@@ -135,241 +95,33 @@ async function main() {
       data: buffer,
     });
 
-    const result =
-      await parser.getText();
-
-    const text = result.text;
-
-    await parser.destroy();
-
-    // ----------------------------------------------------
-    // Empty bill record
-    // ----------------------------------------------------
-
-    const bill: APSBill = {
-      billDate: null,
-      billingStart: null,
-      billingEnd: null,
-      servicePlan: null,
-
-      usageKWh: null,
-      onPeakKWh: null,
-      offPeakKWh: null,
-
-      peakDemandKW: null,
-      demandCharge: null,
-
-      peakDemandDate: null,
-      peakDemandWindow: null,
-
-      energyUsageCost: null,
-      totalEnergyCost: null,
-
-      lastYearUsageKWh: null,
-      lastYearTotalCost: null,
-
-      averageTemperature: null,
-      daysInBillingPeriod: null,
-    };
-
-    // ----------------------------------------------------
-    // Bill date
-    // ----------------------------------------------------
-
-    const billDateMatch =
-      text.match(
-        /Bill Date:\s+([A-Za-z]+ \d{1,2}, \d{4})/
-      );
-
-    if (billDateMatch) {
-      bill.billDate =
-        billDateMatch[1];
+    let text: string;
+    try {
+      text = (await parser.getText()).text;
+    } finally {
+      await parser.destroy();
     }
 
-    // ----------------------------------------------------
-    // Billing period
-    // ----------------------------------------------------
-
-    const billingPeriodMatch =
-      text.match(
-        /Billing Period:\s+([A-Za-z]+ \d{1,2}, \d{4}) to ([A-Za-z]+ \d{1,2}, \d{4})/
-      );
-
-    if (billingPeriodMatch) {
-      bill.billingStart =
-        billingPeriodMatch[1];
-
-      bill.billingEnd =
-        billingPeriodMatch[2];
+    const bill = parseAPSBill(text);
+    if (!bill.billDate || !bill.billingStart || !bill.billingEnd) {
+      throw new Error(`Missing bill identity in ${file}; history not written.`);
     }
-
-    // ----------------------------------------------------
-    // Service plan
-    // ----------------------------------------------------
-
-    const servicePlanMatch =
-      text.match(
-        /Service Plan:\s+([^\n]+)/
-      );
-
-    if (servicePlanMatch) {
-      bill.servicePlan =
-        servicePlanMatch[1].trim();
+    const key = `${bill.billingStart}|${bill.billingEnd}`;
+    const previous = processed.get(key);
+    if (previous) {
+      if (previous !== JSON.stringify(bill)) {
+        throw new Error(`Conflicting archived bills for ${key}; history not written.`);
+      }
+      console.log(`Duplicate billing period skipped: ${bill.billDate}`);
+      if (reprocessArchive) continue;
     }
-
-    // ----------------------------------------------------
-    // Monthly usage comparison
-    //
-    // APS order:
-    // Last Month / Last Year / This Month
-    // ----------------------------------------------------
-
-    const usageMatch =
-      text.match(
-        /Monthly Usage \(kWh\)\s+([\d,]+)\s+([\d,]+)\s+([\d,]+)/
-      );
-
-    if (usageMatch) {
-      bill.lastYearUsageKWh =
-        number(usageMatch[2]);
-
-      bill.usageKWh =
-        number(usageMatch[3]);
-    }
-
-    // ----------------------------------------------------
-    // On-peak usage
-    // ----------------------------------------------------
-
-    const onPeakMatch =
-      text.match(
-        /On-Peak\s+[\d,]+\s+[\d,]+\s+([\d,]+)\s+kWh/
-      );
-
-    if (onPeakMatch) {
-      bill.onPeakKWh =
-        number(onPeakMatch[1]);
-    }
-
-    // ----------------------------------------------------
-    // Off-peak usage
-    // ----------------------------------------------------
-
-    const offPeakMatch =
-      text.match(
-        /Off-Peak\s+[—-]+\s+[—-]+\s+([\d,]+)\s+kWh/
-      );
-
-    if (offPeakMatch) {
-      bill.offPeakKWh =
-        number(offPeakMatch[1]);
-    }
-
-    // ----------------------------------------------------
-    // Peak demand
-    // ----------------------------------------------------
-
-    const demandMatch =
-      text.match(
-        /On-Peak Demand\s+[—-]+\s+[—-]+\s+([\d.]+)\s+kW/
-      );
-
-    if (demandMatch) {
-      bill.peakDemandKW =
-        number(demandMatch[1]);
-    }
-
-    // ----------------------------------------------------
-    // Demand charge
-    // ----------------------------------------------------
-
-    const demandChargeMatch =
-      text.match(
-        /On-Peak Demand \$([\d,.]+)/
-      );
-
-    if (demandChargeMatch) {
-      bill.demandCharge =
-        money(demandChargeMatch[1]);
-    }
-
-    // ----------------------------------------------------
-    // Demand-setting date and hour
-    // ----------------------------------------------------
-
-    const peakPeriodMatch =
-      text.match(
-        /On-Peak Demand ([A-Za-z]+ \d{1,2}(?:st|nd|rd|th)?) ([^\n]+)/
-      );
-
-    if (peakPeriodMatch) {
-      bill.peakDemandDate =
-        peakPeriodMatch[1];
-
-      bill.peakDemandWindow =
-        peakPeriodMatch[2].trim();
-    }
-
-    // ----------------------------------------------------
-    // Energy usage cost
-    // ----------------------------------------------------
-
-    const energyCostMatch =
-      text.match(
-        /energy usage costs this month are \$([\d,.]+)/
-      );
-
-    if (energyCostMatch) {
-      bill.energyUsageCost =
-        money(energyCostMatch[1]);
-    }
-
-    // ----------------------------------------------------
-    // Total cost comparison
-    //
-    // APS order:
-    // Last Month / Last Year / This Month
-    // ----------------------------------------------------
-
-    const totalCostMatch =
-      text.match(
-        /Total Cost\s+\$([\d,.]+)\s+\$([\d,.]+)\s+\$([\d,.]+)/
-      );
-
-    if (totalCostMatch) {
-      bill.lastYearTotalCost =
-        money(totalCostMatch[2]);
-
-      bill.totalEnergyCost =
-        money(totalCostMatch[3]);
-    }
-
-    // ----------------------------------------------------
-    // Average temperature
-    // ----------------------------------------------------
-
-    const tempMatch =
-      text.match(
-        /Average Temperature\s+(\d+)°F\s+(\d+)°F\s+(\d+)°F/
-      );
-
-    if (tempMatch) {
-      bill.averageTemperature =
-        number(tempMatch[3]);
-    }
-
-    // ----------------------------------------------------
-    // Billing-period days
-    // ----------------------------------------------------
-
-    const daysMatch =
-      text.match(
-        /Days in Billing Period\s+(\d+)\s+(\d+)\s+(\d+)/
-      );
-
-    if (daysMatch) {
-      bill.daysInBillingPeriod =
-        number(daysMatch[3]);
+    processed.set(key, JSON.stringify(bill));
+    const reconciliation = reconcileBill(bill, text);
+    const message = `${bill.billDate}: onPeakKWh=${bill.onPeakKWh}, offPeakKWh=${bill.offPeakKWh}, superOffPeakKWh=${bill.superOffPeakKWh}, usageKWh=${bill.usageKWh}, difference=${reconciliation.difference ?? "unknown"} kWh (tolerance=${reconciliation.tolerance} kWh)`;
+    if (!reconciliation.reconciled) {
+      console.warn(`WARNING: APS usage does not reconcile: ${message}`);
+    } else {
+      console.log(`Reconciled: ${message}`);
     }
 
     // ----------------------------------------------------
@@ -398,7 +150,7 @@ async function main() {
 
     if (existingIndex >= 0) {
       history.bills[existingIndex] =
-        bill;
+        { ...history.bills[existingIndex], ...bill };
 
       console.log(
         "✓ Existing bill updated in history."
@@ -414,6 +166,8 @@ async function main() {
     // ----------------------------------------------------
     // Archive processed PDF
     // ----------------------------------------------------
+
+    if (reprocessArchive) continue;
 
     const archivePath =
       path.join(
@@ -480,14 +234,17 @@ async function main() {
   // Write bill history
   // ------------------------------------------------------
 
+  const temporaryHistoryFile = `${historyFile}.tmp`;
   fs.writeFileSync(
-    historyFile,
+    temporaryHistoryFile,
     JSON.stringify(
       history,
       null,
       2
     ) + "\n"
   );
+
+  fs.renameSync(temporaryHistoryFile, historyFile);
 
   console.log(
     `Bill history written: ${historyFile}`
