@@ -18,6 +18,25 @@
       "lastYearTotalCost": 926.13,
       "averageTemperature": 97,
       "daysInBillingPeriod": 28
+    },
+    {
+      "billDate": "September 21, 2026",
+      "billingStart": "August 19, 2026",
+      "billingEnd": "September 21, 2026",
+      "servicePlan": "Time-of-Use 4pm-7pm Weekdays with Demand Charge",
+      "usageKWh": 4343,
+      "onPeakKWh": 310,
+      "offPeakKWh": 4033,
+      "peakDemandKW": 7.3,
+      "demandCharge": 142.97,
+      "peakDemandDate": "September 10th",
+      "peakDemandWindow": "6:00 pm - 7:00 pm",
+      "energyUsageCost": 541.45,
+      "totalEnergyCost": 620.33,
+      "lastYearUsageKWh": 4327,
+      "lastYearTotalCost": 846.82,
+      "averageTemperature": 93,
+      "daysInBillingPeriod": 33
     }
   ]
 }

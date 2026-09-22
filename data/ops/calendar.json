@@ -1,6 +1,232 @@
 {
-  "generatedAt": "2026-08-26T03:13:55.890Z",
+  "generatedAt": "2026-09-22T22:03:15.024Z",
   "calendar": "Home Ops Calendar",
-  "eventCount": 0,
-  "events": []
+  "eventCount": 25,
+  "events": [
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20260928T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-09-28T15:00:00-07:00",
+      "end": "2026-09-28T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261005T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-10-05T15:00:00-07:00",
+      "end": "2026-10-05T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261012T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-10-12T15:00:00-07:00",
+      "end": "2026-10-12T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261019T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-10-19T15:00:00-07:00",
+      "end": "2026-10-19T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261026T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-10-26T15:00:00-07:00",
+      "end": "2026-10-26T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261102T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-11-02T15:00:00-07:00",
+      "end": "2026-11-02T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261109T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-11-09T15:00:00-07:00",
+      "end": "2026-11-09T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261116T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-11-16T15:00:00-07:00",
+      "end": "2026-11-16T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261123T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-11-23T15:00:00-07:00",
+      "end": "2026-11-23T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261130T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-11-30T15:00:00-07:00",
+      "end": "2026-11-30T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261207T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-12-07T15:00:00-07:00",
+      "end": "2026-12-07T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261214T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-12-14T15:00:00-07:00",
+      "end": "2026-12-14T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261221T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-12-21T15:00:00-07:00",
+      "end": "2026-12-21T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20261228T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2026-12-28T15:00:00-07:00",
+      "end": "2026-12-28T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270104T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-01-04T15:00:00-07:00",
+      "end": "2027-01-04T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270111T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-01-11T15:00:00-07:00",
+      "end": "2027-01-11T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270118T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-01-18T15:00:00-07:00",
+      "end": "2027-01-18T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270125T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-01-25T15:00:00-07:00",
+      "end": "2027-01-25T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270201T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-02-01T15:00:00-07:00",
+      "end": "2027-02-01T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270208T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-02-08T15:00:00-07:00",
+      "end": "2027-02-08T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270215T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-02-15T15:00:00-07:00",
+      "end": "2027-02-15T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270222T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-02-22T15:00:00-07:00",
+      "end": "2027-02-22T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270301T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-03-01T15:00:00-07:00",
+      "end": "2027-03-01T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270308T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-03-08T15:00:00-07:00",
+      "end": "2027-03-08T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    },
+    {
+      "id": "4n9alfpcuuih5m0akodl8lnr5n_20270315T220000Z",
+      "title": "NuWave Wellness Moon Valley",
+      "start": "2027-03-15T15:00:00-07:00",
+      "end": "2027-03-15T15:30:00-07:00",
+      "allDay": false,
+      "location": "743 E Bell Rd #5, Phoenix, AZ 85022",
+      "description": "\n"
+    }
+  ]
 }

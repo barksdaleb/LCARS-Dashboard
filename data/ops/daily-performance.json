@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T03:50:05.013Z",
+  "generatedAt": "2026-09-22T22:03:17.323Z",
   "records": [
     {
       "date": "2026-07-11",
@@ -1924,7 +1924,7 @@
     {
       "date": "2026-08-24",
       "aps": {
-        "dailyUsageKWh": 136.01,
+        "dailyUsageKWh": 140.8,
         "dailyPeakDemandKW": 15.97,
         "dailyPeakTime": "19:00",
         "onPeakDay": true,
@@ -1981,6 +1981,1742 @@
         "peakRuntimeMinutes": 92.75,
         "temp4PM": 73.5,
         "temp7PM": 75.3
+      }
+    },
+    {
+      "date": "2026-08-25",
+      "aps": {
+        "dailyUsageKWh": 121.34,
+        "dailyPeakDemandKW": 9.57,
+        "dailyPeakTime": "15:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.3,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.67,
+          "demand5to6KW": 5.79,
+          "demand6to7KW": 6.3
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 25.75,
+        "overlap5to6Minutes": 22.25,
+        "overlap6to7Minutes": 26.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 98.75,
+        "peakRuntimeMinutes": 111.5,
+        "temp4PM": 74.3,
+        "temp7PM": 75.1,
+        "averageOutdoorTemp2to4": 110.27499999999998,
+        "averageOutdoorTemp4to7": 109.70000000000002
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 95.75,
+        "peakRuntimeMinutes": 111.25,
+        "temp4PM": 73.9,
+        "temp7PM": 75.7
+      }
+    },
+    {
+      "date": "2026-08-26",
+      "aps": {
+        "dailyUsageKWh": 182.41,
+        "dailyPeakDemandKW": 16.74,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.44,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 6.44,
+          "demand5to6KW": 5.94,
+          "demand6to7KW": 5.63
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 33.75,
+        "overlap5to6Minutes": 30,
+        "overlap6to7Minutes": 28.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 102,
+        "peakRuntimeMinutes": 123,
+        "temp4PM": 74.7,
+        "temp7PM": 75.1,
+        "averageOutdoorTemp2to4": 112.35000000000004,
+        "averageOutdoorTemp4to7": 110.58333333333339
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 81.25,
+        "peakRuntimeMinutes": 104.5,
+        "temp4PM": 74.7,
+        "temp7PM": 74.9
+      }
+    },
+    {
+      "date": "2026-08-27",
+      "aps": {
+        "dailyUsageKWh": 115.75,
+        "dailyPeakDemandKW": 8.26,
+        "dailyPeakTime": "14:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.76,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.76,
+          "demand5to6KW": 5.17,
+          "demand6to7KW": 4.92
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 24.25,
+        "overlap5to6Minutes": 26.5,
+        "overlap6to7Minutes": 15.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 89.25,
+        "peakRuntimeMinutes": 91,
+        "temp4PM": 75.1,
+        "temp7PM": 75.6,
+        "averageOutdoorTemp2to4": 107.57499999999995,
+        "averageOutdoorTemp4to7": 106.75000000000003
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 71.5,
+        "peakRuntimeMinutes": 96,
+        "temp4PM": 75.7,
+        "temp7PM": 75.1
+      }
+    },
+    {
+      "date": "2026-08-28",
+      "aps": {
+        "dailyUsageKWh": 156.13,
+        "dailyPeakDemandKW": 15.53,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.03,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.64,
+          "demand5to6KW": 6.03,
+          "demand6to7KW": 5.44
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 26.5,
+        "overlap5to6Minutes": 24.75,
+        "overlap6to7Minutes": 17.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 93,
+        "peakRuntimeMinutes": 120.75,
+        "temp4PM": 74.7,
+        "temp7PM": 74.9,
+        "averageOutdoorTemp2to4": 105.35000000000001,
+        "averageOutdoorTemp4to7": 104.78000000000002
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 79.25,
+        "peakRuntimeMinutes": 98,
+        "temp4PM": 74.3,
+        "temp7PM": 75.7
+      }
+    },
+    {
+      "date": "2026-08-29",
+      "aps": {
+        "dailyUsageKWh": 144.06,
+        "dailyPeakDemandKW": 10.12,
+        "dailyPeakTime": "00:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 9.39,
+          "demand5to6KW": 8.01,
+          "demand6to7KW": 7.5
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 39.75,
+        "overlap5to6Minutes": 29.25,
+        "overlap6to7Minutes": 25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 72.5,
+        "peakRuntimeMinutes": 159.5,
+        "temp4PM": 75.4,
+        "temp7PM": 73.8,
+        "averageOutdoorTemp2to4": 103.27500000000005,
+        "averageOutdoorTemp4to7": 104.05
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 54.75,
+        "peakRuntimeMinutes": 102,
+        "temp4PM": 75.7,
+        "temp7PM": 75.5
+      }
+    },
+    {
+      "date": "2026-08-30",
+      "aps": {
+        "dailyUsageKWh": 176.49,
+        "dailyPeakDemandKW": 19.42,
+        "dailyPeakTime": "18:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 10.65,
+          "demand5to6KW": 15.62,
+          "demand6to7KW": 19.42
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 31.25,
+        "overlap5to6Minutes": 33.25,
+        "overlap6to7Minutes": 52.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 78,
+        "peakRuntimeMinutes": 141,
+        "temp4PM": 75,
+        "temp7PM": 73.9,
+        "averageOutdoorTemp2to4": 100.075,
+        "averageOutdoorTemp4to7": 98.83333333333331
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 100.25,
+        "peakRuntimeMinutes": 148.5,
+        "temp4PM": 74.9,
+        "temp7PM": 72.8
+      }
+    },
+    {
+      "date": "2026-08-31",
+      "aps": {
+        "dailyUsageKWh": 95.55,
+        "dailyPeakDemandKW": 13.49,
+        "dailyPeakTime": "22:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 3.79,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 2.7,
+          "demand5to6KW": 3.79,
+          "demand6to7KW": 3.75
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 10.25,
+        "overlap5to6Minutes": 16.25,
+        "overlap6to7Minutes": 12
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 61.75,
+        "peakRuntimeMinutes": 66,
+        "temp4PM": 74.8,
+        "temp7PM": 74.3,
+        "averageOutdoorTemp2to4": 87.12499999999999,
+        "averageOutdoorTemp4to7": 86.88333333333334
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 31,
+        "peakRuntimeMinutes": 57.5,
+        "temp4PM": 74.6,
+        "temp7PM": 74
+      }
+    },
+    {
+      "date": "2026-09-01",
+      "aps": {
+        "dailyUsageKWh": 109.23,
+        "dailyPeakDemandKW": 15.09,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 4.17,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 3.1,
+          "demand5to6KW": 4.17,
+          "demand6to7KW": 4.15
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 12.5,
+        "overlap5to6Minutes": 14.25,
+        "overlap6to7Minutes": 14
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 82.5,
+        "peakRuntimeMinutes": 80.25,
+        "temp4PM": 74.1,
+        "temp7PM": 75.1,
+        "averageOutdoorTemp2to4": 96.07500000000003,
+        "averageOutdoorTemp4to7": 94.6
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 50.75,
+        "peakRuntimeMinutes": 73.25,
+        "temp4PM": 74.3,
+        "temp7PM": 73.8
+      }
+    },
+    {
+      "date": "2026-09-02",
+      "aps": {
+        "dailyUsageKWh": 117.84,
+        "dailyPeakDemandKW": 14.96,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 4.71,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 3.88,
+          "demand5to6KW": 4.04,
+          "demand6to7KW": 4.71
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 11.75,
+        "overlap5to6Minutes": 18.25,
+        "overlap6to7Minutes": 13.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 78.75,
+        "peakRuntimeMinutes": 84,
+        "temp4PM": 73.8,
+        "temp7PM": 74.8,
+        "averageOutdoorTemp2to4": 97.42499999999997,
+        "averageOutdoorTemp4to7": 95.81666666666668
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 60.75,
+        "peakRuntimeMinutes": 79,
+        "temp4PM": 73.4,
+        "temp7PM": 74.2
+      }
+    },
+    {
+      "date": "2026-09-03",
+      "aps": {
+        "dailyUsageKWh": 127.39,
+        "dailyPeakDemandKW": 14.69,
+        "dailyPeakTime": "22:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 4.29,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 3.3,
+          "demand5to6KW": 4.23,
+          "demand6to7KW": 4.29
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 11,
+        "overlap5to6Minutes": 20.5,
+        "overlap6to7Minutes": 15.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 74.5,
+        "peakRuntimeMinutes": 86,
+        "temp4PM": 74.3,
+        "temp7PM": 75,
+        "averageOutdoorTemp2to4": 96.55,
+        "averageOutdoorTemp4to7": 94.26000000000005
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 73,
+        "peakRuntimeMinutes": 64.25,
+        "temp4PM": 73.5,
+        "temp7PM": 74.4
+      }
+    },
+    {
+      "date": "2026-09-04",
+      "aps": {
+        "dailyUsageKWh": 109.28,
+        "dailyPeakDemandKW": 12.31,
+        "dailyPeakTime": "00:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 4.44,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.44,
+          "demand5to6KW": 4.09,
+          "demand6to7KW": 4.02
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 13.5,
+        "overlap5to6Minutes": 22.25,
+        "overlap6to7Minutes": 10.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 76.25,
+        "peakRuntimeMinutes": 81.25,
+        "temp4PM": 74.9,
+        "temp7PM": 75.2,
+        "averageOutdoorTemp2to4": 96.60000000000001,
+        "averageOutdoorTemp4to7": 95.45000000000007
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 72.75,
+        "peakRuntimeMinutes": 87.5,
+        "temp4PM": 73.8,
+        "temp7PM": 75.4
+      }
+    },
+    {
+      "date": "2026-09-05",
+      "aps": {
+        "dailyUsageKWh": 78.5,
+        "dailyPeakDemandKW": 5.55,
+        "dailyPeakTime": "17:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 2.13,
+          "demand5to6KW": 5.55,
+          "demand6to7KW": 4.55
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 0,
+        "overlap5to6Minutes": 23.75,
+        "overlap6to7Minutes": 12.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 56.25,
+        "peakRuntimeMinutes": 61.25,
+        "temp4PM": 75,
+        "temp7PM": 74.4,
+        "averageOutdoorTemp2to4": 97.44999999999999,
+        "averageOutdoorTemp4to7": 95.76666666666671
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 31,
+        "peakRuntimeMinutes": 70.5,
+        "temp4PM": 76.9,
+        "temp7PM": 74.5
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "aps": {
+        "dailyUsageKWh": 144.14,
+        "dailyPeakDemandKW": 15.51,
+        "dailyPeakTime": "17:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 13.74,
+          "demand5to6KW": 15.51,
+          "demand6to7KW": 14.75
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 12.25,
+        "overlap5to6Minutes": 12.25,
+        "overlap6to7Minutes": 7.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 64,
+        "peakRuntimeMinutes": 66,
+        "temp4PM": 75.3,
+        "temp7PM": 75.2,
+        "averageOutdoorTemp2to4": 101.2,
+        "averageOutdoorTemp4to7": 98.91666666666669
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 51.75,
+        "peakRuntimeMinutes": 84,
+        "temp4PM": 75.2,
+        "temp7PM": 74.7
+      }
+    },
+    {
+      "date": "2026-09-07",
+      "aps": {
+        "dailyUsageKWh": 133.22,
+        "dailyPeakDemandKW": 10.86,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 9.34,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 9.34,
+          "demand5to6KW": 8.04,
+          "demand6to7KW": 6.58
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 24.25,
+        "overlap5to6Minutes": 10.75,
+        "overlap6to7Minutes": 28.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 48.5,
+        "peakRuntimeMinutes": 65,
+        "temp4PM": 74.9,
+        "temp7PM": 73.3,
+        "averageOutdoorTemp2to4": 102.22500000000004,
+        "averageOutdoorTemp4to7": 100.46666666666667
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 65,
+        "peakRuntimeMinutes": 169.75,
+        "temp4PM": 75,
+        "temp7PM": 72.9
+      }
+    },
+    {
+      "date": "2026-09-08",
+      "aps": {
+        "dailyUsageKWh": 147.58,
+        "dailyPeakDemandKW": 17.58,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.9,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 4.52,
+          "demand5to6KW": 6.9,
+          "demand6to7KW": 3.85
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 9.75,
+        "overlap5to6Minutes": 18.5,
+        "overlap6to7Minutes": 11.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 58.5,
+        "peakRuntimeMinutes": 65,
+        "temp4PM": 73.9,
+        "temp7PM": null,
+        "averageOutdoorTemp2to4": 103.31538461538459,
+        "averageOutdoorTemp4to7": 102.33571428571425
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 74.25,
+        "peakRuntimeMinutes": 83.75,
+        "temp4PM": 74.1,
+        "temp7PM": 75.8
+      }
+    },
+    {
+      "date": "2026-09-09",
+      "aps": {
+        "dailyUsageKWh": 145.93,
+        "dailyPeakDemandKW": 16.84,
+        "dailyPeakTime": "21:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.03,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 3.17,
+          "demand5to6KW": 3.6,
+          "demand6to7KW": 6.03
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 0,
+        "overlap5to6Minutes": 10,
+        "overlap6to7Minutes": 20.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 2.25,
+        "peakRuntimeMinutes": 70,
+        "temp4PM": null,
+        "temp7PM": 75.3,
+        "averageOutdoorTemp2to4": 102.40000000000002,
+        "averageOutdoorTemp4to7": 101.2857142857143
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 87,
+        "peakRuntimeMinutes": 97,
+        "temp4PM": 73.8,
+        "temp7PM": 74.3
+      }
+    },
+    {
+      "date": "2026-09-10",
+      "aps": {
+        "dailyUsageKWh": 167.79,
+        "dailyPeakDemandKW": 18.38,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 7.32,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.07,
+          "demand5to6KW": 6.66,
+          "demand6to7KW": 7.32
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 17.75,
+        "overlap5to6Minutes": 26.75,
+        "overlap6to7Minutes": 47.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 85.5,
+        "peakRuntimeMinutes": 130.25,
+        "temp4PM": 74.2,
+        "temp7PM": 74.4,
+        "averageOutdoorTemp2to4": 102.52500000000003,
+        "averageOutdoorTemp4to7": 101.81666666666668
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 79.5,
+        "peakRuntimeMinutes": 115.75,
+        "temp4PM": 73.5,
+        "temp7PM": 74.5
+      }
+    },
+    {
+      "date": "2026-09-11",
+      "aps": {
+        "dailyUsageKWh": 148.81,
+        "dailyPeakDemandKW": 15.94,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.93,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.61,
+          "demand5to6KW": 5.37,
+          "demand6to7KW": 5.93
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 19.75,
+        "overlap5to6Minutes": 23.25,
+        "overlap6to7Minutes": 24.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 92.75,
+        "peakRuntimeMinutes": 117.75,
+        "temp4PM": 74.9,
+        "temp7PM": 74.5,
+        "averageOutdoorTemp2to4": 98.57499999999999,
+        "averageOutdoorTemp4to7": 97.96666666666674
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 76.25,
+        "peakRuntimeMinutes": 82.25,
+        "temp4PM": 74,
+        "temp7PM": 75.1
+      }
+    },
+    {
+      "date": "2026-09-12",
+      "aps": {
+        "dailyUsageKWh": 154.14,
+        "dailyPeakDemandKW": 16.55,
+        "dailyPeakTime": "14:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 6.99,
+          "demand5to6KW": 6.38,
+          "demand6to7KW": 5.89
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 22.75,
+        "overlap5to6Minutes": 23.75,
+        "overlap6to7Minutes": 24
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 115,
+        "peakRuntimeMinutes": 141,
+        "temp4PM": 73.5,
+        "temp7PM": 72.9,
+        "averageOutdoorTemp2to4": 97.87500000000001,
+        "averageOutdoorTemp4to7": 96.41666666666664
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 38.5,
+        "peakRuntimeMinutes": 70.5,
+        "temp4PM": 76,
+        "temp7PM": 75.1
+      }
+    },
+    {
+      "date": "2026-09-13",
+      "aps": {
+        "dailyUsageKWh": 142.3,
+        "dailyPeakDemandKW": 14.42,
+        "dailyPeakTime": "10:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 4.27,
+          "demand5to6KW": 4.42,
+          "demand6to7KW": 11.32
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 8,
+        "overlap5to6Minutes": 5,
+        "overlap6to7Minutes": 5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 99.25,
+        "peakRuntimeMinutes": 35.5,
+        "temp4PM": 71.3,
+        "temp7PM": 74.7,
+        "averageOutdoorTemp2to4": 97.2,
+        "averageOutdoorTemp4to7": 96.43333333333334
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 43.75,
+        "peakRuntimeMinutes": 93.25,
+        "temp4PM": 75.9,
+        "temp7PM": 74.6
+      }
+    },
+    {
+      "date": "2026-09-14",
+      "aps": {
+        "dailyUsageKWh": 113.4,
+        "dailyPeakDemandKW": 7.04,
+        "dailyPeakTime": "13:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 6.18,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 3.98,
+          "demand5to6KW": 3.75,
+          "demand6to7KW": 6.18
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 11.75,
+        "overlap5to6Minutes": 6,
+        "overlap6to7Minutes": 19.75
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 65,
+        "peakRuntimeMinutes": 79.75,
+        "temp4PM": 73.9,
+        "temp7PM": 74.7,
+        "averageOutdoorTemp2to4": 98.90000000000002,
+        "averageOutdoorTemp4to7": 97.68333333333342
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 64,
+        "peakRuntimeMinutes": 95.25,
+        "temp4PM": 74.8,
+        "temp7PM": 73.9
+      }
+    },
+    {
+      "date": "2026-09-15",
+      "aps": {
+        "dailyUsageKWh": 91.46,
+        "dailyPeakDemandKW": 6.06,
+        "dailyPeakTime": "14:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.19,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 3.47,
+          "demand5to6KW": 3.26,
+          "demand6to7KW": 5.19
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 13.5,
+        "overlap5to6Minutes": 0.75,
+        "overlap6to7Minutes": 12.5
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 72.25,
+        "peakRuntimeMinutes": 53.5,
+        "temp4PM": 74.4,
+        "temp7PM": 74.7,
+        "averageOutdoorTemp2to4": 92.64999999999998,
+        "averageOutdoorTemp4to7": 91.18333333333332
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 66,
+        "peakRuntimeMinutes": 80.75,
+        "temp4PM": 73.9,
+        "temp7PM": 74.2
+      }
+    },
+    {
+      "date": "2026-09-16",
+      "aps": {
+        "dailyUsageKWh": 116.87,
+        "dailyPeakDemandKW": 13.09,
+        "dailyPeakTime": "12:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 2.01,
+        "onPeakDemandTime": "18:00",
+        "hourlyDemand": {
+          "demand4to5KW": 1.24,
+          "demand5to6KW": 1.38,
+          "demand6to7KW": 2.01
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 0,
+        "overlap5to6Minutes": 0,
+        "overlap6to7Minutes": 0
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 16,
+        "peakRuntimeMinutes": 0,
+        "temp4PM": 73.6,
+        "temp7PM": 74.1,
+        "averageOutdoorTemp2to4": 79.87894736842104,
+        "averageOutdoorTemp4to7": 79.48333333333339
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 45.75,
+        "peakRuntimeMinutes": 51,
+        "temp4PM": 73.9,
+        "temp7PM": 73.7
+      }
+    },
+    {
+      "date": "2026-09-17",
+      "aps": {
+        "dailyUsageKWh": 92.36,
+        "dailyPeakDemandKW": 13.73,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 4.74,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 2.54,
+          "demand5to6KW": 4.74,
+          "demand6to7KW": 1.7
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 13.25,
+        "overlap5to6Minutes": 6.75,
+        "overlap6to7Minutes": 0
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 49.75,
+        "peakRuntimeMinutes": 27.25,
+        "temp4PM": 74.9,
+        "temp7PM": 75.6,
+        "averageOutdoorTemp2to4": 88.24999999999999,
+        "averageOutdoorTemp4to7": 86.61666666666662
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 45.25,
+        "peakRuntimeMinutes": 67.25,
+        "temp4PM": 73.7,
+        "temp7PM": 75.9
+      }
+    },
+    {
+      "date": "2026-09-18",
+      "aps": {
+        "dailyUsageKWh": 95.88,
+        "dailyPeakDemandKW": 10.74,
+        "dailyPeakTime": "20:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 5.14,
+        "onPeakDemandTime": "16:00",
+        "hourlyDemand": {
+          "demand4to5KW": 5.14,
+          "demand5to6KW": 4.83,
+          "demand6to7KW": 4.43
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 12.5,
+        "overlap5to6Minutes": 8.5,
+        "overlap6to7Minutes": 10
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 74,
+        "peakRuntimeMinutes": 71,
+        "temp4PM": 74.4,
+        "temp7PM": 75.6,
+        "averageOutdoorTemp2to4": 95.875,
+        "averageOutdoorTemp4to7": 93.23333333333335
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 77.75,
+        "peakRuntimeMinutes": 63.75,
+        "temp4PM": 73.6,
+        "temp7PM": 76
+      }
+    },
+    {
+      "date": "2026-09-19",
+      "aps": {
+        "dailyUsageKWh": 91.19,
+        "dailyPeakDemandKW": 13.97,
+        "dailyPeakTime": "15:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 12.21,
+          "demand5to6KW": 4.77,
+          "demand6to7KW": 3.85
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 22.75,
+        "overlap5to6Minutes": 3.75,
+        "overlap6to7Minutes": 7.25
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 46.25,
+        "peakRuntimeMinutes": 98.25,
+        "temp4PM": 75.1,
+        "temp7PM": 76.1,
+        "averageOutdoorTemp2to4": 97.82500000000003,
+        "averageOutdoorTemp4to7": 96.13333333333334
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 52.75,
+        "peakRuntimeMinutes": 51.25,
+        "temp4PM": 76,
+        "temp7PM": 75.6
+      }
+    },
+    {
+      "date": "2026-09-20",
+      "aps": {
+        "dailyUsageKWh": 140.98,
+        "dailyPeakDemandKW": 12.56,
+        "dailyPeakTime": "01:00",
+        "onPeakDay": false,
+        "onPeakDemandKW": null,
+        "onPeakDemandTime": null,
+        "hourlyDemand": {
+          "demand4to5KW": 6.78,
+          "demand5to6KW": 6.95,
+          "demand6to7KW": 10.62
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 30.5,
+        "overlap5to6Minutes": 19.25,
+        "overlap6to7Minutes": 0
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 95,
+        "peakRuntimeMinutes": 79.5,
+        "temp4PM": 72.4,
+        "temp7PM": 75.7,
+        "averageOutdoorTemp2to4": 95.77500000000002,
+        "averageOutdoorTemp4to7": 93.88333333333333
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 81,
+        "peakRuntimeMinutes": 77.25,
+        "temp4PM": 71.8,
+        "temp7PM": 73.4
+      }
+    },
+    {
+      "date": "2026-09-21",
+      "aps": {
+        "dailyUsageKWh": 102.67,
+        "dailyPeakDemandKW": 13.4,
+        "dailyPeakTime": "19:00",
+        "onPeakDay": true,
+        "onPeakDemandKW": 3.44,
+        "onPeakDemandTime": "17:00",
+        "hourlyDemand": {
+          "demand4to5KW": 3.21,
+          "demand5to6KW": 3.44,
+          "demand6to7KW": 3.34
+        }
+      },
+      "hvacOverlap": {
+        "overlap4to5Minutes": 8.75,
+        "overlap5to6Minutes": 12.75,
+        "overlap6to7Minutes": 13
+      },
+      "countermeasures": [
+        {
+          "name": "Weekday House Pre-Cooling",
+          "startDate": "2026-07-29",
+          "description": "Pre-cool the house from 2–4 PM before the APS weekday demand window."
+        },
+        {
+          "name": "Garage Mini-Split Peak Strategy",
+          "startDate": "2026-08-11",
+          "description": "Set garage mini-split to 100°F from 4–7 PM instead of turning it off."
+        },
+        {
+          "name": "Front AC Sleep Temperature",
+          "startDate": "2026-08-12",
+          "description": "Raised Front AC sleep temperature from 71°F to 72°F."
+        },
+        {
+          "name": "Front AC 75°F Peak Strategy",
+          "startDate": "2026-08-17",
+          "description": "Changed weekday Front AC schedule to 74°F pre-cooling from 2–4 PM followed by 75°F during the APS 4–7 PM demand window."
+        },
+        {
+          "name": "Front AC Peak Stagger Strategy",
+          "startDate": "2026-08-20",
+          "description": "Raise the Front AC cooling target from 75°F to 76°F from 5–6 PM Monday through Friday while leaving Hall AC at 75°F. Home Ops historical analysis identified 5–6 PM as the strongest opportunity to reduce simultaneous compressor operation."
+        }
+      ],
+      "front": {
+        "precoolRuntimeMinutes": 64.5,
+        "peakRuntimeMinutes": 62.25,
+        "temp4PM": 74.1,
+        "temp7PM": 74.5,
+        "averageOutdoorTemp2to4": 96.50000000000001,
+        "averageOutdoorTemp4to7": 94.37999999999995
+      },
+      "hall": {
+        "precoolRuntimeMinutes": 53,
+        "peakRuntimeMinutes": 67.25,
+        "temp4PM": 74.7,
+        "temp7PM": 74
       }
     }
   ]

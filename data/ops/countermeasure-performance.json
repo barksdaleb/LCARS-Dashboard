@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-08-26T04:12:49.856Z",
+  "generatedAt": "2026-09-22T22:03:19.593Z",
   "countermeasures": {
     "front-peak-stagger": {
       "id": "front-peak-stagger",
       "name": "Front AC Peak Stagger Strategy",
-      "status": "PROMISING",
-      "recommendation": "KEEP STRATEGY ACTIVE — COLLECT MORE DATA",
-      "qualifyingDays": 3,
+      "status": "BENEFICIAL",
+      "recommendation": "KEEP STRATEGY ACTIVE",
+      "qualifyingDays": 22,
       "targetSampleDays": 5,
-      "remainingDays": 2,
+      "remainingDays": 0,
       "metrics": {
-        "hvacOverlapChangePercent": -37.36559139784946,
-        "aps5to6DemandChangePercent": -2.2400919012062164,
-        "aps4to7PeakChangePercent": -1.2528473804100062,
-        "front7PMComfortChangeF": -0.3666666666666458
+        "hvacOverlapChangePercent": -47.39736070381231,
+        "aps5to6DemandChangePercent": -17.492559135293202,
+        "aps4to7PeakChangePercent": -7.90795195692687,
+        "front7PMComfortChangeF": -0.5984848484848442
       },
       "indicators": {
         "hvacOverlapImproved": true,
@@ -29,14 +29,14 @@
         "front7PMTempF": 75.46666666666665
       },
       "stagger": {
-        "qualifyingDays": 3,
-        "overlap5to6Minutes": 19.416666666666668,
-        "aps5to6DemandKW": 5.673333333333333,
-        "aps4to7PeakKW": 5.78,
-        "front7PMTempF": 75.10000000000001
+        "qualifyingDays": 22,
+        "overlap5to6Minutes": 16.306818181818183,
+        "aps5to6DemandKW": 4.788181818181818,
+        "aps4to7PeakKW": 5.3904545454545465,
+        "front7PMTempF": 74.86818181818181
       },
       "strategyStartDate": "2026-08-20",
-      "evaluatedThrough": "2026-08-25"
+      "evaluatedThrough": "2026-09-21"
     }
   }
 }

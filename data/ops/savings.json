@@ -1,19 +1,19 @@
 {
-  "generatedAt": "2026-08-26T03:13:59.186Z",
+  "generatedAt": "2026-09-22T22:03:19.873Z",
   "billingPeriod": {
-    "start": "July 22, 2026",
-    "end": "August 19, 2026"
+    "start": "August 19, 2026",
+    "end": "September 21, 2026"
   },
   "comparison": {
-    "lastYearCost": 926.13,
-    "currentCost": 735.68,
-    "observedReduction": 190.45,
-    "reductionPercent": 20.6
+    "lastYearCost": 846.82,
+    "currentCost": 620.33,
+    "observedReduction": 226.49,
+    "reductionPercent": 26.7
   },
   "adjustments": {
-    "postedCredits": 113.6
+    "postedCredits": 0
   },
-  "documentedFinancialBenefit": 304.05,
+  "documentedFinancialBenefit": 226.49,
   "attribution": {
     "status": "observed",
     "note": "Bill reduction is an observed year-over-year difference and is not assumed to be entirely caused by Home Ops countermeasures."
