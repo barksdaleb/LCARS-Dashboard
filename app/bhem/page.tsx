@@ -6,6 +6,7 @@ import { getAPSStatus } from "../lib/aps";
 import { useState, useEffect } from "react";
 import HVACStrategy from "@/components/HVACStrategy";
 import SavingsProof from "@/components/SavingsProof";
+import APSBillHistory from "@/components/APSBillHistory";
 import CountermeasureStatus from "@/components/CountermeasureStatus";
 
 
@@ -118,6 +119,8 @@ const currentDemand = 7.8;
 
   <div className="space-y-8">
   <APSStatus />
+
+  <APSBillHistory />
 
   <SavingsProof />
 

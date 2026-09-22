@@ -79,18 +79,18 @@ export default function SavingsProof() {
     <div className="rounded-xl border-2 border-green-500 bg-black/40 p-8">
 
       <div className="text-sm uppercase tracking-[0.4em] text-green-400">
-        APS SAVINGS PROOF ENGINE
+        APS TARIFF COST MODEL
       </div>
 
       <div className="mt-2 text-4xl font-bold text-orange-100">
-        PLAN SAVINGS PROVEN
+        MODELED PLAN COMPARISON
       </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-3">
 
         <div>
           <div className="text-sm uppercase tracking-[0.25em] text-cyan-400">
-            Saved To Date
+            Modeled Difference
           </div>
 
           <div className="mt-2 text-5xl font-bold text-green-400">
@@ -100,7 +100,7 @@ export default function SavingsProof() {
 
         <div>
           <div className="text-sm uppercase tracking-[0.25em] text-cyan-400">
-            Savings Rate
+            Modeled Reduction
           </div>
 
           <div className="mt-2 text-4xl font-bold text-orange-200">
@@ -159,7 +159,8 @@ export default function SavingsProof() {
         Compares plan-dependent APS tariff charges using the
         same observed electricity usage. Common charges,
         adjustors, taxes and fees are excluded from the
-        savings comparison.
+        model comparison. This is separate from the actual bill analysis and
+        does not count toward the $500 observed-reduction goal.
       </div>
 
     </div>
