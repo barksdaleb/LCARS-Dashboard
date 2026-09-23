@@ -243,7 +243,8 @@ export default function CaptainsLog({
             apsDemandChange === null
               ? "--"
               : `${apsDemandChange.toFixed(1)}%`
-          } across ${peakStagger.qualifyingDays}/${peakStagger.targetSampleDays} qualifying weekdays. ` +
+          } across ${peakStagger.qualifyingDays} qualifying weekdays analyzed ` +
+          `(minimum sample: ${peakStagger.targetSampleDays}). ` +
           `Home Ops recommendation: ${peakStagger.recommendation}.`,
       });
 
