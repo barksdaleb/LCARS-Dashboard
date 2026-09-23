@@ -84,7 +84,6 @@ type SavingsProofResult = {
 
 export default function CaptainsLog({
   currentDemand,
-  peakToday,
   apsStatus,
   hvacStrategy = null,
   savingsProof = null,
@@ -193,7 +192,7 @@ if (currentDemand < 3) {
     <div className="rounded-xl border-2 border-cyan-500 bg-black/40 p-8">
 
       <div className="text-sm tracking-[0.4em] uppercase text-cyan-400">
-        CAPTAIN'S LOG
+        CAPTAIN&apos;S LOG
       </div>
 
       <div className="mt-2 flex items-center justify-between">

@@ -5,7 +5,7 @@ export class HistoryWriter {
   static append(
     source: string,
     stream: string,
-    record: Record<string, any>
+    record: Record<string, string | number | boolean | null | undefined>
   ) {
     
     const headers = Object.keys(record);

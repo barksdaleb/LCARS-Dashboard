@@ -1,4 +1,4 @@
-import { WaterGuruAPI } from "waterguru-api-js/dist/index.js";
+import WaterGuruAPI from "../app/lib/waterguru/client";
 import dotenv from "dotenv";
 
 dotenv.config({ path: ".env.local" });
@@ -9,7 +9,7 @@ async function main() {
 
   console.log("Connecting to WaterGuru...");
 
-  const api = new WaterGuruAPI(email, password);
+  const api = new WaterGuruAPI({ username: email, password });
 
   const dashboard = await api.getDashboard();
 

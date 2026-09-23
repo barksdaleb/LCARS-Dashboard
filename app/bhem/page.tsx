@@ -3,7 +3,8 @@ import CaptainsLog from "@/components/CaptainsLog";
 import APSStatus from "@/components/APSStatus";
 import DemandMeter from "@/components/DemandMeter";
 import { getAPSStatus } from "../lib/aps";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ComponentProps } from "react";
+import Link from "next/link";
 import HVACStrategy from "@/components/HVACStrategy";
 import SavingsProof from "@/components/SavingsProof";
 import APSBillHistory from "@/components/APSBillHistory";
@@ -13,9 +14,9 @@ import CountermeasureStatus from "@/components/CountermeasureStatus";
 export default function BHEMPage() {
   const [now, setNow] = useState(new Date());
 
-  const [pool, setPool] = useState<any>(null);
-  const [hvacStrategy, setHvacStrategy] = useState<any>(null);
-  const [savingsProof, setSavingsProof] = useState<any>(null);
+  const [, setPool] = useState<unknown>(null);
+  const [hvacStrategy, setHvacStrategy] = useState<ComponentProps<typeof CaptainsLog>["hvacStrategy"]>(null);
+  const [savingsProof, setSavingsProof] = useState<ComponentProps<typeof CaptainsLog>["savingsProof"]>(null);
 
 useEffect(() => {
   const timer = setInterval(() => {
@@ -101,12 +102,12 @@ const currentDemand = 7.8;
     <main className="min-h-screen bg-black p-8">
 
 <div className="mb-8">
-  <a
+  <Link
     href="/"
     className="text-cyan-400 hover:text-cyan-300 text-sm"
   >
     ← Back to Dashboard
-  </a>
+  </Link>
 
   <h1 className="mt-4 text-4xl font-bold text-orange-200">
     BARKSDALE HOME ENERGY MANAGER

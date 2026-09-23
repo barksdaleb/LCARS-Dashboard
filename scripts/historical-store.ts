@@ -40,5 +40,6 @@ export interface SensorLogRecord {
 export async function appendSensorLog(
   record: SensorLogRecord
 ) {
-
+  // Placeholder: preserve the no-op until a sensor-log destination is implemented.
+  void record;
 }

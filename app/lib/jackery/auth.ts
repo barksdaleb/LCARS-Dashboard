@@ -1,19 +1,16 @@
 import crypto from "crypto";
-import { v3 as uuidv3, v4 as uuidv4 } from "uuid";
-
-const PUBLIC_KEY =
-  "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVmzgJy/4XolxPnkfu32YtJqYGFLYqf9/rnVgURJED+8J9J3Pccd6+9L97/+7COZE5OkejsgOkqeLNC9C3r5mhpE4zk/HStss7Q8/5DqkGD1annQ+eoICo3oi0dITZ0Qll56Dowb8lXi6WHViVDdih/oeUwVJY89uJNtTWrz7t7QIDAQAB";
-
-const AES_KEY = "1234567890123456";
+import { v4 as uuidv4 } from "uuid";
 
 export class JackeryAuth {
   async login(email: string, password: string) {
-    // We'll build this together.
+    // Authentication remains a scaffold; callers currently receive no result.
+    void email;
+    void password;
   }
 
 }
 
-function generateUDID(
+export function generateUDID(
   androidId = "abcd1234567890ef"
 ): string {
   if (androidId && androidId !== "9774d56d682e549c") {

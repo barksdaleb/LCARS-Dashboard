@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // External reference checkouts are not part of the application.
+    "research/**",
   ]),
 ]);
 

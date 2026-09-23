@@ -1,9 +1,7 @@
 "use client";
 
 import energy from "../data/energy.json";
-import { getAPSStatus } from "./lib/aps";
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import ConsolePanel from "../components/ConsolePanel";
 import SystemStatusBar from "../components/SystemStatusBar";
 import HomeStatus from "../components/HomeStatus";
@@ -11,6 +9,19 @@ import PowerForecast from "../components/PowerForecast";
 import ComputerMessage from "../components/ComputerMessage";
 import UpdateButton from "../components/UpdateButton";
 import UpcomingEvents from "../components/UpcomingEvents";
+
+type PoolStatus = {
+  status: string;
+  temperature: number;
+  chlorine: number;
+  ph: number;
+  recommendation: string;
+};
+type HVACRuntime = {
+  dataDate: string;
+  front: { totalHours: number; precoolHours: number; lastReading: string | null };
+  hall: { totalHours: number; precoolHours: number };
+};
 
 function formatShortDate(dateString: string): string {
   const [year, month, day] = dateString.split("-").map(Number);
@@ -24,13 +35,13 @@ function formatShortDate(dateString: string): string {
 }
 
 export default function HomePage() {
-const [now, setNow] = useState(new Date());
+const [, setNow] = useState(new Date());
 
-const [outsideTemp, setOutsideTemp] = useState<number | null>(null);
+const [, setOutsideTemp] = useState<number | null>(null);
 
-const [pool, setPool] = useState<any>(null);
+const [pool, setPool] = useState<PoolStatus | null>(null);
 
-const [hvac, setHvac] = useState<any>(null);
+const [hvac, setHvac] = useState<HVACRuntime | null>(null);
 
   useEffect(() => {
   async function loadWeather() {
@@ -85,19 +96,6 @@ useEffect(() => {
 
   loadHVAC();
 }, []);
-
-
-  const aps = getAPSStatus(now);
-
-  const day = now.toLocaleDateString("en-US", {
-    weekday: "long",
-  });
-
-  const date = now.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
 
 
   return (

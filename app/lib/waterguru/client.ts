@@ -10,7 +10,7 @@ import {
   CognitoUserPool,
   type CognitoUserSession,
 } from "amazon-cognito-identity-js";
-import { WgTokens } from "./types";
+import { WgTokens, WaterGuruDashboard } from "./types";
 
 const REGION = "us-west-2";
 const USER_POOL_ID = "us-west-2_icsnuWQWw";
@@ -109,7 +109,7 @@ export default class WaterGuruAPI {
     };
   }
 
-  protected async invokeDashboardLambda(idToken: string) {
+  protected async invokeDashboardLambda(idToken: string): Promise<WaterGuruDashboard> {
     const awsCreds = await this.getAwsCredentialsFromIdToken(idToken);
 
     const lambda = new LambdaClient({
@@ -126,8 +126,6 @@ export default class WaterGuruAPI {
       Buffer.from(payloadBase64, "base64").toString("utf-8")
     );
     const userId = payloadJson["cognito:username"];
-    payloadJson.username;
-    payloadJson.sub;
     this.cachedUserId = this.cachedUserId || userId;
 
     const body = {

@@ -78,7 +78,7 @@ function hueStateForAction(action: LightAction) {
 // =======================
 // HUE REQUEST
 // =======================
-function hueRequest(path: string, method = "GET", body?: any): Promise<any> {
+function hueRequest(path: string, method = "GET", body?: ReturnType<typeof hueStateForAction>): Promise<unknown> {
   return new Promise((resolve, reject) => {
     const ip = process.env.HUE_BRIDGE_IP!;
     const key = process.env.HUE_APP_KEY!;
@@ -179,8 +179,8 @@ export async function GET() {
       hueConfigured: true,
       lights,
     });
-  } catch (err: any) {
-    return Response.json({ error: err.message }, { status: 500 });
+  } catch (err) {
+    return Response.json({ error: err instanceof Error ? err.message : "Unknown error" }, { status: 500 });
   }
 }
 
@@ -205,7 +205,7 @@ export async function POST(req: Request) {
       result,
       message: "Command acknowledged.",
     });
-  } catch (err: any) {
-    return Response.json({ error: err.message }, { status: 500 });
+  } catch (err) {
+    return Response.json({ error: err instanceof Error ? err.message : "Unknown error" }, { status: 500 });
   }
 }

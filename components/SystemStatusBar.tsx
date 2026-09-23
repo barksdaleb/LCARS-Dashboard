@@ -1,15 +1,17 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { getAPSStatus } from "../app/lib/aps";
 
+const subscribeToHydration = () => () => {};
+const clientSnapshot = () => true;
+const serverSnapshot = () => false;
+
 export default function SystemStatusBar() {
-  const [mounted, setMounted] = useState(false);
+  const mounted = useSyncExternalStore(subscribeToHydration, clientSnapshot, serverSnapshot);
   const [now, setNow] = useState(new Date());
 
   useEffect(() => {
-    setMounted(true);
-
     const timer = setInterval(() => {
       setNow(new Date());
     }, 1000);
@@ -17,7 +19,7 @@ export default function SystemStatusBar() {
     return () => clearInterval(timer);
   }, []);
 
-const aps = getAPSStatus(new Date());
+const aps = getAPSStatus(now);
 
   const day = mounted
     ? now.toLocaleDateString("en-US", {

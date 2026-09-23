@@ -9,7 +9,7 @@ export async function GET() {
     const pool = dashboard.waterBodies[0];
 
     const measurements = Object.fromEntries(
-      pool.measurements.map((m: any) => [m.type, m])
+      pool.measurements.map((m) => [m.type, m])
     );
 
     const chlorine = measurements.FREE_CL.floatValue;
@@ -21,13 +21,13 @@ export async function GET() {
     let status = "GREEN";
     let recommendation = "No action required.";
 
-    if (ph > 7.8) {
+    if (ph !== undefined && ph > 7.8) {
       status = "RED";
       recommendation = "Lower pH";
-    } else if (chlorine < 3) {
+    } else if (chlorine !== undefined && chlorine < 3) {
       status = "YELLOW";
       recommendation = "Increase Free Chlorine";
-    } else if (alkalinity < 70 || alkalinity > 120) {
+    } else if (alkalinity !== undefined && (alkalinity < 70 || alkalinity > 120)) {
       status = "YELLOW";
       recommendation = "Adjust Total Alkalinity";
     }
